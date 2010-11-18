@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+#       nautilus-pyextensions
+#       
+#       Copyright 2008-2010 Giuseppe Penone <giuspen@gmail.com>
+#       
+#       This program is free software; you can redistribute it and/or modify
+#       it under the terms of the GNU General Public License as published by
+#       the Free Software Foundation; either version 2 of the License, or
+#       (at your option) any later version.
+#       
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#       GNU General Public License for more details.
+#       
+#       You should have received a copy of the GNU General Public License
+#       along with this program; if not, write to the Free Software
+#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#       MA 02110-1301, USA.
+
+
+import sys, os, gettext, subprocess, shutil, ctypes, ctypes.util
+import gtk
+
+if os.path.isdir('modules'): MODULES_PATH = os.path.join(os.curdir, 'modules')
+else: MODULES_PATH = '/usr/share/nautilus-pyextensions/modules/'
+
+sys.path.append(MODULES_PATH)
+
+import cons, core
+
+libc = ctypes.cdll.LoadLibrary(ctypes.util.find_library("libc"))
+libc.prctl(15, cons.APP_NAME, 0, 0, 0)
+
+# language installation
+try: gettext.translation(cons.APP_NAME, cons.LOCALE_PATH).install()
+except:
+   import __builtin__
+   def _(transl_str):
+      return transl_str
+   __builtin__._ = _
+
+def update_default_pyextension(pyextension):
+   """Actions to update a previous pyextension version"""
+   if os.path.isfile(os.path.join(cons.PYEXTENSIONS_DIR, pyextension)):
+      os.remove(os.path.join(cons.PYEXTENSIONS_DIR, pyextension))
+   if os.path.isfile(os.path.join(cons.PYEXTENSIONS_DIR, pyextension + 'c')):
+      os.remove(os.path.join(cons.PYEXTENSIONS_DIR, pyextension + 'c'))
+   shutil.copy(os.path.join('/usr/share/nautilus-pyextensions/default-pyextensions', pyextension), os.path.join(cons.PYEXTENSIONS_NOT_ACTIVE_DIR, pyextension))
+   
+def nautilus_pyextensions():
+   """Instantiate the classes, start the gtk main loop"""
+   # check if this is the first application's run
+   if not os.path.isfile(os.path.join(cons.CONFIG_DIR, cons.VERSION)):
+      # show icons in menus
+      subprocess.call(cons.SHOW_MENU_ICONS, shell=True)
+      # initialize folders/files
+      if not os.path.isdir(cons.CONFIG_DIR): os.mkdir(cons.CONFIG_DIR)
+      subprocess.call("touch %s" % os.path.join(cons.CONFIG_DIR, cons.VERSION), shell=True)
+      if not os.path.isdir(cons.PYEXTENSIONS_DIR): os.mkdir(cons.PYEXTENSIONS_DIR)
+      if not os.path.isdir(cons.PYEXTENSIONS_NOT_ACTIVE_DIR): os.mkdir(cons.PYEXTENSIONS_NOT_ACTIVE_DIR)
+      # check if the application is installed
+      if os.path.isdir('/usr/share/nautilus-pyextensions/default-pyextensions'):
+         # update the default python extensions
+         for dirpath, dirnames, filenames in os.walk('/usr/share/nautilus-pyextensions/default-pyextensions'):
+            for filename in filenames:
+               update_default_pyextension(filename)
+   # classes instantiation
+   core.NautilusPyExtensions(core.InfoModel())
+   gtk.main() # start the gtk main loop
+   return 0
+   
+if __name__ == "__main__": nautilus_pyextensions()

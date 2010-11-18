@@ -1,0 +1,10 @@
+Source: nautilus-pyextensions
+Section: accessories
+Priority: optional
+Maintainer: Giuseppe Penone <giuspen@gmail.com>
+Package: nautilus-pyextensions
+Version: 1.2.1-1
+Architecture: all
+Depends: python-nautilus, python-gtk2
+Description: Handler of the Nautilus Python Extensions
+ A Graphical Handler of the Nautilus File Manager Python Extensions, Including some Useful PyExtensions
