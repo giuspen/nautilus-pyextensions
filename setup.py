@@ -143,7 +143,8 @@ setup(
    data_files = [
                   ("share/icons/hicolor/scalable/apps", ["linux/nautilus-pyextensions.svg"] ),
                   ("share/nautilus-pyextensions/glade", glob.glob("glade/*.*") ),
-                  ("share/nautilus-pyextensions/modules", glob.glob("modules/*.py") ) ],
+                  ("share/nautilus-pyextensions/modules", glob.glob("modules/*.py") ),
+                  ("share/nautilus-pyextensions/default-pyextensions", glob.glob("default-pyextensions/*.py") ) ],
    cmdclass={
         'build': BuildData, 
         'install_data': InstallData, 
