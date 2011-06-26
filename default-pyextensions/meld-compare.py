@@ -58,7 +58,7 @@ class MeldActions(nautilus.MenuProvider):
         """Adds the 'Add To Audacious Playlist' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
         num_paths = len(sel_items)
-        if num_paths > 2: return
+        if num_paths == 0 or num_paths > 2: return
         uri_raw = sel_items[0].get_uri()
         if len(uri_raw) < 7: return
         element_1 = urllib.unquote(uri_raw[7:])

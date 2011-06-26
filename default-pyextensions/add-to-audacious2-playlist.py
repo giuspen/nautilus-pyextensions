@@ -50,6 +50,7 @@ class AddToAudaciousPlaylist(nautilus.MenuProvider):
     def get_file_items(self, window, sel_items):
         """Adds the 'Add To Audacious Playlist' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
+        if len(sel_items) == 0: return
         if sel_items[0].is_directory() or sel_items[0].get_uri_scheme() != 'file':
             return
         source_path_list = []
