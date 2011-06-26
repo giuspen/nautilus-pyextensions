@@ -23,8 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Gtk
-import nautilus, gconf, urllib, os, sys, subprocess
+from gi.repository import Gtk, GConf
+import nautilus, urllib, os, sys, subprocess
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
