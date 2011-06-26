@@ -23,8 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Gtk, GConf
-import nautilus, urllib, os, sys, subprocess
+import nautilus, urllib, os, subprocess
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -35,16 +34,7 @@ gettext.bindtextdomain(APP_NAME, LOCALE_PATH)
 gettext.textdomain(APP_NAME)
 _ = gettext.gettext
 # post internationalization code starts here
-GEOMETRY = "125x25"
-
-
-def dialog_info(message):
-    """Debug dialog"""
-    dialog = Gtk.MessageDialog(type=Gtk.MessageType.INFO,
-                               buttons=Gtk.ButtonsType.OK,
-                               message_format=message)
-    dialog.run()
-    dialog.destroy()
+GEOMETRY = "100x25"
 
 
 class OpenTerminalGeometry(nautilus.MenuProvider):

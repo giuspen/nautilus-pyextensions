@@ -23,8 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Gtk, GConf
-import nautilus, urllib, os, sys, subprocess, re
+import gconf
+import nautilus, urllib, os, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -38,22 +38,13 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-def dialog_info(message):
-    """Debug dialog"""
-    dialog = Gtk.MessageDialog(type=Gtk.MessageType.INFO,
-                               buttons=Gtk.ButtonsType.OK,
-                               message_format=message)
-    dialog.run()
-    dialog.destroy()
-
-
 class MeldActions(nautilus.MenuProvider):
     """Implements the 'Meld Compare' extension to the nautilus right-click menu"""
 
     def __init__(self):
         """Nautilus crashes if a plugin doesn't implement the __init__ method"""
-        self.gconf_client = GConf.Client.get_default()
-        self.gconf_client.add_dir("/apps/nautilus-pyextensions", GConf.ClientPreloadType.PRELOAD_NONE)
+        self.gconf_client = gconf.client_get_default()
+        self.gconf_client.add_dir("/apps/nautilus-pyextensions", gconf.CLIENT_PRELOAD_NONE)
 
     def run(self, menu, element_1, element_2):
         """Runs the Meld Comparison of selected files/folders"""

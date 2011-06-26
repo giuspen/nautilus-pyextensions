@@ -23,8 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Gtk, GConf
-import nautilus, urllib, os, sys, subprocess, re
+import gconf
+import nautilus, urllib, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -37,21 +37,12 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-def dialog_info(message):
-    """Debug dialog"""
-    dialog = Gtk.MessageDialog(type=Gtk.MessageType.INFO,
-                               buttons=Gtk.ButtonsType.OK,
-                               message_format=message)
-    dialog.run()
-    dialog.destroy()
-
-
 class SetAsDesktopBackground(nautilus.MenuProvider):
     """Implements the 'Set As Desktop Background' extension to the nautilus right-click menu"""
 
     def __init__(self):
         """Nautilus crashes if a plugin doesn't implement the __init__ method"""
-        self.gconf_client = GConf.Client.get_default()
+        self.gconf_client = gconf.client_get_default()
 
     def run(self, menu, source_path):
         """Runs the Adding of selected Image file as Desktop Background"""
