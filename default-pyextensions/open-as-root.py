@@ -4,9 +4,9 @@
 """This module adds a menu item to the nautilus right-click menu which allows to
    open the selected file/folder as root user, so having administrator rights"""
 
-#   open-as-root.py version 1.2
+#   open-as-root.py version 2.0
 #
-#   Copyright 2009-2010 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -51,7 +51,9 @@ class OpenAsRoot(nautilus.MenuProvider):
         """Adds the 'Open as Root' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the selected File/Folder"""
         if len(sel_items) != 1 or sel_items[0].get_uri_scheme() != 'file': return
-        source_path = urllib.unquote(sel_items[0].get_uri()[7:])
+        uri_raw = sel_items[0].get_uri()
+        if len(uri_raw) < 7: return
+        source_path = urllib.unquote(uri_raw[7:])
         item = nautilus.MenuItem('NautilusPython::gksu',
                                  _('Open as Root'),
                                  _('Open the selected File/Folder as Root User') )

@@ -4,9 +4,9 @@
 """This module adds a menu item to the nautilus right-click menu which allows to Open the Terminal
    on the Selected Folder/Current Directory at predefined Geometry just through the right-clicking"""
 
-#   open-terminal-geometry.py version 1.2
+#   open-terminal-geometry.py version 2.0
 #
-#   Copyright 2009-2010 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -46,7 +46,9 @@ class OpenTerminalGeometry(nautilus.MenuProvider):
 
     def run(self, menu, selected):
         """Runs the Open Terminal Geometry on the given Directory"""
-        curr_dir = urllib.unquote(selected.get_uri()[7:])
+        uri_raw = selected.get_uri()
+        if len(uri_raw) < 7: return
+        curr_dir = urllib.unquote(uri_raw[7:])
         if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
         bash_string = "gnome-terminal --geometry=" + GEOMETRY + " --working-directory='" + curr_dir + "' &"
         subprocess.call(bash_string, shell=True)

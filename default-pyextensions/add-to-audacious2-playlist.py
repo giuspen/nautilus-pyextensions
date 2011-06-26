@@ -4,9 +4,9 @@
 """This module adds a menu item to the nautilus right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
-#   add-to-audacious-playlist2.py version 1.2
+#   add-to-audacious-playlist2.py version 2.0
 #
-#   Copyright 2008-2010 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2008-2011 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -54,7 +54,9 @@ class AddToAudaciousPlaylist(nautilus.MenuProvider):
             return
         source_path_list = []
         for sel_item in sel_items:
-            source_path = re.escape(urllib.unquote(sel_item.get_uri()[7:]))
+            uri_raw = sel_item.get_uri()
+            if len(uri_raw) < 7: continue
+            source_path = re.escape(uri_raw[7:])
             filetype = subprocess.Popen("file -i %s" % source_path, shell=True, stdout=subprocess.PIPE).communicate()[0]
             if "audio" in filetype: source_path_list.append(source_path)
         if source_path_list:
