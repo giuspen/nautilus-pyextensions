@@ -23,7 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import gtk
+from gi.repository import Gtk
 import nautilus, gconf, urllib, os, sys, subprocess
 import locale, gettext
 
@@ -40,8 +40,8 @@ GEOMETRY = "125x25"
 
 def dialog_info(message):
     """Debug dialog"""
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                               buttons=gtk.BUTTONS_OK,
+    dialog = Gtk.MessageDialog(type=Gtk.MessageType.INFO,
+                               buttons=Gtk.ButtonsType.OK,
                                message_format=message)
     dialog.run()
     dialog.destroy()

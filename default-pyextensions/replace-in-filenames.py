@@ -23,7 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import gtk
+from gi.repository import Gtk
 import nautilus, gconf, urllib, os, sys
 import locale, gettext
 
@@ -40,8 +40,8 @@ GLADE_PATH = "/usr/share/nautilus-pyextensions/glade/nautilus-pyextensions_repla
 
 def dialog_info(message):
     """Debug dialog"""
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                               buttons=gtk.BUTTONS_OK,
+    dialog = Gtk.MessageDialog(type=Gtk.MessageType.INFO,
+                               buttons=Gtk.ButtonsType.OK,
                                message_format=message)
     dialog.run()
     dialog.destroy()
@@ -52,7 +52,7 @@ class GladeWidgetsWrapper:
 
     def __init__(self, glade_file_path, gui_instance):
         try:
-            self.glade_widgets = gtk.Builder()
+            self.glade_widgets = Gtk.Builder()
             self.glade_widgets.set_translation_domain(APP_NAME)
             self.glade_widgets.add_from_file(glade_file_path)
             self.glade_widgets.connect_signals(gui_instance)
@@ -97,7 +97,7 @@ class ReplaceInFilenames(nautilus.MenuProvider):
 
     def on_key_press(self, widget, event):
         """Catches AnchorHandle Dialog key presses"""
-        keyname = gtk.gdk.keyval_name(event.keyval)
+        keyname = Gdk.keyval_name(event.keyval)
         if keyname == "Return": self.glade.replace_button_ok.clicked()
 
     def get_file_items(self, window, sel_items):

@@ -23,7 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import gtk
+from gi.repository import Gtk
 import nautilus, gconf, urllib, os, sys, subprocess, re
 import locale, gettext
 
@@ -40,8 +40,8 @@ _ = gettext.gettext
 
 def dialog_info(message):
     """Debug dialog"""
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                               buttons=gtk.BUTTONS_OK,
+    dialog = Gtk.MessageDialog(type=Gtk.MessageType.INFO,
+                               buttons=Gtk.ButtonsType.OK,
                                message_format=message)
     dialog.run()
     dialog.destroy()
@@ -52,8 +52,8 @@ class Kdiff3Actions(nautilus.MenuProvider):
 
     def __init__(self):
         """Nautilus crashes if a plugin doesn't implement the __init__ method"""
-        self.gconf_client = gconf.client_get_default()
-        self.gconf_client.add_dir("/apps/nautilus-pyextensions", gconf.CLIENT_PRELOAD_NONE)
+        self.gconf_client = GConf.Client.get_default()
+        self.gconf_client.add_dir("/apps/nautilus-pyextensions", GConf.ClientPreloadType.PRELOAD_NONE)
 
     def run(self, menu, element_1, element_2):
         """Runs the Kdiff3 Comparison of selected files/folders"""

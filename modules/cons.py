@@ -23,7 +23,7 @@ import os
 
 
 APP_NAME = "nautilus-pyextensions"
-VERSION = "1.2.1"
+VERSION = "2.0"
 if os.path.isdir('modules'):
     GLADE_PATH = 'glade/'
     LOCALE_PATH = 'locale/'
@@ -50,47 +50,47 @@ ICONS_FILENAMES = [(GLADE_PATH + 'export.svg', 'Export'),
 
 UI_INFO = """
 <ui>
-   <menubar name='MenuBar'>
-      <menu action='FileMenu'>
-         <menuitem action='Kill'/>
-         <menuitem action='Add'/>
-         <menuitem action='Delete'/>
-         <menuitem action='Export'/>
-         <separator/>
-         <menuitem action='QuitApp'/>
-      </menu>
+    <menubar name='MenuBar'>
+        <menu action='FileMenu'>
+            <menuitem action='Kill'/>
+            <menuitem action='Add'/>
+            <menuitem action='Delete'/>
+            <menuitem action='Export'/>
+            <separator/>
+            <menuitem action='QuitApp'/>
+        </menu>
 
-      <menu action='EditMenu'>
-         <menuitem action='SelectAll'/>
-         <menuitem action='DeselectAll'/>
-         <separator/>
-         <menuitem action='Edit'/>
-      </menu>
+        <menu action='EditMenu'>
+            <menuitem action='SelectAll'/>
+            <menuitem action='DeselectAll'/>
+            <separator/>
+            <menuitem action='Edit'/>
+        </menu>
 
-      <menu action='ViewMenu'>
-         <menuitem action='ShowHideToolbar'/>
-      </menu>
+        <menu action='ViewMenu'>
+            <menuitem action='ShowHideToolbar'/>
+        </menu>
 
-      <menu action='HelpMenu'>
-         <menuitem action='Help'/>
-         <separator/>
-         <menuitem action='About'/>
-      </menu>
-   </menubar>
+        <menu action='HelpMenu'>
+            <menuitem action='Help'/>
+            <separator/>
+            <menuitem action='About'/>
+        </menu>
+    </menubar>
 
-   <toolbar name='ToolBar'>
-      <toolitem action='Add'/>
-      <toolitem action='Delete'/>
-      <toolitem action='Export'/>
-      <toolitem action='Edit'/>
-      <separator/>
-      <toolitem action='Kill'/>
-      <separator/>
-      <toolitem action='SelectAll'/>
-      <toolitem action='DeselectAll'/>
-      <separator/>
-      <toolitem action='QuitApp'/>
-   </toolbar>
+    <toolbar name='ToolBar'>
+        <toolitem action='Add'/>
+        <toolitem action='Delete'/>
+        <toolitem action='Export'/>
+        <toolitem action='Edit'/>
+        <separator/>
+        <toolitem action='Kill'/>
+        <separator/>
+        <toolitem action='SelectAll'/>
+        <toolitem action='DeselectAll'/>
+        <separator/>
+        <toolitem action='QuitApp'/>
+    </toolbar>
 </ui>
 """
 
