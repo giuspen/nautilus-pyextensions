@@ -23,7 +23,7 @@ import os
 
 
 APP_NAME = "nautilus-pyextensions"
-VERSION = "1.2.1"
+VERSION = "1.2.2"
 if os.path.isdir('modules'):
     GLADE_PATH = 'glade/'
     LOCALE_PATH = 'locale/'

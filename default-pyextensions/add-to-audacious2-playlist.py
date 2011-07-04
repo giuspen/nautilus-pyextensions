@@ -59,7 +59,9 @@ class AddToAudaciousPlaylist(nautilus.MenuProvider):
             if len(uri_raw) < 7: continue
             source_path = re.escape(urllib.unquote(uri_raw[7:]))
             filetype = subprocess.Popen("file -i %s" % source_path, shell=True, stdout=subprocess.PIPE).communicate()[0]
-            if "audio" in filetype: source_path_list.append(source_path)
+            if "audio" in filetype\
+            or "application/ogg" in filetype:
+                source_path_list.append(source_path)
         if source_path_list:
             item = nautilus.MenuItem('NautilusPython::audacious',
                                      _('Add To Audacious2 Playlist'),

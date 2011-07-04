@@ -69,7 +69,16 @@ class InfoModel:
                     if icon_path == None:
                         icon_path = self.get_icon_path("dialog-question")
                     self.liststore.append([active, icon_path, filename])
-
+    
+    def get_pyextensions_list(self):
+        """Returns the list of all pyextensions (active and non)"""
+        ret_list = []
+        tree_iter = self.liststore.get_iter_first()
+        while tree_iter != None:
+            ret_list.append(self.liststore[tree_iter][2])
+            tree_iter = self.liststore.iter_next(tree_iter)
+        return ret_list
+    
     def add_pyextension(self, filepath):
         """Add a PyExtension to the model, as Not Active"""
         pyextension_path = os.path.join(cons.PYEXTENSIONS_NOT_ACTIVE_DIR, os.path.basename(filepath))
@@ -79,18 +88,18 @@ class InfoModel:
             icon_path = self.get_icon_path("dialog-question")
         self.liststore.append([False, icon_path, os.path.basename(filepath)])
 
-    def remove_pyextension(self, iter):
+    def remove_pyextension(self, tree_iter):
         """Remove a PyExtension from the model, Not Active directory"""
-        os.remove(os.path.join(cons.PYEXTENSIONS_NOT_ACTIVE_DIR, self.liststore[iter][2]))
-        self.liststore.remove(iter)
+        os.remove(os.path.join(cons.PYEXTENSIONS_NOT_ACTIVE_DIR, self.liststore[tree_iter][2]))
+        self.liststore.remove(tree_iter)
 
     def pyextension_already_exists(self, pyextension_name):
         """Returns True if a PyExtension with the given Name is already into the model"""
-        iter = self.liststore.get_iter_first()
-        while iter != None:
-            if self.liststore[iter][2] == pyextension_name:
+        tree_iter = self.liststore.get_iter_first()
+        while tree_iter != None:
+            if self.liststore[tree_iter][2] == pyextension_name:
                 return True
-            iter = self.liststore.iter_next(iter)
+            tree_iter = self.liststore.iter_next(tree_iter)
         return False
 
     def get_icon_name(self, pyextension_path):
@@ -204,7 +213,11 @@ class NautilusPyExtensions:
         """Check and eventually install a Dependency"""
         if dependency == None:
             # {"exe_name":"package_name",...}
-            check_list = {"meld":"meld", "audacious2":"audacious", "kdiff3":"kdiff3-qt"}
+            pyextensions_list = self.store.get_pyextensions_list()
+            check_list = {}
+            if "meld-compare.py" in pyextensions_list: check_list["meld"] = "meld"
+            if "kdiff3-compare.py" in pyextensions_list: check_list["kdiff3"] = "kdiff3-qt"
+            if "add-to-audacious2-playlist.py" in pyextensions_list: check_list["audacious2"] = "audacious"
         else: check_list = dependency
         for key in check_list:
             if not os.path.isfile(cons.BIN_PATH_1 + key)\
@@ -234,28 +247,27 @@ class NautilusPyExtensions:
         model[path][0] = not model[path][0]
         self.store.set_nautilus_restart_needed(True)
 
-    def make_pixbuf(self, treeviewcolumn, cell, model, iter):
+    def make_pixbuf(self, treeviewcolumn, cell, model, tree_iter):
         """Function to associate the pixbuf to the cell renderer"""
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(model[iter][1], 24, 24)
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(model[tree_iter][1], 24, 24)
         cell.set_property('pixbuf', pixbuf)
 
     def flag_all_rows(self, *args):
         """Flags All Rows"""
-        if not self.check_dependency(): return
-        iter = self.store.liststore.get_iter_first()
-        while iter != None:
-            if self.store.liststore[iter][0] == False:
-                self.toggle_active(None, iter, self.store.liststore)
-            iter = self.store.liststore.iter_next(iter)
+        tree_iter = self.store.liststore.get_iter_first()
+        while tree_iter != None:
+            if self.store.liststore[tree_iter][0] == False:
+                self.toggle_active(None, tree_iter, self.store.liststore)
+            tree_iter = self.store.liststore.iter_next(tree_iter)
         self.store.set_nautilus_restart_needed(True)
 
     def unflag_all_rows(self, *args):
         """Unflags All Rows"""
-        iter = self.store.liststore.get_iter_first()
-        while iter != None:
-            if self.store.liststore[iter][0] == True:
-                self.toggle_active(None, iter, self.store.liststore)
-            iter = self.store.liststore.iter_next(iter)
+        tree_iter = self.store.liststore.get_iter_first()
+        while tree_iter != None:
+            if self.store.liststore[tree_iter][0] == True:
+                self.toggle_active(None, tree_iter, self.store.liststore)
+            tree_iter = self.store.liststore.iter_next(tree_iter)
         self.store.set_nautilus_restart_needed(True)
 
     def on_window_delete_event(self, widget, event, data=None):
@@ -304,44 +316,44 @@ class NautilusPyExtensions:
 
     def remove_pyextension(self, *args):
         """Opens the Confirmation Dialog, proceeds with the Removal"""
-        (model, iter) = self.viewselection.get_selected()
-        if iter == None:
+        (model, tree_iter) = self.viewselection.get_selected()
+        if tree_iter == None:
             self.dialog_warning(_('No PyExtension is selected'))
         else:
-            if model[iter][0] == True:
-                self.dialog_warning(_('%s must be Deactivated in order to be Removed') % model[iter][2])
+            if model[tree_iter][0] == True:
+                self.dialog_warning(_('%s must be Deactivated in order to be Removed') % model[tree_iter][2])
             else:
-                filename = model[iter][2]
+                filename = model[tree_iter][2]
                 if self.dialog_question(_('Do you really want to Delete %s ?') % filename) == True:
-                    self.store.remove_pyextension(iter)
+                    self.store.remove_pyextension(tree_iter)
                     self.glade.statusbar.push(self.statusbar_context_id, _('%s Removed') % filename)
 
     def export_pyextension(self, *args):
         """Opens the Export PyExtension Dialog"""
-        (model, iter) = self.viewselection.get_selected()
-        if iter == None:
+        (model, tree_iter) = self.viewselection.get_selected()
+        if tree_iter == None:
             self.dialog_warning(_('No PyExtension is selected'))
         else:
-            filepath = self.dialog_save_file_as(filename=model[iter][2], filter_pattern='*.py', filter_name=_('Python Source Files'))
+            filepath = self.dialog_save_file_as(filename=model[tree_iter][2], filter_pattern='*.py', filter_name=_('Python Source Files'))
             if filepath != None:
-                if model[iter][0] == True:
-                    shutil.copy(os.path.join(cons.PYEXTENSIONS_DIR, model[iter][2]), filepath)
+                if model[tree_iter][0] == True:
+                    shutil.copy(os.path.join(cons.PYEXTENSIONS_DIR, model[tree_iter][2]), filepath)
                 else:
-                    shutil.copy(os.path.join(cons.PYEXTENSIONS_NOT_ACTIVE_DIR, model[iter][2]), filepath)
-                self.glade.statusbar.push(self.statusbar_context_id, _('%s Exported') % model[iter][2])
+                    shutil.copy(os.path.join(cons.PYEXTENSIONS_NOT_ACTIVE_DIR, model[tree_iter][2]), filepath)
+                self.glade.statusbar.push(self.statusbar_context_id, _('%s Exported') % model[tree_iter][2])
 
     def edit_pyextension(self, *args):
         """Opens the PyExtension through the predefined Text Editor"""
-        (model, iter) = self.viewselection.get_selected()
-        if iter == None:
+        (model, tree_iter) = self.viewselection.get_selected()
+        if tree_iter == None:
             self.dialog_warning(_('No PyExtension is selected'))
         else:
-            if model[iter][0] == True:
-                self.dialog_warning(_('%s must be Deactivated in order to be Edited') % model[iter][2])
+            if model[tree_iter][0] == True:
+                self.dialog_warning(_('%s must be Deactivated in order to be Edited') % model[tree_iter][2])
             else:
-                shell_command = "xdg-open" + " '" + os.path.join(cons.PYEXTENSIONS_NOT_ACTIVE_DIR, model[iter][2]) + "' &"
+                shell_command = "xdg-open" + " '" + os.path.join(cons.PYEXTENSIONS_NOT_ACTIVE_DIR, model[tree_iter][2]) + "' &"
                 subprocess.call(shell_command, shell=True)
-                self.glade.statusbar.push(self.statusbar_context_id, _('%s Opened for Editing') % model[iter][2])
+                self.glade.statusbar.push(self.statusbar_context_id, _('%s Opened for Editing') % model[tree_iter][2])
 
     def show_hide_toolbar(self, menuitem, data=None):
         """Show/Hide the Toolbar"""
