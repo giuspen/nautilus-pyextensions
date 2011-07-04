@@ -4,7 +4,7 @@
 """This module adds menu items to the nautilus right-click menu which allows to compare
    the selected files/folder using Kdiff3 (Diff and merge tool) just through the right-clicking"""
 
-#   kdiff3-compare.py version 2.0
+#   kdiff3-compare.py version 1.2.2
 #
 #   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #

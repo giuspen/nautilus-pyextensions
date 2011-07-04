@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to Open the Terminal
    on the Selected Folder/Current Directory at predefined Geometry just through the right-clicking"""
 
-#   open-terminal-geometry.py version 2.0
+#   open-terminal-geometry.py version 1.2.2
 #
 #   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #

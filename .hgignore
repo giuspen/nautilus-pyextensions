@@ -1,5 +1,6 @@
 syntax: glob
 *.pyc
+*.glade.h
 fr
 it
 ja

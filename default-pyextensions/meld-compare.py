@@ -4,7 +4,7 @@
 """This module adds menu items to the nautilus right-click menu which allows to compare
    the selected files/folder using Meld (Diff and merge tool) just through the right-clicking"""
 
-#   meld-compare.py version 2.0
+#   meld-compare.py version 1.2.2
 #
 #   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #

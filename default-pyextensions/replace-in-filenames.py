@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to Replace a String
    with another one in all Current/Selected Directory Filenames just through the right-clicking"""
 
-#   replace-in-filenames.py version 2.0
+#   replace-in-filenames.py version 1.2.2
 #
 #   Copyright 2011 Giuseppe Penone <giuspen@gmail.com>
 #

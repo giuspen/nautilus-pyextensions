@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
-#   add-to-audacious-playlist2.py version 2.0
+#   add-to-audacious-playlist2.py version 1.2.2
 #
 #   Copyright 2008-2011 Giuseppe Penone <giuspen@gmail.com>
 #

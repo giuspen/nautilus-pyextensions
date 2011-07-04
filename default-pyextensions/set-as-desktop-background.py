@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to set
    as desktop background the selected image file just through the right-clicking"""
 
-#   set-as-desktop-background.py version 2.0
+#   set-as-desktop-background.py version 1.2.2
 #
 #   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
