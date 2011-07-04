@@ -4,9 +4,9 @@
 """This module adds a menu item to the nautilus right-click menu which allows to Replace a String
    with another one in all Current/Selected Directory Filenames just through the right-clicking"""
 
-#   replace-in-filenames.py version 1.2
+#   replace-in-filenames.py version 2.0
 #
-#   Copyright 2010 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2011 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 #   MA 02110-1301, USA.
 
 import gtk
-import nautilus, gconf, urllib, os, sys
+import nautilus, urllib, os
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -36,15 +36,6 @@ gettext.textdomain(APP_NAME)
 _ = gettext.gettext
 # post internationalization code starts here
 GLADE_PATH = "/usr/share/nautilus-pyextensions/glade/nautilus-pyextensions_replace.glade"
-
-
-def dialog_info(message):
-    """Debug dialog"""
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                               buttons=gtk.BUTTONS_OK,
-                               message_format=message)
-    dialog.run()
-    dialog.destroy()
 
 
 class GladeWidgetsWrapper:
@@ -79,7 +70,9 @@ class ReplaceInFilenames(nautilus.MenuProvider):
 
     def run(self, menu, selected):
         """Runs the Replace in Filenames on the given Directory"""
-        curr_dir = urllib.unquote(selected.get_uri()[7:])
+        uri_raw = selected.get_uri()
+        if len(uri_raw) < 7: return
+        curr_dir = urllib.unquote(uri_raw[7:])
         if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
         self.glade = GladeWidgetsWrapper(GLADE_PATH, self)
         self.glade.replacedialog.connect('key_press_event', self.on_key_press)

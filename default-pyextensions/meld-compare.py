@@ -4,9 +4,9 @@
 """This module adds menu items to the nautilus right-click menu which allows to compare
    the selected files/folder using Meld (Diff and merge tool) just through the right-clicking"""
 
-#   meld-compare.py version 1.2
+#   meld-compare.py version 2.0
 #
-#   Copyright 2009-2010 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import gtk
-import nautilus, gconf, urllib, os, sys, subprocess, re
+import gconf
+import nautilus, urllib, os, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -36,15 +36,6 @@ gettext.bindtextdomain(APP_NAME, LOCALE_PATH)
 gettext.textdomain(APP_NAME)
 _ = gettext.gettext
 # post internationalization code starts here
-
-
-def dialog_info(message):
-    """Debug dialog"""
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                               buttons=gtk.BUTTONS_OK,
-                               message_format=message)
-    dialog.run()
-    dialog.destroy()
 
 
 class MeldActions(nautilus.MenuProvider):
@@ -67,10 +58,14 @@ class MeldActions(nautilus.MenuProvider):
         """Adds the 'Add To Audacious Playlist' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
         num_paths = len(sel_items)
-        if num_paths > 2: return
-        element_1 = urllib.unquote(sel_items[0].get_uri()[7:])
+        if num_paths == 0 or num_paths > 2: return
+        uri_raw = sel_items[0].get_uri()
+        if len(uri_raw) < 7: return
+        element_1 = urllib.unquote(uri_raw[7:])
         if num_paths == 2:
-            element_2 = urllib.unquote(sel_items[1].get_uri()[7:])
+            uri_raw = sel_items[1].get_uri()
+            if len(uri_raw) < 7: return
+            element_2 = urllib.unquote(uri_raw[7:])
             if os.path.isfile(element_1):
                 if not os.path.isfile(element_2): return
                 element_1 = re.escape(element_1)

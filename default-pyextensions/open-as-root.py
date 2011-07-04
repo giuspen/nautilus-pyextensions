@@ -4,9 +4,9 @@
 """This module adds a menu item to the nautilus right-click menu which allows to
    open the selected file/folder as root user, so having administrator rights"""
 
-#   open-as-root.py version 1.2
+#   open-as-root.py version 2.0
 #
-#   Copyright 2009-2010 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import gtk
-import nautilus, gconf, urllib, os, sys, subprocess, re
+import nautilus, urllib, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -35,15 +34,6 @@ gettext.bindtextdomain(APP_NAME, LOCALE_PATH)
 gettext.textdomain(APP_NAME)
 _ = gettext.gettext
 # post internationalization code starts here
-
-
-def dialog_info(message):
-    """Debug dialog"""
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                               buttons=gtk.BUTTONS_OK,
-                               message_format=message)
-    dialog.run()
-    dialog.destroy()
 
 
 class OpenAsRoot(nautilus.MenuProvider):
@@ -61,7 +51,9 @@ class OpenAsRoot(nautilus.MenuProvider):
         """Adds the 'Open as Root' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the selected File/Folder"""
         if len(sel_items) != 1 or sel_items[0].get_uri_scheme() != 'file': return
-        source_path = urllib.unquote(sel_items[0].get_uri()[7:])
+        uri_raw = sel_items[0].get_uri()
+        if len(uri_raw) < 7: return
+        source_path = urllib.unquote(uri_raw[7:])
         item = nautilus.MenuItem('NautilusPython::gksu',
                                  _('Open as Root'),
                                  _('Open the selected File/Folder as Root User') )

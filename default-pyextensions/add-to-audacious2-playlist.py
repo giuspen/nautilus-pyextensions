@@ -4,9 +4,9 @@
 """This module adds a menu item to the nautilus right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
-#   add-to-audacious-playlist2.py version 1.2
+#   add-to-audacious-playlist2.py version 2.0
 #
-#   Copyright 2008-2010 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2008-2011 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import gtk
-import nautilus, gconf, urllib, os, sys, subprocess, re
+import nautilus, urllib, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -35,15 +34,6 @@ gettext.bindtextdomain(APP_NAME, LOCALE_PATH)
 gettext.textdomain(APP_NAME)
 _ = gettext.gettext
 # post internationalization code starts here
-
-
-def dialog_info(message):
-    """Debug dialog"""
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                               buttons=gtk.BUTTONS_OK,
-                               message_format=message)
-    dialog.run()
-    dialog.destroy()
 
 
 class AddToAudaciousPlaylist(nautilus.MenuProvider):
@@ -60,11 +50,14 @@ class AddToAudaciousPlaylist(nautilus.MenuProvider):
     def get_file_items(self, window, sel_items):
         """Adds the 'Add To Audacious Playlist' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
+        if len(sel_items) == 0: return
         if sel_items[0].is_directory() or sel_items[0].get_uri_scheme() != 'file':
             return
         source_path_list = []
         for sel_item in sel_items:
-            source_path = re.escape(urllib.unquote(sel_item.get_uri()[7:]))
+            uri_raw = sel_item.get_uri()
+            if len(uri_raw) < 7: continue
+            source_path = re.escape(urllib.unquote(uri_raw[7:]))
             filetype = subprocess.Popen("file -i %s" % source_path, shell=True, stdout=subprocess.PIPE).communicate()[0]
             if "audio" in filetype: source_path_list.append(source_path)
         if source_path_list:

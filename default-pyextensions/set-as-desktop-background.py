@@ -4,9 +4,9 @@
 """This module adds a menu item to the nautilus right-click menu which allows to set
    as desktop background the selected image file just through the right-clicking"""
 
-#   set-as-desktop-background.py version 1.2
+#   set-as-desktop-background.py version 2.0
 #
-#   Copyright 2009-2010 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import gtk
-import nautilus, gconf, urllib, os, sys, subprocess, re
+import gconf
+import nautilus, urllib, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -35,15 +35,6 @@ gettext.bindtextdomain(APP_NAME, LOCALE_PATH)
 gettext.textdomain(APP_NAME)
 _ = gettext.gettext
 # post internationalization code starts here
-
-
-def dialog_info(message):
-    """Debug dialog"""
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
-                               buttons=gtk.BUTTONS_OK,
-                               message_format=message)
-    dialog.run()
-    dialog.destroy()
 
 
 class SetAsDesktopBackground(nautilus.MenuProvider):
@@ -62,7 +53,9 @@ class SetAsDesktopBackground(nautilus.MenuProvider):
            connects its 'activate' signal to the 'run' method passing the list of selected Image item"""
         if len(sel_items) != 1 or sel_items[0].is_directory() or sel_items[0].get_uri_scheme() != 'file':
             return
-        source_path = urllib.unquote(sel_items[0].get_uri()[7:])
+        uri_raw = sel_items[0].get_uri()
+        if len(uri_raw) < 7: return
+        source_path = urllib.unquote(uri_raw[7:])
         filetype = subprocess.Popen("file -i %s" % re.escape(source_path), shell=True, stdout=subprocess.PIPE).communicate()[0]
         if "image" in filetype:
             item = nautilus.MenuItem('NautilusPython::preferences-desktop-wallpaper',
