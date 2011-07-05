@@ -59,6 +59,7 @@ def nautilus_pyextensions():
         # initialize folders/files
         if not os.path.isdir(cons.CONFIG_DIR): os.mkdir(cons.CONFIG_DIR)
         subprocess.call("touch %s" % os.path.join(cons.CONFIG_DIR, cons.VERSION), shell=True)
+        if not os.path.isdir(cons.NAUTILUS_PYTHON_DIR): os.mkdir(cons.NAUTILUS_PYTHON_DIR)
         if not os.path.isdir(cons.PYEXTENSIONS_DIR): os.mkdir(cons.PYEXTENSIONS_DIR)
         if not os.path.isdir(cons.PYEXTENSIONS_NOT_ACTIVE_DIR): os.mkdir(cons.PYEXTENSIONS_NOT_ACTIVE_DIR)
         # check if the application is installed
