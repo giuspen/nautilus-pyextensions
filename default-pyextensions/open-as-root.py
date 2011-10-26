@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to
    open the selected file/folder as root user, so having administrator rights"""
 
-#   open-as-root.py version 1.2.2
+#   open-as-root.py version 3.0
 #
 #   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
@@ -23,7 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import nautilus, urllib, subprocess, re
+from gi.repository import Nautilus, GObject
+import urllib, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -36,7 +37,7 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class OpenAsRoot(nautilus.MenuProvider):
+class OpenAsRoot(GObject.GObject, Nautilus.MenuProvider):
     """Implements the 'Open as Root' extension to the nautilus right-click menu"""
 
     def __init__(self):
@@ -54,9 +55,9 @@ class OpenAsRoot(nautilus.MenuProvider):
         uri_raw = sel_items[0].get_uri()
         if len(uri_raw) < 7: return
         source_path = urllib.unquote(uri_raw[7:])
-        item = nautilus.MenuItem('NautilusPython::gksu',
-                                 _('Open as Root'),
-                                 _('Open the selected File/Folder as Root User') )
-        item.set_property('icon', 'gksu')
+        item = Nautilus.MenuItem(name='NautilusPython::gksu',
+                                 label=_('Open as Root'),
+                                 tip=_('Open the selected File/Folder as Root User'),
+                                 icon='gksu')
         item.connect('activate', self.run, re.escape(source_path))
-        return item,
+        return [item]
