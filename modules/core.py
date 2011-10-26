@@ -108,7 +108,7 @@ class InfoModel:
         pyextension_file_string = pyextension_file.read()
         pyextension_file.close()
         # regular expression: search for a string preceeded by "'NautilusPython::" and followed by "'"
-        match = re.search("(?<=set_property\().*?(?=\))", pyextension_file_string)
+        match = re.search("(?<=icon\=).*?(?=\))", pyextension_file_string)
         if match == None: return None
         else:
             out_str = match.group(0).replace("icon","")

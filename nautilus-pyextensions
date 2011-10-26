@@ -24,7 +24,7 @@
 import sys, os, gettext, subprocess, shutil, ctypes, ctypes.util
 import gtk
 
-if os.path.isdir('modules'): MODULES_PATH = os.path.join(os.curdir, 'modules')
+if os.path.isfile('modules/core.py'): MODULES_PATH = os.path.join(os.curdir, 'modules')
 else: MODULES_PATH = '/usr/share/nautilus-pyextensions/modules/'
 
 sys.path.append(MODULES_PATH)
@@ -54,8 +54,6 @@ def nautilus_pyextensions():
     """Instantiate the classes, start the gtk main loop"""
     # check if this is the first application's run
     if not os.path.isfile(os.path.join(cons.CONFIG_DIR, cons.VERSION)):
-        # show icons in menus
-        subprocess.call(cons.SHOW_MENU_ICONS, shell=True)
         # initialize folders/files
         if not os.path.isdir(cons.CONFIG_DIR): os.mkdir(cons.CONFIG_DIR)
         subprocess.call("touch %s" % os.path.join(cons.CONFIG_DIR, cons.VERSION), shell=True)

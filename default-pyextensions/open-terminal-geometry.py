@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to Open the Terminal
    on the Selected Folder/Current Directory at predefined Geometry just through the right-clicking"""
 
-#   open-terminal-geometry.py version 1.2.2
+#   open-terminal-geometry.py version 3.0
 #
 #   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
@@ -23,7 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import nautilus, urllib, os, subprocess
+from gi.repository import Nautilus, GObject
+import urllib, os, subprocess
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -37,7 +38,7 @@ _ = gettext.gettext
 GEOMETRY = "100x25"
 
 
-class OpenTerminalGeometry(nautilus.MenuProvider):
+class OpenTerminalGeometry(GObject.GObject, Nautilus.MenuProvider):
     """Implements the 'Open Terminal Geometry' extension to the nautilus right-click menu"""
 
     def __init__(self):
@@ -57,19 +58,19 @@ class OpenTerminalGeometry(nautilus.MenuProvider):
         """Adds the 'Open Terminal Geometry' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the selected Directory/File"""
         if len(sel_items) != 1 or sel_items[0].get_uri_scheme() != 'file': return
-        item = nautilus.MenuItem('NautilusPython::terminal',
-                                 _('Open Terminal Here'),
-                                 _('Open the Terminal on the Current/Selected Directory') )
-        item.set_property('icon', 'terminal')
+        item = Nautilus.MenuItem(name='NautilusPython::terminal',
+                                 label=_('Open Terminal Here'),
+                                 tip=_('Open the Terminal on the Current/Selected Directory'),
+                                 icon='terminal')
         item.connect('activate', self.run, sel_items[0])
-        return item,
+        return [item]
 
     def get_background_items(self, window, current_directory):
         """Adds the 'Open Terminal Geometry' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the current Directory"""
-        item = nautilus.MenuItem('NautilusPython::terminal',
-                                 _('Open Terminal Here'),
-                                 _('Open the Terminal on the Current Directory') )
-        item.set_property('icon', 'terminal')
+        item = Nautilus.MenuItem(name='NautilusPython::terminal',
+                                 label=_('Open Terminal Here'),
+                                 tip=_('Open the Terminal on the Current Directory'),
+                                 icon='terminal')
         item.connect('activate', self.run, current_directory)
-        return item,
+        return [item]

@@ -23,15 +23,15 @@ import os
 
 
 APP_NAME = "nautilus-pyextensions"
-VERSION = "1.2.2"
-if os.path.isdir('modules'):
+VERSION = "3.0"
+if os.path.isfile('modules/core.py'):
     GLADE_PATH = 'glade/'
     LOCALE_PATH = 'locale/'
 else:
     GLADE_PATH = '/usr/share/nautilus-pyextensions/glade/'
     LOCALE_PATH = '/usr/share/locale/'
-NAUTILUS_PYTHON_DIR = os.path.join(os.path.expanduser('~'), '.nautilus')
-PYEXTENSIONS_DIR = os.path.join(NAUTILUS_PYTHON_DIR, 'python-extensions')
+NAUTILUS_PYTHON_DIR = os.path.join(os.path.expanduser('~'), '.local/share/nautilus-python')
+PYEXTENSIONS_DIR = os.path.join(NAUTILUS_PYTHON_DIR, 'extensions')
 PYEXTENSIONS_NOT_ACTIVE_DIR = os.path.join(PYEXTENSIONS_DIR, 'not_active')
 BIN_PATH_1 = "/usr/bin/"
 BIN_PATH_2 = "/usr/local/bin/"
@@ -39,8 +39,6 @@ INSTALL_STRING = "gnome-terminal -x gksu apt-get\ -y\ install\ %s"
 CONFIG_DIR = os.path.join(os.path.expanduser('~'), '.config/nautilus-pyextensions')
 
 AVAILABLE_LANGS = ['default', 'en', 'fr', 'it', 'ja']
-
-SHOW_MENU_ICONS = "gconftool-2 --set /desktop/gnome/interface/menus_have_icons --type bool 1"
 
 ICONS_FILENAMES = [(GLADE_PATH + 'export.svg', 'Export'),
                    (GLADE_PATH + 'restart-nautilus.svg', 'Restart Nautilus'),
@@ -51,47 +49,47 @@ ICONS_FILENAMES = [(GLADE_PATH + 'export.svg', 'Export'),
 
 UI_INFO = """
 <ui>
-   <menubar name='MenuBar'>
-      <menu action='FileMenu'>
-         <menuitem action='Kill'/>
-         <menuitem action='Add'/>
-         <menuitem action='Delete'/>
-         <menuitem action='Export'/>
-         <separator/>
-         <menuitem action='QuitApp'/>
-      </menu>
-
-      <menu action='EditMenu'>
-         <menuitem action='SelectAll'/>
-         <menuitem action='DeselectAll'/>
-         <separator/>
-         <menuitem action='Edit'/>
-      </menu>
-
-      <menu action='ViewMenu'>
-         <menuitem action='ShowHideToolbar'/>
-      </menu>
-
-      <menu action='HelpMenu'>
-         <menuitem action='Help'/>
-         <separator/>
-         <menuitem action='About'/>
-      </menu>
-   </menubar>
-
-   <toolbar name='ToolBar'>
-      <toolitem action='Add'/>
-      <toolitem action='Delete'/>
-      <toolitem action='Export'/>
-      <toolitem action='Edit'/>
-      <separator/>
-      <toolitem action='Kill'/>
-      <separator/>
-      <toolitem action='SelectAll'/>
-      <toolitem action='DeselectAll'/>
-      <separator/>
-      <toolitem action='QuitApp'/>
-   </toolbar>
+    <menubar name='MenuBar'>
+        <menu action='FileMenu'>
+            <menuitem action='Kill'/>
+            <menuitem action='Add'/>
+            <menuitem action='Delete'/>
+            <menuitem action='Export'/>
+            <separator/>
+            <menuitem action='QuitApp'/>
+        </menu>
+    
+        <menu action='EditMenu'>
+            <menuitem action='SelectAll'/>
+            <menuitem action='DeselectAll'/>
+            <separator/>
+            <menuitem action='Edit'/>
+        </menu>
+    
+        <menu action='ViewMenu'>
+            <menuitem action='ShowHideToolbar'/>
+        </menu>
+    
+        <menu action='HelpMenu'>
+            <menuitem action='Help'/>
+            <separator/>
+            <menuitem action='About'/>
+        </menu>
+    </menubar>
+    
+    <toolbar name='ToolBar'>
+        <toolitem action='Add'/>
+        <toolitem action='Delete'/>
+        <toolitem action='Export'/>
+        <toolitem action='Edit'/>
+        <separator/>
+        <toolitem action='Kill'/>
+        <separator/>
+        <toolitem action='SelectAll'/>
+        <toolitem action='DeselectAll'/>
+        <separator/>
+        <toolitem action='QuitApp'/>
+    </toolbar>
 </ui>
 """
 
