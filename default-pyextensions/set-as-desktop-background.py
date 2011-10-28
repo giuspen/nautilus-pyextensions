@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to set
    as desktop background the selected image file just through the right-clicking"""
 
-#   set-as-desktop-background.py version 1.2.2
+#   set-as-desktop-background.py version 3.0
 #
 #   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
 #
@@ -23,8 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import gconf
-import nautilus, urllib, subprocess, re
+from gi.repository import Nautilus, GObject
+import urllib, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -37,16 +37,17 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class SetAsDesktopBackground(nautilus.MenuProvider):
+class SetAsDesktopBackground(GObject.GObject, Nautilus.MenuProvider):
     """Implements the 'Set As Desktop Background' extension to the nautilus right-click menu"""
 
     def __init__(self):
         """Nautilus crashes if a plugin doesn't implement the __init__ method"""
-        self.gconf_client = gconf.client_get_default()
+        pass
 
     def run(self, menu, source_path):
         """Runs the Adding of selected Image file as Desktop Background"""
-        self.gconf_client.set_string("/desktop/gnome/background/picture_filename", source_path)
+        bash_string = "gsettings set org.gnome.desktop.background picture-uri file://%s" % source_path
+        subprocess.call(bash_string, shell=True)
 
     def get_file_items(self, window, sel_items):
         """Adds the 'Set As Desktop Background' menu item to the Nautilus right-click menu,
@@ -58,9 +59,9 @@ class SetAsDesktopBackground(nautilus.MenuProvider):
         source_path = urllib.unquote(uri_raw[7:])
         filetype = subprocess.Popen("file -i %s" % re.escape(source_path), shell=True, stdout=subprocess.PIPE).communicate()[0]
         if "image" in filetype:
-            item = nautilus.MenuItem('NautilusPython::preferences-desktop-wallpaper',
-                                     _('Set As Desktop Background'),
-                                     _('Set the selected Image file as Desktop Background') )
-            item.set_property('icon', 'preferences-desktop-wallpaper')
+            item = Nautilus.MenuItem(name='NautilusPython::preferences-desktop-wallpaper',
+                                     label=_('Set As Desktop Background'),
+                                     tip=_('Set the selected Image file as Desktop Background'),
+                                     icon='preferences-desktop-wallpaper')
             item.connect('activate', self.run, source_path)
             return item,
