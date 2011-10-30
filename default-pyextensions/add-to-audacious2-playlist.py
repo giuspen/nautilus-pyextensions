@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
-#   add-to-audacious-playlist2.py version 1.2.2
+#   add-to-audacious-playlist2.py version 3.0
 #
 #   Copyright 2008-2011 Giuseppe Penone <giuspen@gmail.com>
 #
@@ -23,7 +23,8 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-import nautilus, urllib, subprocess, re
+from gi.repository import Nautilus, GObject
+import urllib, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
@@ -36,7 +37,7 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class AddToAudaciousPlaylist(nautilus.MenuProvider):
+class AddToAudaciousPlaylist(GObject.GObject, Nautilus.MenuProvider):
     """Implements the 'Add To Audacious Playlist' extension to the nautilus right-click menu"""
 
     def __init__(self):
@@ -63,9 +64,9 @@ class AddToAudaciousPlaylist(nautilus.MenuProvider):
             or "application/ogg" in filetype:
                 source_path_list.append(source_path)
         if source_path_list:
-            item = nautilus.MenuItem('NautilusPython::audacious',
-                                     _('Add To Audacious2 Playlist'),
-                                     _('Add the selected Audio file(s) to the Audacious2 Playlist') )
-            item.set_property('icon', 'audacious')
+            item = Nautilus.MenuItem(name='NautilusPython::audacious',
+                                     label=_('Add To Audacious2 Playlist'),
+                                     tip=_('Add the selected Audio file(s) to the Audacious2 Playlist'),
+                                     icon='audacious')
             item.connect('activate', self.run, source_path_list)
             return item,
