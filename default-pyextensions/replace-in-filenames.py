@@ -23,8 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Nautilus, GObject
-#import gtk
+from gi.repository import Nautilus, GObject, Gtk
 import urllib, os
 import locale, gettext
 
@@ -51,39 +50,39 @@ class ReplaceInFilenames(GObject.GObject, Nautilus.MenuProvider):
         if len(uri_raw) < 7: return
         curr_dir = urllib.unquote(uri_raw[7:])
         if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
-        #dialog = gtk.Dialog(title=_("Replace in Filenames"),
-                            #buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_REJECT,
-                                     #gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
-        #dialog.set_position(gtk.WIN_POS_CENTER)
-        #entry_find = gtk.Entry()
-        #entry_replace = gtk.Entry()
-        #frame_find = gtk.Frame(label="<b>"+_("Replace...")+"</b>")
-        #frame_find.get_label_widget().set_use_markup(True)
-        #frame_find.add(entry_find)
-        #frame_replace = gtk.Frame(label="<b>"+_("...with")+"</b>")
-        #frame_replace.get_label_widget().set_use_markup(True)
-        #frame_replace.add(entry_replace)
-        #content_area = dialog.get_content_area()
-        #content_area.pack_start(frame_find)
-        #content_area.pack_start(frame_replace)
-        #content_area.show_all()
-        #def on_key_press_dialog(widget, event):
-            #if gtk.gdk.keyval_name(event.keyval) == "Return":
-                #button_box = dialog.get_action_area()
-                #buttons = button_box.get_children()
-                #buttons[0].clicked() # first is the ok button
-        #dialog.connect("key_press_event", on_key_press_dialog)
-        #response = dialog.run()
-        #dialog.hide()
-        #if response != gtk.RESPONSE_ACCEPT: return
-        #replace_from = entry_find.get_text()
-        #replace_to = entry_replace.get_text()
-        #for old_name in os.listdir(curr_dir):
-            #old_filename = os.path.join(curr_dir, old_name)
-            #if os.path.isfile(old_filename):
-                #new_name = old_name.replace(replace_from, replace_to)
-                #if new_name != old_name:
-                    #os.rename(old_filename, os.path.join(curr_dir, new_name))
+        dialog = Gtk.Dialog(title=_("Replace in Filenames"),
+                            buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT,
+                                     Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT))
+        dialog.set_position(Gtk.WindowPosition.CENTER)
+        entry_find = Gtk.Entry()
+        entry_replace = Gtk.Entry()
+        frame_find = Gtk.Frame(label="<b>"+_("Replace...")+"</b>")
+        frame_find.get_label_widget().set_use_markup(True)
+        frame_find.add(entry_find)
+        frame_replace = Gtk.Frame(label="<b>"+_("...with")+"</b>")
+        frame_replace.get_label_widget().set_use_markup(True)
+        frame_replace.add(entry_replace)
+        content_area = dialog.get_content_area()
+        content_area.pack_start(frame_find, True, True, 0)
+        content_area.pack_start(frame_replace, True, True, 0)
+        content_area.show_all()
+        def on_key_press_dialog(widget, event):
+            if Gdk.keyval_name(event.keyval) == "Return":
+                button_box = dialog.get_action_area()
+                buttons = button_box.get_children()
+                buttons[0].clicked() # first is the ok button
+        dialog.connect("key_press_event", on_key_press_dialog)
+        response = dialog.run()
+        dialog.hide()
+        if response != Gtk.ResponseType.ACCEPT: return
+        replace_from = entry_find.get_text()
+        replace_to = entry_replace.get_text()
+        for old_name in os.listdir(curr_dir):
+            old_filename = os.path.join(curr_dir, old_name)
+            if os.path.isfile(old_filename):
+                new_name = old_name.replace(replace_from, replace_to)
+                if new_name != old_name:
+                    os.rename(old_filename, os.path.join(curr_dir, new_name))
 
     def get_file_items(self, window, sel_items):
         """Adds the 'Replace in Filenames' menu item to the Nautilus right-click menu,
