@@ -48,8 +48,6 @@ class ReplaceInFilenames(GObject.GObject, Nautilus.MenuProvider):
         """Runs the Replace in Filenames on the given Directory"""
         uri_raw = selected.get_uri()
         if len(uri_raw) < 7: return
-        curr_dir = urllib.unquote(uri_raw[7:])
-        if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
         dialog = Gtk.Dialog(title=_("Replace in Filenames"),
                             buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT,
                                      Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT))
@@ -66,23 +64,33 @@ class ReplaceInFilenames(GObject.GObject, Nautilus.MenuProvider):
         content_area.pack_start(frame_find, True, True, 0)
         content_area.pack_start(frame_replace, True, True, 0)
         content_area.show_all()
-        def on_key_press_dialog(widget, event):
-            if Gdk.keyval_name(event.keyval) == "Return":
-                button_box = dialog.get_action_area()
-                buttons = button_box.get_children()
-                buttons[0].clicked() # first is the ok button
-        dialog.connect("key_press_event", on_key_press_dialog)
         response = dialog.run()
         dialog.hide()
         if response != Gtk.ResponseType.ACCEPT: return
         replace_from = entry_find.get_text()
         replace_to = entry_replace.get_text()
-        for old_name in os.listdir(curr_dir):
-            old_filename = os.path.join(curr_dir, old_name)
-            if os.path.isfile(old_filename):
-                new_name = old_name.replace(replace_from, replace_to)
-                if new_name != old_name:
-                    os.rename(old_filename, os.path.join(curr_dir, new_name))
+        if uri_raw.startswith("smb"):
+            import smbc
+            curr_dir = urllib.unquote(uri_raw)
+            context = smbc.Context()
+            dir_obj = context.opendir(curr_dir)
+            dirent_objs = dir_obj.getdents()
+            for dirent_obj in dirent_objs:
+                if dirent_obj.smbc_type == 8:
+                    old_name = dirent_obj.name
+                    old_uri = os.path.join(curr_dir, old_name)
+                    new_uri = os.path.join(curr_dir, old_name.replace(replace_from, replace_to))
+                    if new_uri != old_uri:
+                        context.rename(old_uri, new_uri)
+        else:
+            curr_dir = urllib.unquote(uri_raw[7:])
+            if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
+            for old_name in os.listdir(curr_dir):
+                old_filename = os.path.join(curr_dir, old_name)
+                if os.path.isfile(old_filename):
+                    new_name = old_name.replace(replace_from, replace_to)
+                    if new_name != old_name:
+                        os.rename(old_filename, os.path.join(curr_dir, new_name))
 
     def get_file_items(self, window, sel_items):
         """Adds the 'Replace in Filenames' menu item to the Nautilus right-click menu,
