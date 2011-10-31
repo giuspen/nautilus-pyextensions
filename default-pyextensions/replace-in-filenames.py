@@ -95,7 +95,7 @@ class ReplaceInFilenames(GObject.GObject, Nautilus.MenuProvider):
     def get_file_items(self, window, sel_items):
         """Adds the 'Replace in Filenames' menu item to the Nautilus right-click menu,
            connects its 'activate' signal to the 'run' method passing the selected Directory/File"""
-        if len(sel_items) != 1 or sel_items[0].get_uri_scheme() != 'file': return
+        if len(sel_items) != 1 or sel_items[0].get_uri_scheme() not in ['file', 'smb']: return
         item = Nautilus.MenuItem(name='NautilusPython::gtk-find-and-replace',
                                  label=_('Replace in Filenames'),
                                  tip=_('Replace in Filenames of the Current/Selected Directory'),
