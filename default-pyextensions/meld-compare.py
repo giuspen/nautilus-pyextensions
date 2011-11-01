@@ -108,8 +108,8 @@ class MeldActions(GObject.GObject, Nautilus.MenuProvider):
         if stored_path and stored_path != element_1 and ( (os.path.isfile(stored_path) and os.path.isfile(element_1) ) or (os.path.isdir(stored_path) and os.path.isdir(element_1) ) ):
             sub_menuitem_compare_saved = Nautilus.MenuItem(name='Meld::compare_saved',
                                                            label=_('Compare with %s' % stored_path.replace("_", " ") ),
-                                                           tip=_('Compare the Selected File/Dir with %s' % stored_path ),
+                                                           tip=_('Compare the Selected File/Dir with %s' % stored_path),
                                                            icon='gtk-execute')
-            sub_menuitem_compare_saved.connect('activate', self.run, re.escape(element_1), re.escape(stored_path) )
+            sub_menuitem_compare_saved.connect('activate', self.run, re.escape(element_1), re.escape(stored_path))
             submenu.append_item(sub_menuitem_compare_saved)
         return top_menuitem,
