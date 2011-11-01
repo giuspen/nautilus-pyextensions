@@ -7,34 +7,34 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-04 22:52+0200\n"
+"POT-Creation-Date: 2011-11-01 23:55+0100\n"
 "PO-Revision-Date: 2010-09-12 13:15+0200\n"
 "Last-Translator: Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Language-Team: French\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: modules/core.py:182
+#: modules/core.py:181
 msgid "Active"
 msgstr "Activer"
 
-#: modules/core.py:183
+#: modules/core.py:182
 msgid "Icon"
 msgstr "Icône"
 
-#: modules/core.py:185
+#: modules/core.py:184
 msgid "PyExtension"
 msgstr "PyExtension"
 
-#: modules/core.py:192
+#: modules/core.py:191
 #, python-format
 msgid "Version %s"
 msgstr "Version %s"
 
-#: modules/core.py:225
+#: modules/core.py:224
 #, python-format
 msgid ""
 "%s needs to be installed in order to activate the selected pyextension, "
@@ -43,17 +43,17 @@ msgstr ""
 "%s doit être installé pour pouvoir activer la PyExtension sélectionnée. "
 "Souhaitez-vous installer le logiciel?"
 
-#: modules/core.py:237
+#: modules/core.py:236
 #, python-format
 msgid "%s Deactivated"
 msgstr "%s déactivé"
 
-#: modules/core.py:246
+#: modules/core.py:245
 #, python-format
 msgid "%s Activated"
 msgstr "%s activé"
 
-#: modules/core.py:280
+#: modules/core.py:279
 msgid ""
 "You should Restart Nautilus in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
@@ -62,151 +62,151 @@ msgstr ""
 "Nautilus\").\n"
 "Voulez-vous vraiment quitter?"
 
-#: modules/core.py:301
+#: modules/core.py:300
 msgid "Nautilus Restarted"
 msgstr "Nautilus correctement redémarré"
 
-#: modules/core.py:306 modules/core.py:337
+#: modules/core.py:305 modules/core.py:336
 msgid "Python Source Files"
 msgstr "Code source Python"
 
-#: modules/core.py:313
+#: modules/core.py:312
 #, python-format
 msgid "%s Added"
 msgstr "%s ajouté"
 
-#: modules/core.py:315
+#: modules/core.py:314
 #, python-format
 msgid "The PyExtension %s is Already into the List"
 msgstr "La PyExtension %s est déjà présente dans la liste"
 
-#: modules/core.py:321 modules/core.py:335 modules/core.py:349
+#: modules/core.py:320 modules/core.py:334 modules/core.py:348
 msgid "No PyExtension is selected"
 msgstr "Aucune PyExtension n'est sélectionnée"
 
-#: modules/core.py:324
+#: modules/core.py:323
 #, python-format
 msgid "%s must be Deactivated in order to be Removed"
 msgstr "%s doit être déactivé avant la suppression"
 
-#: modules/core.py:327
+#: modules/core.py:326
 #, python-format
 msgid "Do you really want to Delete %s ?"
 msgstr "Voulez-vous vraiment supprimer %s ?"
 
-#: modules/core.py:329
+#: modules/core.py:328
 #, python-format
 msgid "%s Removed"
 msgstr "%s supprimé"
 
-#: modules/core.py:343
+#: modules/core.py:342
 #, python-format
 msgid "%s Exported"
 msgstr "%s exporté"
 
-#: modules/core.py:352
+#: modules/core.py:351
 #, python-format
 msgid "%s must be Deactivated in order to be Edited"
 msgstr "%s doit être déactivé avant d'être modifié"
 
-#: modules/core.py:356
+#: modules/core.py:355
 #, python-format
 msgid "%s Opened for Editing"
 msgstr "%s ouvert pour être modifié"
 
-#: modules/cons.py:101
+#: modules/cons.py:100
 msgid "_File"
 msgstr "Fichier"
 
-#: modules/cons.py:102 modules/cons.py:113
+#: modules/cons.py:101 modules/cons.py:112
 msgid "_Edit"
 msgstr "Modifier"
 
-#: modules/cons.py:103
+#: modules/cons.py:102
 msgid "_View"
 msgstr "Affichage"
 
-#: modules/cons.py:104 modules/cons.py:115
+#: modules/cons.py:103 modules/cons.py:114
 msgid "_Help"
 msgstr "Aide"
 
-#: modules/cons.py:106
+#: modules/cons.py:105
 msgid "_Kill"
 msgstr "Redémarrer"
 
-#: modules/cons.py:106
+#: modules/cons.py:105
 msgid "Restart Nautilus"
 msgstr "Redémarrer Nautilus"
 
-#: modules/cons.py:107
+#: modules/cons.py:106
 msgid "_Add"
 msgstr "Ajouter"
 
-#: modules/cons.py:107
+#: modules/cons.py:106
 msgid "Add A PyExtension"
 msgstr "Ajouter une extension PyExtension"
 
-#: modules/cons.py:108
+#: modules/cons.py:107
 msgid "_Delete"
 msgstr "Supprimer"
 
-#: modules/cons.py:108
+#: modules/cons.py:107
 msgid "Delete The Selected PyExtension"
 msgstr "Supprimer la PyExtension sélectionnée"
 
-#: modules/cons.py:109
+#: modules/cons.py:108
 msgid "_Export"
 msgstr "Exporter"
 
-#: modules/cons.py:109
+#: modules/cons.py:108
 msgid "Export The Selected PyExtension"
 msgstr "Exporter la PyExtension sélectionnée"
 
-#: modules/cons.py:110
+#: modules/cons.py:109
 msgid "_Quit"
 msgstr "Quitter"
 
-#: modules/cons.py:110
+#: modules/cons.py:109
 msgid "Quit Nautilus PyExtensions"
 msgstr "Quitter Nautilus PyExtensions"
 
-#: modules/cons.py:111
+#: modules/cons.py:110
 msgid "Select _All"
 msgstr "Tout sélectionner"
 
-#: modules/cons.py:111
+#: modules/cons.py:110
 msgid "Activate All PyExtensions"
 msgstr "Activer toutes les extensions"
 
-#: modules/cons.py:112
+#: modules/cons.py:111
 msgid "Deselect A_ll"
 msgstr "Tout désélectionner"
 
-#: modules/cons.py:112
+#: modules/cons.py:111
 msgid "Deactivate All PyExtensions"
 msgstr "Déactiver toutes les extensions"
 
-#: modules/cons.py:113
+#: modules/cons.py:112
 msgid "Edit The Selected PyExtension"
 msgstr "Modifier la PyExtension sélectionnée"
 
-#: modules/cons.py:114
+#: modules/cons.py:113
 msgid "Show/Hide _Toolbar"
 msgstr "Afficher/Cacher Toolbar"
 
-#: modules/cons.py:114
+#: modules/cons.py:113
 msgid "Toggle Show/Hide Toolbar"
 msgstr "Afficher/Cacher Toolbar"
 
-#: modules/cons.py:115
+#: modules/cons.py:114
 msgid "Application's Home Page"
 msgstr "Site Internet du Logiciel"
 
-#: modules/cons.py:116
+#: modules/cons.py:115
 msgid "_About"
 msgstr "À propos de Nautilus PyExtensions"
 
-#: modules/cons.py:116 glade/nautilus-pyextensions.glade.h:17
+#: modules/cons.py:115 glade/nautilus-pyextensions.glade.h:17
 msgid "About Nautilus PyExtensions"
 msgstr "À propos de Nautilus PyExtensions"
 
@@ -250,10 +250,10 @@ msgstr "Un gesteur d'extensions Python pour Nautilus"
 
 #: glade/nautilus-pyextensions.glade.h:18
 msgid ""
-"Copyright &#xA9; 2008-2011\n"
+"Copyright © 2008-2011\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 msgstr ""
-"Copyright &#xA9; 2008-2011\n"
+"Copyright © 2008-2011\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 
 #: glade/nautilus-pyextensions.glade.h:20
@@ -274,127 +274,125 @@ msgstr "Nautilus PyExtensions"
 msgid "http://www.giuspen.com/nautilus-pyextensions/"
 msgstr "http://www.giuspen.com/nautilus-pyextensions/"
 
-#: glade/nautilus-pyextensions_replace.glade.h:1
-msgid "<b>...with</b>"
-msgstr "<b>...avec</b>"
-
-#: glade/nautilus-pyextensions_replace.glade.h:2
-msgid "<b>Replace...</b>"
-msgstr "<b>Remplacer...</b>"
-
-#: glade/nautilus-pyextensions_replace.glade.h:3
-msgid "Cancel"
-msgstr "Annuler"
-
-#: glade/nautilus-pyextensions_replace.glade.h:4
-msgid "OK"
-msgstr "OK"
-
-#: glade/nautilus-pyextensions_replace.glade.h:5
-#: default-pyextensions/replace-in-filenames.py:101
-#: default-pyextensions/replace-in-filenames.py:111
-msgid "Replace in Filenames"
-msgstr "Remplacer dans les noms de fichier"
-
-#: default-pyextensions/add-to-audacious2-playlist.py:67
+#: default-pyextensions/add-to-audacious2-playlist.py:75
 msgid "Add To Audacious2 Playlist"
 msgstr "Ajouter à la liste d'exécution Audacious2"
 
-#: default-pyextensions/add-to-audacious2-playlist.py:68
+#: default-pyextensions/add-to-audacious2-playlist.py:76
 msgid "Add the selected Audio file(s) to the Audacious2 Playlist"
 msgstr ""
 "Ajouter les fichiers son sélectionnés à la liste d'exécution Audacious2"
 
-#: default-pyextensions/meld-compare.py:83
+#: default-pyextensions/meld-compare.py:89
 msgid "Meld Compare"
 msgstr "Comparer avec Meld"
 
-#: default-pyextensions/meld-compare.py:84
+#: default-pyextensions/meld-compare.py:90
 msgid "Compare the selected Files/Folders using Meld (Diff and merge tool)"
 msgstr "Comparer les fichiers et les dossiers sélectionnés en utilisant Meld"
 
-#: default-pyextensions/meld-compare.py:94
+#: default-pyextensions/meld-compare.py:100
 msgid "Meld Actions"
 msgstr "Actions Meld"
 
-#: default-pyextensions/meld-compare.py:95
+#: default-pyextensions/meld-compare.py:101
 msgid "Meld (Diff and merge tool) Actions"
 msgstr "Actions Meld (Logiciel pour la comparation de fichiers)"
 
-#: default-pyextensions/meld-compare.py:102
-#: default-pyextensions/kdiff3-compare.py:102
+#: default-pyextensions/meld-compare.py:108
+#: default-pyextensions/kdiff3-compare.py:108
 msgid "Save Path for Future Use"
 msgstr "Sauvegarder le chemin du fichier pour un usage successif"
 
-#: default-pyextensions/meld-compare.py:103
-#: default-pyextensions/kdiff3-compare.py:103
+#: default-pyextensions/meld-compare.py:109
+#: default-pyextensions/kdiff3-compare.py:109
 msgid "Save the Selected File/Dir Path for Future Use"
 msgstr ""
 "Sauvegarder le fichier ou l'emplacement du dossier pour un usage successif"
 
-#: default-pyextensions/meld-compare.py:111
-#: default-pyextensions/kdiff3-compare.py:111
+#: default-pyextensions/meld-compare.py:117
+#: default-pyextensions/kdiff3-compare.py:117
 #, python-format
 msgid "Compare with %s"
 msgstr "Comparer avec %s"
 
-#: default-pyextensions/meld-compare.py:112
-#: default-pyextensions/kdiff3-compare.py:112
+#: default-pyextensions/meld-compare.py:118
+#: default-pyextensions/kdiff3-compare.py:118
 #, python-format
 msgid "Compare the Selected File/Dir with %s"
 msgstr "Comparer le fichier ou le dossier sélectionné avec %s"
 
-#: default-pyextensions/kdiff3-compare.py:83
+#: default-pyextensions/kdiff3-compare.py:89
 msgid "Kdiff3 Compare"
 msgstr "Comparer avec Kdiff3"
 
-#: default-pyextensions/kdiff3-compare.py:84
+#: default-pyextensions/kdiff3-compare.py:90
 msgid "Compare the selected Files/Folders using Kdiff3 (Diff and merge tool)"
 msgstr "Comparer les fichiers et les dossiers sélectionnés en utilisant Kdiff3"
 
-#: default-pyextensions/kdiff3-compare.py:94
+#: default-pyextensions/kdiff3-compare.py:100
 msgid "Kdiff3 Actions"
 msgstr "Actions Kdiff3"
 
-#: default-pyextensions/kdiff3-compare.py:95
+#: default-pyextensions/kdiff3-compare.py:101
 msgid "Kdiff3 (Diff and merge tool) Actions"
 msgstr "Actions Kdiff3 (Logiciel pour la comparation de fichiers)"
 
-#: default-pyextensions/open-as-root.py:58
+#: default-pyextensions/open-as-root.py:66
 msgid "Open as Root"
 msgstr "Ouvrir en tant que super-utilisateur"
 
-#: default-pyextensions/open-as-root.py:59
+#: default-pyextensions/open-as-root.py:67
 msgid "Open the selected File/Folder as Root User"
 msgstr ""
 "Ouvrir les fichiers et les dossiers sélectionnés en tant que super-"
 "utilisateur"
 
-#: default-pyextensions/open-terminal-geometry.py:61
-#: default-pyextensions/open-terminal-geometry.py:71
+#: default-pyextensions/open-terminal-geometry.py:69
+#: default-pyextensions/open-terminal-geometry.py:79
 msgid "Open Terminal Here"
 msgstr "Ouvrir le Terminal ici"
 
-#: default-pyextensions/open-terminal-geometry.py:62
+#: default-pyextensions/open-terminal-geometry.py:70
 msgid "Open the Terminal on the Current/Selected Directory"
 msgstr "Ouvrir le Terminal dans le fichier courant ou sélectionné"
 
-#: default-pyextensions/open-terminal-geometry.py:72
+#: default-pyextensions/open-terminal-geometry.py:80
 msgid "Open the Terminal on the Current Directory"
 msgstr "Ouvrir le Terminal dans le dossier courant"
 
-#: default-pyextensions/replace-in-filenames.py:102
+#: default-pyextensions/replace-in-filenames.py:51
+#: default-pyextensions/replace-in-filenames.py:100
+#: default-pyextensions/replace-in-filenames.py:110
+msgid "Replace in Filenames"
+msgstr "Remplacer dans les noms de fichier"
+
+#: default-pyextensions/replace-in-filenames.py:57
+msgid "Replace..."
+msgstr "Remplacer..."
+
+#: default-pyextensions/replace-in-filenames.py:60
+msgid "...with"
+msgstr "...avec"
+
+#: default-pyextensions/replace-in-filenames.py:101
 msgid "Replace in Filenames of the Current/Selected Directory"
 msgstr "Remplacer dans les noms de fichier du dossier courant ou sélectionné"
 
-#: default-pyextensions/replace-in-filenames.py:112
+#: default-pyextensions/replace-in-filenames.py:111
 msgid "Replace in Filenames of the Current Directory"
 msgstr "Remplacer dans les noms de fichier du dossier courant"
 
-#: default-pyextensions/set-as-desktop-background.py:62
+#: default-pyextensions/set-as-desktop-background.py:70
 msgid "Set As Desktop Background"
 msgstr "Utiliser comme fond d'écran"
 
-#: default-pyextensions/set-as-desktop-background.py:63
+#: default-pyextensions/set-as-desktop-background.py:71
 msgid "Set the selected Image file as Desktop Background"
 msgstr "Utiliser l'image sélectionnée comme fond d'écran"
+
+#~ msgid "Cancel"
+#~ msgstr "Annuler"
+
+#~ msgid "OK"
+#~ msgstr "OK"

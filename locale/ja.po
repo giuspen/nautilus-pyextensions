@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-04 22:52+0200\n"
+"POT-Creation-Date: 2011-11-01 23:55+0100\n"
 "PO-Revision-Date: 2010-07-30 21:32+0900\n"
 "Last-Translator: Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
 "Language-Team: Japanese <LL@li.org>\n"
@@ -16,24 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/core.py:182
+#: modules/core.py:181
 msgid "Active"
 msgstr "有効"
 
-#: modules/core.py:183
+#: modules/core.py:182
 msgid "Icon"
 msgstr "アイコン"
 
-#: modules/core.py:185
+#: modules/core.py:184
 msgid "PyExtension"
 msgstr "PyExtension"
 
-#: modules/core.py:192
+#: modules/core.py:191
 #, python-format
 msgid "Version %s"
 msgstr "バージョン %s"
 
-#: modules/core.py:225
+#: modules/core.py:224
 #, python-format
 msgid ""
 "%s needs to be installed in order to activate the selected pyextension, "
@@ -42,17 +42,17 @@ msgstr ""
 "選択された pyextension を有効化するためには %s がインストールされなくてはなり"
 "ませんが、インストールしますか？"
 
-#: modules/core.py:237
+#: modules/core.py:236
 #, python-format
 msgid "%s Deactivated"
 msgstr "%s は無効化されました"
 
-#: modules/core.py:246
+#: modules/core.py:245
 #, python-format
 msgid "%s Activated"
 msgstr "%s は有効化されました"
 
-#: modules/core.py:280
+#: modules/core.py:279
 msgid ""
 "You should Restart Nautilus in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
@@ -61,151 +61,151 @@ msgstr ""
 "ン)。\n"
 "とにかく終了しますか？"
 
-#: modules/core.py:301
+#: modules/core.py:300
 msgid "Nautilus Restarted"
 msgstr "Nautilus は再起動しました"
 
-#: modules/core.py:306 modules/core.py:337
+#: modules/core.py:305 modules/core.py:336
 msgid "Python Source Files"
 msgstr "Python ソースファイル"
 
-#: modules/core.py:313
+#: modules/core.py:312
 #, python-format
 msgid "%s Added"
 msgstr "%s が追加されました"
 
-#: modules/core.py:315
+#: modules/core.py:314
 #, python-format
 msgid "The PyExtension %s is Already into the List"
 msgstr "PyExtension %s はすでにリストにあります"
 
-#: modules/core.py:321 modules/core.py:335 modules/core.py:349
+#: modules/core.py:320 modules/core.py:334 modules/core.py:348
 msgid "No PyExtension is selected"
 msgstr "PyExtension が選択されていません"
 
-#: modules/core.py:324
+#: modules/core.py:323
 #, python-format
 msgid "%s must be Deactivated in order to be Removed"
 msgstr "削除のためには %s が無効化されなくてはなりません"
 
-#: modules/core.py:327
+#: modules/core.py:326
 #, python-format
 msgid "Do you really want to Delete %s ?"
 msgstr "本当に %s を削除しますか？"
 
-#: modules/core.py:329
+#: modules/core.py:328
 #, python-format
 msgid "%s Removed"
 msgstr "%s は削除されました"
 
-#: modules/core.py:343
+#: modules/core.py:342
 #, python-format
 msgid "%s Exported"
 msgstr "%s はエクスポートされました"
 
-#: modules/core.py:352
+#: modules/core.py:351
 #, python-format
 msgid "%s must be Deactivated in order to be Edited"
 msgstr "編集のためには %s が無効化されなくてはなりません"
 
-#: modules/core.py:356
+#: modules/core.py:355
 #, python-format
 msgid "%s Opened for Editing"
 msgstr "編集のために %s が開かれました"
 
-#: modules/cons.py:101
+#: modules/cons.py:100
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: modules/cons.py:102 modules/cons.py:113
+#: modules/cons.py:101 modules/cons.py:112
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: modules/cons.py:103
+#: modules/cons.py:102
 msgid "_View"
 msgstr "表示(_V)"
 
-#: modules/cons.py:104 modules/cons.py:115
+#: modules/cons.py:103 modules/cons.py:114
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: modules/cons.py:106
+#: modules/cons.py:105
 msgid "_Kill"
 msgstr "再起動(_K)"
 
-#: modules/cons.py:106
+#: modules/cons.py:105
 msgid "Restart Nautilus"
 msgstr "Nautilus を再起動"
 
-#: modules/cons.py:107
+#: modules/cons.py:106
 msgid "_Add"
 msgstr "追加(_A)"
 
-#: modules/cons.py:107
+#: modules/cons.py:106
 msgid "Add A PyExtension"
 msgstr "PyExtension を追加"
 
-#: modules/cons.py:108
+#: modules/cons.py:107
 msgid "_Delete"
 msgstr "削除(_D)"
 
-#: modules/cons.py:108
+#: modules/cons.py:107
 msgid "Delete The Selected PyExtension"
 msgstr "選択された PyExtension を削除"
 
-#: modules/cons.py:109
+#: modules/cons.py:108
 msgid "_Export"
 msgstr "エクスポート(_E)"
 
-#: modules/cons.py:109
+#: modules/cons.py:108
 msgid "Export The Selected PyExtension"
 msgstr "選択された PyExtension をエクスポート"
 
-#: modules/cons.py:110
+#: modules/cons.py:109
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: modules/cons.py:110
+#: modules/cons.py:109
 msgid "Quit Nautilus PyExtensions"
 msgstr "Nautilus PyExtensions を終了"
 
-#: modules/cons.py:111
+#: modules/cons.py:110
 msgid "Select _All"
 msgstr "全てを選択(_A)"
 
-#: modules/cons.py:111
+#: modules/cons.py:110
 msgid "Activate All PyExtensions"
 msgstr "全ての PyExtension を有効化"
 
-#: modules/cons.py:112
+#: modules/cons.py:111
 msgid "Deselect A_ll"
 msgstr "全ての選択を解除(_L)"
 
-#: modules/cons.py:112
+#: modules/cons.py:111
 msgid "Deactivate All PyExtensions"
 msgstr "全ての PyExtension を無効化"
 
-#: modules/cons.py:113
+#: modules/cons.py:112
 msgid "Edit The Selected PyExtension"
 msgstr "選択された PyExtension を編集"
 
-#: modules/cons.py:114
+#: modules/cons.py:113
 msgid "Show/Hide _Toolbar"
 msgstr "ツールバーの表示/非表示(_T)"
 
-#: modules/cons.py:114
+#: modules/cons.py:113
 msgid "Toggle Show/Hide Toolbar"
 msgstr "ツールバーの表示/非表示を切り替え"
 
-#: modules/cons.py:115
+#: modules/cons.py:114
 msgid "Application's Home Page"
 msgstr "アプリケーションのホームページ"
 
-#: modules/cons.py:116
+#: modules/cons.py:115
 msgid "_About"
 msgstr "情報(_A)"
 
-#: modules/cons.py:116 glade/nautilus-pyextensions.glade.h:17
+#: modules/cons.py:115 glade/nautilus-pyextensions.glade.h:17
 msgid "About Nautilus PyExtensions"
 msgstr "Nautilus PyExtensions について"
 
@@ -248,10 +248,10 @@ msgstr "Python で書かれた Nautilus 機能拡張のハンドラ"
 
 #: glade/nautilus-pyextensions.glade.h:18
 msgid ""
-"Copyright &#xA9; 2008-2011\n"
+"Copyright © 2008-2011\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 msgstr ""
-"Copyright &#xA9; 2008-2011\n"
+"Copyright © 2008-2011\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 
 #: glade/nautilus-pyextensions.glade.h:20
@@ -272,124 +272,122 @@ msgstr "Nautilus PyExtensions"
 msgid "http://www.giuspen.com/nautilus-pyextensions/"
 msgstr "http://www.giuspen.com/nautilus-pyextensions/"
 
-#: glade/nautilus-pyextensions_replace.glade.h:1
-msgid "<b>...with</b>"
-msgstr "<b>...置換名</b>"
-
-#: glade/nautilus-pyextensions_replace.glade.h:2
-msgid "<b>Replace...</b>"
-msgstr "<b>置換元...</b>"
-
-#: glade/nautilus-pyextensions_replace.glade.h:3
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: glade/nautilus-pyextensions_replace.glade.h:4
-msgid "OK"
-msgstr "OK"
-
-#: glade/nautilus-pyextensions_replace.glade.h:5
-#: default-pyextensions/replace-in-filenames.py:101
-#: default-pyextensions/replace-in-filenames.py:111
-msgid "Replace in Filenames"
-msgstr "ファイル名を置換"
-
-#: default-pyextensions/add-to-audacious2-playlist.py:67
+#: default-pyextensions/add-to-audacious2-playlist.py:75
 msgid "Add To Audacious2 Playlist"
 msgstr "Audacious2 のプレイリストに追加"
 
-#: default-pyextensions/add-to-audacious2-playlist.py:68
+#: default-pyextensions/add-to-audacious2-playlist.py:76
 msgid "Add the selected Audio file(s) to the Audacious2 Playlist"
 msgstr "Audacious2 のプレイリストに選択されたオーディオファイルを追加"
 
-#: default-pyextensions/meld-compare.py:83
+#: default-pyextensions/meld-compare.py:89
 msgid "Meld Compare"
 msgstr "Meld で比較"
 
-#: default-pyextensions/meld-compare.py:84
+#: default-pyextensions/meld-compare.py:90
 msgid "Compare the selected Files/Folders using Meld (Diff and merge tool)"
 msgstr "Meld （Diff とマージのツール）を使い選択されたファイル/フォルダを比較"
 
-#: default-pyextensions/meld-compare.py:94
+#: default-pyextensions/meld-compare.py:100
 msgid "Meld Actions"
 msgstr "Meld のアクション"
 
-#: default-pyextensions/meld-compare.py:95
+#: default-pyextensions/meld-compare.py:101
 msgid "Meld (Diff and merge tool) Actions"
 msgstr "Meld （Diff とマージのツール）のアクション"
 
-#: default-pyextensions/meld-compare.py:102
-#: default-pyextensions/kdiff3-compare.py:102
+#: default-pyextensions/meld-compare.py:108
+#: default-pyextensions/kdiff3-compare.py:108
 msgid "Save Path for Future Use"
 msgstr "今後の使用のためパスを保存"
 
-#: default-pyextensions/meld-compare.py:103
-#: default-pyextensions/kdiff3-compare.py:103
+#: default-pyextensions/meld-compare.py:109
+#: default-pyextensions/kdiff3-compare.py:109
 msgid "Save the Selected File/Dir Path for Future Use"
 msgstr "今後の使用のため選択されたファイル/ディレクトリのパスを保存"
 
-#: default-pyextensions/meld-compare.py:111
-#: default-pyextensions/kdiff3-compare.py:111
+#: default-pyextensions/meld-compare.py:117
+#: default-pyextensions/kdiff3-compare.py:117
 #, python-format
 msgid "Compare with %s"
 msgstr "%s と比較"
 
-#: default-pyextensions/meld-compare.py:112
-#: default-pyextensions/kdiff3-compare.py:112
+#: default-pyextensions/meld-compare.py:118
+#: default-pyextensions/kdiff3-compare.py:118
 #, python-format
 msgid "Compare the Selected File/Dir with %s"
 msgstr "%s と選択されたファイル/ディレクトリを比較"
 
-#: default-pyextensions/kdiff3-compare.py:83
+#: default-pyextensions/kdiff3-compare.py:89
 msgid "Kdiff3 Compare"
 msgstr "kdiff3 で比較"
 
-#: default-pyextensions/kdiff3-compare.py:84
+#: default-pyextensions/kdiff3-compare.py:90
 msgid "Compare the selected Files/Folders using Kdiff3 (Diff and merge tool)"
 msgstr ""
 "kdiff3 （Diff とマージのツール）を使い選択されたファイル/フォルダを比較"
 
-#: default-pyextensions/kdiff3-compare.py:94
+#: default-pyextensions/kdiff3-compare.py:100
 msgid "Kdiff3 Actions"
 msgstr "kdiff3 のアクション"
 
-#: default-pyextensions/kdiff3-compare.py:95
+#: default-pyextensions/kdiff3-compare.py:101
 msgid "Kdiff3 (Diff and merge tool) Actions"
 msgstr "kdiff3 （Diff とマージのツール）のアクション"
 
-#: default-pyextensions/open-as-root.py:58
+#: default-pyextensions/open-as-root.py:66
 msgid "Open as Root"
 msgstr "Root として開く"
 
-#: default-pyextensions/open-as-root.py:59
+#: default-pyextensions/open-as-root.py:67
 msgid "Open the selected File/Folder as Root User"
 msgstr "Root ユーザーとして選択されたファイル/フォルダを開く"
 
-#: default-pyextensions/open-terminal-geometry.py:61
-#: default-pyextensions/open-terminal-geometry.py:71
+#: default-pyextensions/open-terminal-geometry.py:69
+#: default-pyextensions/open-terminal-geometry.py:79
 msgid "Open Terminal Here"
 msgstr "ここで Terminal を開く"
 
-#: default-pyextensions/open-terminal-geometry.py:62
+#: default-pyextensions/open-terminal-geometry.py:70
 msgid "Open the Terminal on the Current/Selected Directory"
 msgstr "現在/選択されたディレクトリで Terminal を開く"
 
-#: default-pyextensions/open-terminal-geometry.py:72
+#: default-pyextensions/open-terminal-geometry.py:80
 msgid "Open the Terminal on the Current Directory"
 msgstr "現在のディレクトリで Terminal を開く"
 
-#: default-pyextensions/replace-in-filenames.py:102
+#: default-pyextensions/replace-in-filenames.py:51
+#: default-pyextensions/replace-in-filenames.py:100
+#: default-pyextensions/replace-in-filenames.py:110
+msgid "Replace in Filenames"
+msgstr "ファイル名を置換"
+
+#: default-pyextensions/replace-in-filenames.py:57
+msgid "Replace..."
+msgstr "置換元..."
+
+#: default-pyextensions/replace-in-filenames.py:60
+msgid "...with"
+msgstr "...置換名"
+
+#: default-pyextensions/replace-in-filenames.py:101
 msgid "Replace in Filenames of the Current/Selected Directory"
 msgstr "現在/選択されたディレクトリのファイル名で置換"
 
-#: default-pyextensions/replace-in-filenames.py:112
+#: default-pyextensions/replace-in-filenames.py:111
 msgid "Replace in Filenames of the Current Directory"
 msgstr "現在のディレクトリのファイル名で置換"
 
-#: default-pyextensions/set-as-desktop-background.py:62
+#: default-pyextensions/set-as-desktop-background.py:70
 msgid "Set As Desktop Background"
 msgstr "デスクトップの背景として設定"
 
-#: default-pyextensions/set-as-desktop-background.py:63
+#: default-pyextensions/set-as-desktop-background.py:71
 msgid "Set the selected Image file as Desktop Background"
 msgstr "デスクトップの背景として選択された画像を設定"
+
+#~ msgid "Cancel"
+#~ msgstr "キャンセル"
+
+#~ msgid "OK"
+#~ msgstr "OK"
