@@ -1,51 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
-  <!-- interface-naming-policy project-wide -->
-  <object class="GtkWindow" id="window">
-    <property name="title" translatable="yes">Nautilus PyExtensions</property>
-    <property name="window_position">center</property>
-    <property name="default_width">350</property>
-    <property name="default_height">300</property>
-    <property name="icon">nautilus-pyextensions.svg</property>
-    <signal name="delete_event" handler="on_window_delete_event"/>
-    <child>
-      <object class="GtkVBox" id="vbox_main">
-        <property name="visible">True</property>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <object class="GtkScrolledWindow" id="scrolledwindow">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hscrollbar_policy">automatic</property>
-            <property name="vscrollbar_policy">automatic</property>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkStatusbar" id="statusbar">
-            <property name="visible">True</property>
-            <property name="spacing">2</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">3</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
   <object class="GtkAboutDialog" id="aboutdialog">
+    <property name="can_focus">False</property>
     <property name="border_width">5</property>
     <property name="title" translatable="yes">About Nautilus PyExtensions</property>
     <property name="resizable">False</property>
@@ -54,9 +11,8 @@
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <property name="transient_for">window</property>
-    <property name="has_separator">False</property>
     <property name="program_name">Nautilus PyExtensions</property>
-    <property name="copyright" translatable="yes">Copyright &#xA9; 2008-2011
+    <property name="copyright" translatable="yes">Copyright © 2008-2011
 Giuseppe Penone &lt;giuspen@gmail.com&gt;</property>
     <property name="comments" translatable="yes">A Handler for the Nautilus Extensions written in Python</property>
     <property name="website">http://www.giuspen.com/nautilus-pyextensions/</property>
@@ -84,21 +40,72 @@ Japanese (ja) Toshiharu Kudoh &lt;toshi.kd2@gmail.com&gt;</property>
 Angelo Penone &lt;angelo.penone@theparks.it&gt;</property>
     <property name="logo">nautilus-pyextensions.svg</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
-        <child>
-          <placeholder/>
-        </child>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="layout_style">end</property>
           </object>
           <packing>
             <property name="expand">False</property>
+            <property name="fill">True</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="window">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Nautilus PyExtensions</property>
+    <property name="window_position">center</property>
+    <property name="default_width">350</property>
+    <property name="default_height">300</property>
+    <property name="icon">nautilus-pyextensions.svg</property>
+    <signal name="delete-event" handler="on_window_delete_event" swapped="no"/>
+    <child>
+      <object class="GtkVBox" id="vbox_main">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolledwindow">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkStatusbar" id="statusbar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="spacing">2</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
           </packing>
         </child>
       </object>

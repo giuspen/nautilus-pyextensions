@@ -19,8 +19,7 @@
 #       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #       MA 02110-1301, USA.
 
-
-import gtk, gconf
+from gi.repository import Gtk, GdkPixbuf, GConf
 import sys, os, shutil, re, subprocess, webbrowser
 import cons
 
@@ -30,7 +29,7 @@ class GladeWidgetsWrapper:
 
     def __init__(self, glade_file_path, gui_instance):
         try:
-            self.glade_widgets = gtk.Builder()
+            self.glade_widgets = Gtk.Builder()
             self.glade_widgets.set_translation_domain(cons.APP_NAME)
             self.glade_widgets.add_from_file(glade_file_path)
             self.glade_widgets.connect_signals(gui_instance)
@@ -52,8 +51,8 @@ class InfoModel:
     """Holds the information"""
 
     def __init__(self):
-        """Sets up and populates the gtk.ListStore"""
-        self.liststore = gtk.ListStore('gboolean', str, str)
+        """Sets up and populates the Gtk.ListStore"""
+        self.liststore = Gtk.ListStore('gboolean', str, str)
         self.load_model()
         # Information about the Consistence of the model with the instanced Nautilus
         self.liststore.nautilus_restart_needed = False
@@ -147,42 +146,42 @@ class NautilusPyExtensions:
     def __init__(self, store):
         """Instantiate the Glade Widgets Wrapper, create the view, initialize the statusbar"""
         # add the needed icons to the gtk stock
-        factory = gtk.IconFactory()
+        factory = Gtk.IconFactory()
         for filename, stock_name in cons.ICONS_FILENAMES:
-            pixbuf = gtk.gdk.pixbuf_new_from_file(filename)
-            iconset = gtk.IconSet(pixbuf)
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file(filename)
+            iconset = Gtk.IconSet.new_from_pixbuf(pixbuf)
             factory.add(stock_name, iconset)
         factory.add_default()
         # instantiate the Glade Widgets Wrapper
         self.glade = GladeWidgetsWrapper(cons.GLADE_PATH + 'nautilus-pyextensions.glade', self)
         # ui manager
-        actions = gtk.ActionGroup("Actions")
+        actions = Gtk.ActionGroup("Actions")
         actions.add_actions(cons.get_entries(self))
-        self.ui = gtk.UIManager()
+        self.ui = Gtk.UIManager()
         self.ui.insert_action_group(actions, 0)
         self.glade.window.add_accel_group(self.ui.get_accel_group())
         self.ui.add_ui_from_string(cons.UI_INFO)
         # menubar add
-        self.glade.vbox_main.pack_start(self.ui.get_widget("/MenuBar"), False, False)
+        self.glade.vbox_main.pack_start(self.ui.get_widget("/MenuBar"), False, False, 0)
         self.glade.vbox_main.reorder_child(self.ui.get_widget("/MenuBar"), 0)
         # toolbar add
-        self.glade.vbox_main.pack_start(self.ui.get_widget("/ToolBar"), False, False)
+        self.glade.vbox_main.pack_start(self.ui.get_widget("/ToolBar"), False, False, 0)
         self.glade.vbox_main.reorder_child(self.ui.get_widget("/ToolBar"), 1)
-        self.ui.get_widget("/ToolBar").set_style(gtk.TOOLBAR_ICONS)
+        self.ui.get_widget("/ToolBar").set_style(Gtk.ToolbarStyle.ICONS)
         # create a variable pointing to the instance of the InfoModel class
         self.store = store
         # create the view
-        self.view = gtk.TreeView(store.get_model())
-        self.renderer_checkbox = gtk.CellRendererToggle()
+        self.view = Gtk.TreeView.new_with_model(store.get_model())
+        self.renderer_checkbox = Gtk.CellRendererToggle()
         self.renderer_checkbox.set_property('activatable', True)
         self.renderer_checkbox.connect('toggled', self.toggle_active, store.get_model())
-        self.renderer_pixbuf = gtk.CellRendererPixbuf()
-        self.renderer_text = gtk.CellRendererText()
+        self.renderer_pixbuf = Gtk.CellRendererPixbuf()
+        self.renderer_text = Gtk.CellRendererText()
         self.columns = [None]*3
-        self.columns[0] = gtk.TreeViewColumn(_("Active"), self.renderer_checkbox, active=0) # active=0 <> read from column 0 of model
-        self.columns[1] = gtk.TreeViewColumn(_("Icon"), self.renderer_pixbuf)
+        self.columns[0] = Gtk.TreeViewColumn(_("Active"), self.renderer_checkbox, active=0) # active=0 <> read from column 0 of model
+        self.columns[1] = Gtk.TreeViewColumn(_("Icon"), self.renderer_pixbuf)
         self.columns[1].set_cell_data_func(self.renderer_pixbuf, self.make_pixbuf)
-        self.columns[2] = gtk.TreeViewColumn(_("PyExtension"), self.renderer_text, text=2) # text=2 <> read from column 2 of model
+        self.columns[2] = Gtk.TreeViewColumn(_("PyExtension"), self.renderer_text, text=2) # text=2 <> read from column 2 of model
         for n in range(3):
             self.view.append_column(self.columns[n])
         self.viewselection = self.view.get_selection()
@@ -192,8 +191,8 @@ class NautilusPyExtensions:
         self.glade.statusbar.push(self.statusbar_context_id, _("Version %s") % cons.VERSION)
         self.glade.aboutdialog.set_version(cons.VERSION)
         # retrieve the gconf settings, set them if this is the first run
-        self.gconf_client = gconf.client_get_default()
-        self.gconf_client.add_dir("/apps/nautilus-pyextensions", gconf.CLIENT_PRELOAD_NONE)
+        self.gconf_client = GConf.Client.get_default()
+        self.gconf_client.add_dir("/apps/nautilus-pyextensions", GConf.ClientPreloadType.PRELOAD_NONE)
         if self.gconf_client.get_string("/apps/nautilus-pyextensions/picking_dir") == None:
             self.gconf_client.set_string("/apps/nautilus-pyextensions/picking_dir", os.path.expanduser('~'))
         self.win_size_n_pos = {}
@@ -247,9 +246,9 @@ class NautilusPyExtensions:
         model[path][0] = not model[path][0]
         self.store.set_nautilus_restart_needed(True)
 
-    def make_pixbuf(self, treeviewcolumn, cell, model, tree_iter):
+    def make_pixbuf(self, treeviewcolumn, cell, model, tree_iter, data):
         """Function to associate the pixbuf to the cell renderer"""
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(model[tree_iter][1], 24, 24)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(model[tree_iter][1], 24, 24)
         cell.set_property('pixbuf', pixbuf)
 
     def flag_all_rows(self, *args):
@@ -291,7 +290,7 @@ class NautilusPyExtensions:
             self.gconf_client.set_int("/apps/nautilus-pyextensions/win_position_x", self.win_size_n_pos['win_position'][0])
             self.gconf_client.set_int("/apps/nautilus-pyextensions/win_position_y", self.win_size_n_pos['win_position'][1])
         self.glade.window.destroy()
-        gtk.main_quit()
+        Gtk.main_quit()
         return False # propogate the delete event
 
     def restart_nautilus(self, *args):
@@ -372,18 +371,18 @@ class NautilusPyExtensions:
 
     def dialog_save_file_as(self, filename=None, filter_pattern=None, filter_name=None):
         """The application's save file as dialog, returns the retrieved filepath or None"""
-        chooser = gtk.FileChooserDialog( parent=self.glade.window,
-                                         action=gtk.FILE_CHOOSER_ACTION_SAVE,
-                                         buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_SAVE, gtk.RESPONSE_OK) )
+        chooser = Gtk.FileChooserDialog( parent=self.glade.window,
+                                         action=Gtk.FileChooserAction.SAVE,
+                                         buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_SAVE, Gtk.ResponseType.OK) )
         chooser.set_current_folder(os.path.expanduser('~'))
         if filename != None:
             chooser.set_current_name(filename)
         if filter_pattern != None:
-            filter = gtk.FileFilter()
+            filter = Gtk.FileFilter()
             filter.set_name(filter_name)
             filter.add_pattern(filter_pattern)
             chooser.add_filter(filter)
-        if chooser.run() == gtk.RESPONSE_OK:
+        if chooser.run() == Gtk.ResponseType.OK:
             filepath = chooser.get_filename()
             chooser.destroy()
             return filepath
@@ -393,16 +392,16 @@ class NautilusPyExtensions:
 
     def dialog_open_file(self, filter_pattern=None, filter_name=None, set_dir=None):
         """The application's open file dialog, returns the retrieved filepath or None"""
-        chooser = gtk.FileChooserDialog( parent=self.glade.window,
-                                         action=gtk.FILE_CHOOSER_ACTION_OPEN,
-                                         buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OPEN, gtk.RESPONSE_OK) )
+        chooser = Gtk.FileChooserDialog( parent=self.glade.window,
+                                         action=Gtk.FileChooserAction.OPEN,
+                                         buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.OK) )
         chooser.set_current_folder(set_dir)
         if filter_pattern != None:
-            filter = gtk.FileFilter()
+            filter = Gtk.FileFilter()
             filter.set_name(filter_name)
             filter.add_pattern(filter_pattern)
             chooser.add_filter(filter)
-        if chooser.run() == gtk.RESPONSE_OK:
+        if chooser.run() == Gtk.ResponseType.OK:
             filepath = chooser.get_filename()
             chooser.destroy()
             return filepath
@@ -412,12 +411,12 @@ class NautilusPyExtensions:
 
     def dialog_question(self, message):
         """The application's question dialog, returns True if the user presses OK"""
-        dialog = gtk.MessageDialog(parent=self.glade.window,
-                                   flags=gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
-                                   type=gtk.MESSAGE_QUESTION,
-                                   buttons=gtk.BUTTONS_YES_NO,
+        dialog = Gtk.MessageDialog(parent=self.glade.window,
+                                   flags=Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                   type=Gtk.MessageType.QUESTION,
+                                   buttons=Gtk.ButtonsType.YES_NO,
                                    message_format=message)
-        if dialog.run() == gtk.RESPONSE_YES:
+        if dialog.run() == Gtk.ResponseType.YES:
             dialog.destroy()
             return True
         else:
@@ -426,10 +425,10 @@ class NautilusPyExtensions:
 
     def dialog_warning(self, message):
         """The application's warning dialog"""
-        dialog = gtk.MessageDialog(parent=self.glade.window,
-                                   flags=gtk.DIALOG_MODAL|gtk.DIALOG_DESTROY_WITH_PARENT,
-                                   type=gtk.MESSAGE_WARNING,
-                                   buttons=gtk.BUTTONS_OK,
+        dialog = Gtk.MessageDialog(parent=self.glade.window,
+                                   flags=Gtk.DialogFlags.MODAL|Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                   type=Gtk.MessageType.WARNING,
+                                   buttons=Gtk.ButtonsType.OK,
                                    message_format=message)
         dialog.run()
         dialog.destroy()

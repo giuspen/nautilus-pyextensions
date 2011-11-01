@@ -20,9 +20,8 @@
 #       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #       MA 02110-1301, USA.
 
-
+from gi.repository import Gtk
 import sys, os, gettext, subprocess, shutil, ctypes, ctypes.util
-import gtk
 
 if os.path.isfile('modules/core.py'): MODULES_PATH = os.path.join(os.curdir, 'modules')
 else: MODULES_PATH = '/usr/share/nautilus-pyextensions/modules/'
@@ -68,7 +67,7 @@ def nautilus_pyextensions():
                     update_default_pyextension(filename)
     # classes instantiation
     core.NautilusPyExtensions(core.InfoModel())
-    gtk.main() # start the gtk main loop
+    Gtk.main() # start the gtk main loop
     return 0
 
 if __name__ == "__main__": nautilus_pyextensions()
