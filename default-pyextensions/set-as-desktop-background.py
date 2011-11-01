@@ -23,12 +23,13 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Nautilus, GObject
+from gi.repository import Nautilus, GObject, Gtk, GdkPixbuf
 import urllib, subprocess, re
 import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
+ICONPATH = "/usr/share/icons/gnome/48x48/apps/preferences-desktop-wallpaper.png"
 # internationalization
 locale.setlocale(locale.LC_ALL, '')
 gettext.bindtextdomain(APP_NAME, LOCALE_PATH)
@@ -42,7 +43,13 @@ class SetAsDesktopBackground(GObject.GObject, Nautilus.MenuProvider):
 
     def __init__(self):
         """Nautilus crashes if a plugin doesn't implement the __init__ method"""
-        pass
+        try:
+            factory = Gtk.IconFactory()
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file(ICONPATH)
+            iconset = Gtk.IconSet.new_from_pixbuf(pixbuf)
+            factory.add("preferences-desktop-wallpaper", iconset)
+            factory.add_default()
+        except: pass
 
     def run(self, menu, source_path):
         """Runs the Adding of selected Image file as Desktop Background"""
