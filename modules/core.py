@@ -152,6 +152,11 @@ class NautilusPyExtensions:
             iconset = Gtk.IconSet.new_from_pixbuf(pixbuf)
             factory.add(stock_name, iconset)
         factory.add_default()
+        # system settings
+        gtk_settings = Gtk.Settings.get_default()
+        gtk_settings.set_property("gtk-button-images", True)
+        gtk_settings.set_property("gtk-menu-images", True)
+        os.environ['UBUNTU_MENUPROXY'] = '0' # for custom stock icons not visible in appmenu
         # instantiate the Glade Widgets Wrapper
         self.glade = GladeWidgetsWrapper(cons.GLADE_PATH + 'nautilus-pyextensions.glade', self)
         # ui manager
