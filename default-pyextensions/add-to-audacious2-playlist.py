@@ -30,6 +30,7 @@ import locale, gettext
 APP_NAME = "nautilus-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 ICONPATH = "/usr/share/icons/hicolor/scalable/apps/audacious.svg"
+EXTENSIONS_WHITELIST = [".mp3"]
 # internationalization
 locale.setlocale(locale.LC_ALL, '')
 gettext.bindtextdomain(APP_NAME, LOCALE_PATH)
@@ -66,10 +67,15 @@ class AddToAudaciousPlaylist(GObject.GObject, Nautilus.MenuProvider):
             uri_raw = sel_item.get_uri()
             if len(uri_raw) < 7: continue
             source_path = re.escape(urllib.unquote(uri_raw[7:]))
-            filetype = subprocess.Popen("file -i %s" % source_path, shell=True, stdout=subprocess.PIPE).communicate()[0]
-            if "audio" in filetype\
-            or "application/ogg" in filetype:
-                source_path_list.append(source_path)
+            for extension in EXTENSIONS_WHITELIST:
+                if source_path.endswith(extension):
+                    source_path_list.append(source_path)
+                    break
+            else:
+                filetype = subprocess.Popen("file -i %s" % source_path, shell=True, stdout=subprocess.PIPE).communicate()[0]
+                if "audio" in filetype\
+                or "application/ogg" in filetype:
+                    source_path_list.append(source_path)
         if source_path_list:
             item = Nautilus.MenuItem(name='NautilusPython::audacious',
                                      label=_('Add To Audacious2 Playlist'),
