@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkAboutDialog" id="aboutdialog">
     <property name="can_focus">False</property>
     <property name="border_width">5</property>
@@ -35,7 +35,8 @@ MA 02110-1301, USA.</property>
     <property name="authors">Giuseppe Penone &lt;giuspen@gmail.com&gt;</property>
     <property name="translator_credits" translatable="yes">French (fr) Pierre Prinetti &lt;d0npi3r0@gmail.com&gt;
 Italian (it) Giuseppe Penone &lt;giuspen@gmail.com&gt;
-Japanese (ja) Toshiharu Kudoh &lt;toshi.kd2@gmail.com&gt;</property>
+Japanese (ja) Toshiharu Kudoh &lt;toshi.kd2@gmail.com&gt;
+Spanish (es) Fernando Toledo &lt;ftoledo@docksud.com.ar&gt;</property>
     <property name="artists">Giuseppe Penone &lt;giuspen@gmail.com&gt;
 Angelo Penone &lt;angelo.penone@theparks.it&gt;</property>
     <property name="logo">nautilus-pyextensions.svg</property>

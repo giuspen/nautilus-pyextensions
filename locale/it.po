@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-01 23:55+0100\n"
+"POT-Creation-Date: 2012-08-12 14:43+0300\n"
 "PO-Revision-Date: 2010-02-24 23:26+0100\n"
 "Last-Translator: Giuseppe Penone <giuspen@gmail.com>\n"
 "Language-Team: Italian\n"
@@ -17,24 +17,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: modules/core.py:181
+#: modules/core.py:186
 msgid "Active"
 msgstr "Attiva"
 
-#: modules/core.py:182
+#: modules/core.py:187
 msgid "Icon"
 msgstr "Icona"
 
-#: modules/core.py:184
+#: modules/core.py:189
 msgid "PyExtension"
 msgstr "PyExtension"
 
-#: modules/core.py:191
+#: modules/core.py:196
 #, python-format
 msgid "Version %s"
 msgstr "Versione %s"
 
-#: modules/core.py:224
+#: modules/core.py:229
 #, python-format
 msgid ""
 "%s needs to be installed in order to activate the selected pyextension, "
@@ -43,17 +43,17 @@ msgstr ""
 "%s deve essere installato per attivare la pyextension selezionata, vuoi "
 "installarlo?"
 
-#: modules/core.py:236
+#: modules/core.py:241
 #, python-format
 msgid "%s Deactivated"
 msgstr "%s Disattivata"
 
-#: modules/core.py:245
+#: modules/core.py:250
 #, python-format
 msgid "%s Activated"
 msgstr "%s Attivata"
 
-#: modules/core.py:279
+#: modules/core.py:284
 msgid ""
 "You should Restart Nautilus in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
@@ -61,54 +61,54 @@ msgstr ""
 "Dovresti Riavviare Nautilus per vedere i cambiamenti (Bottone \"Riavvia\").\n"
 "Vuoi uscire comunque?"
 
-#: modules/core.py:300
+#: modules/core.py:305
 msgid "Nautilus Restarted"
 msgstr "Nautilus Riavviato"
 
-#: modules/core.py:305 modules/core.py:336
+#: modules/core.py:310 modules/core.py:341
 msgid "Python Source Files"
 msgstr "File Sorgenti Python"
 
-#: modules/core.py:312
+#: modules/core.py:317
 #, python-format
 msgid "%s Added"
 msgstr "%s Aggiunta"
 
-#: modules/core.py:314
+#: modules/core.py:319
 #, python-format
 msgid "The PyExtension %s is Already into the List"
 msgstr "La PyExtension %s e' gia' nella Lista"
 
-#: modules/core.py:320 modules/core.py:334 modules/core.py:348
+#: modules/core.py:325 modules/core.py:339 modules/core.py:353
 msgid "No PyExtension is selected"
 msgstr "Nessuna PyExtension e' selezionata"
 
-#: modules/core.py:323
+#: modules/core.py:328
 #, python-format
 msgid "%s must be Deactivated in order to be Removed"
 msgstr "%s deve essere Disattivata per essere Rimossa"
 
-#: modules/core.py:326
+#: modules/core.py:331
 #, python-format
 msgid "Do you really want to Delete %s ?"
 msgstr "Vuoi davvero Eliminare %s ?"
 
-#: modules/core.py:328
+#: modules/core.py:333
 #, python-format
 msgid "%s Removed"
 msgstr "%s Rimossa"
 
-#: modules/core.py:342
+#: modules/core.py:347
 #, python-format
 msgid "%s Exported"
 msgstr "%s Esportata"
 
-#: modules/core.py:351
+#: modules/core.py:356
 #, python-format
 msgid "%s must be Deactivated in order to be Edited"
 msgstr "%s deve essere Disattivata per essere Modificata"
 
-#: modules/core.py:355
+#: modules/core.py:360
 #, python-format
 msgid "%s Opened for Editing"
 msgstr "%s Aperta per la Modifica"
@@ -205,11 +205,27 @@ msgstr "Home Page dell'Applicazione"
 msgid "_About"
 msgstr "_Informazioni"
 
-#: modules/cons.py:115 glade/nautilus-pyextensions.glade.h:17
+#: modules/cons.py:115 glade/nautilus-pyextensions.glade.h:1
 msgid "About Nautilus PyExtensions"
 msgstr "Informazioni su Nautilus PyExtensions"
 
-#: glade/nautilus-pyextensions.glade.h:1
+#: glade/nautilus-pyextensions.glade.h:2
+msgid ""
+"Copyright © 2008-2011\n"
+"Giuseppe Penone <giuspen@gmail.com>"
+msgstr ""
+"Copyright © 2008-2011\n"
+"Giuseppe Penone <giuspen@gmail.com>"
+
+#: glade/nautilus-pyextensions.glade.h:4
+msgid "A Handler for the Nautilus Extensions written in Python"
+msgstr "Un Gestore delle Estensioni Nautilus scritte in Python"
+
+#: glade/nautilus-pyextensions.glade.h:5
+msgid "http://www.giuspen.com/nautilus-pyextensions/"
+msgstr "http://www.giuspen.com/nautilus-pyextensions/"
+
+#: glade/nautilus-pyextensions.glade.h:6
 msgid ""
 "\n"
 "This program is free software; you can redistribute it and/or modify\n"
@@ -243,41 +259,27 @@ msgstr ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,\n"
 "MA 02110-1301, USA."
 
-#: glade/nautilus-pyextensions.glade.h:16
-msgid "A Handler for the Nautilus Extensions written in Python"
-msgstr "Un Gestore delle Estensioni Nautilus scritte in Python"
-
-#: glade/nautilus-pyextensions.glade.h:18
-msgid ""
-"Copyright © 2008-2011\n"
-"Giuseppe Penone <giuspen@gmail.com>"
-msgstr ""
-"Copyright © 2008-2011\n"
-"Giuseppe Penone <giuspen@gmail.com>"
-
-#: glade/nautilus-pyextensions.glade.h:20
+#: glade/nautilus-pyextensions.glade.h:21
+#, fuzzy
 msgid ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
-"Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>"
+"Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
+"Spanish (es) Fernando Toledo <ftoledo@docksud.com.ar>"
 msgstr ""
 "Francese (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italiano (it) Giuseppe Penone <giuspen@gmail.com>\n"
 "Giapponese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>"
 
-#: glade/nautilus-pyextensions.glade.h:23
+#: glade/nautilus-pyextensions.glade.h:25
 msgid "Nautilus PyExtensions"
 msgstr "Nautilus PyExtensions"
 
-#: glade/nautilus-pyextensions.glade.h:24
-msgid "http://www.giuspen.com/nautilus-pyextensions/"
-msgstr "http://www.giuspen.com/nautilus-pyextensions/"
-
-#: default-pyextensions/add-to-audacious2-playlist.py:75
+#: default-pyextensions/add-to-audacious2-playlist.py:81
 msgid "Add To Audacious2 Playlist"
 msgstr "Aggiungi ad Audacious2 Playlist"
 
-#: default-pyextensions/add-to-audacious2-playlist.py:76
+#: default-pyextensions/add-to-audacious2-playlist.py:82
 msgid "Add the selected Audio file(s) to the Audacious2 Playlist"
 msgstr "Aggiungi le Tracce Audio Selezionate alla Playlist di Audacious2"
 
