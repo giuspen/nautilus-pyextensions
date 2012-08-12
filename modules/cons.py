@@ -2,7 +2,7 @@
 #
 #       cons.py
 #
-#       Copyright 2008-2011 Giuseppe Penone <giuspen@gmail.com>
+#       Copyright 2008-2012 Giuseppe Penone <giuspen@gmail.com>
 #
 #       This program is free software; you can redistribute it and/or modify
 #       it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ import os
 
 
 APP_NAME = "nautilus-pyextensions"
-VERSION = "3.0"
+VERSION = "3.1"
 if os.path.isfile('modules/core.py'):
     GLADE_PATH = 'glade/'
     LOCALE_PATH = 'locale/'
@@ -38,7 +38,7 @@ BIN_PATH_2 = "/usr/local/bin/"
 INSTALL_STRING = "gnome-terminal -x gksu apt-get\ -y\ install\ %s"
 CONFIG_DIR = os.path.join(os.path.expanduser('~'), '.config/nautilus-pyextensions')
 
-AVAILABLE_LANGS = ['default', 'en', 'fr', 'it', 'ja']
+AVAILABLE_LANGS = ['default', 'en', 'es', 'fr', 'it', 'ja']
 
 ICONS_FILENAMES = [(GLADE_PATH + 'export.svg', 'Export'),
                    (GLADE_PATH + 'restart-nautilus.svg', 'Restart Nautilus'),
