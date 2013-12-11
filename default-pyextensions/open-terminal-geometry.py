@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 """This module adds a menu item to the nautilus right-click menu which allows to Open the Terminal
    on the Selected Folder/Current Directory at predefined Geometry just through the right-clicking"""
 
-#   open-terminal-geometry.py version 3.0
+#   open-terminal-geometry.py version 3.1
 #
-#   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2013 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by

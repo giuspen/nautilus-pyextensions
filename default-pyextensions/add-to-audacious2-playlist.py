@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 """This module adds a menu item to the nautilus right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
-#   add-to-audacious-playlist2.py version 3.0
+#   add-to-audacious-playlist2.py version 3.1
 #
-#   Copyright 2008-2011 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2008-2013 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by

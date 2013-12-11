@@ -1,12 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 """This module adds menu items to the nautilus right-click menu which allows to compare
    the selected files/folder using Kdiff3 (Diff and merge tool) just through the right-clicking"""
 
-#   kdiff3-compare.py version 3.0
+#   kdiff3-compare.py version 3.1
 #
-#   Copyright 2009-2011 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2013 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
