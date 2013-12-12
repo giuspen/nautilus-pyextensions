@@ -221,7 +221,7 @@ class NautilusPyExtensions:
             check_list = {}
             if "meld-compare.py" in pyextensions_list: check_list["meld"] = "meld"
             if "kdiff3-compare.py" in pyextensions_list: check_list["kdiff3"] = "kdiff3-qt"
-            if "add-to-audacious2-playlist.py" in pyextensions_list: check_list["audacious2"] = "audacious"
+            if "add-to-audacious-playlist.py" in pyextensions_list: check_list["audacious"] = "audacious"
         else: check_list = dependency
         for key in check_list:
             if not os.path.isfile(cons.BIN_PATH_1 + key)\
@@ -243,7 +243,7 @@ class NautilusPyExtensions:
             if "meld" in model[path][2]:
                 if not self.check_dependency({"meld":"meld"}): return
             elif "audacious" in model[path][2]:
-                if not self.check_dependency({"audacious2":"audacious"}): return
+                if not self.check_dependency({"audacious":"audacious"}): return
             elif "kdiff3" in model[path][2]:
                 if not self.check_dependency({"kdiff3":"kdiff3-qt"}): return
             shutil.move(pyextension_not_active_path, pyextension_path) # move from not_active to active directory
