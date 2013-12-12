@@ -29,7 +29,6 @@ import locale, gettext
 
 APP_NAME = "nautilus-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
-GEOMETRY = "100x25"
 ICONPATH = "/usr/share/icons/gnome/48x48/apps/terminal.png"
 # internationalization
 locale.setlocale(locale.LC_ALL, '')
@@ -58,7 +57,7 @@ class OpenTerminalGeometry(GObject.GObject, Nautilus.MenuProvider):
         if len(uri_raw) < 7: return
         curr_dir = urllib.unquote(uri_raw[7:])
         if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
-        bash_string = "cd " + curr_dir + " && x-terminal-emulator -geometry " + GEOMETRY + " -e \"/bin/sh\" &"
+        bash_string = "cd \"" + curr_dir + "\" && x-terminal-emulator -e \"/bin/sh\" &"
         subprocess.call(bash_string, shell=True)
 
     def get_file_items(self, window, sel_items):
