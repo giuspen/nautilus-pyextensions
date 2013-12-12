@@ -4,7 +4,7 @@
 """This module adds a menu item to the nautilus right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
-#   add-to-audacious-playlist2.py version 3.1
+#   add-to-audacious-playlist.py version 3.2
 #
 #   Copyright 2008-2013 Giuseppe Penone <giuspen@gmail.com>
 #
@@ -54,7 +54,7 @@ class AddToAudaciousPlaylist(GObject.GObject, Nautilus.MenuProvider):
 
     def run(self, menu, source_path_list):
         """Runs the Adding of selected Audio file(s) to the Audacious Playlist"""
-        subprocess.call("audacious2 -e " + " ".join(source_path_list) + " &", shell=True)
+        subprocess.call("audacious -e " + " ".join(source_path_list) + " &", shell=True)
 
     def get_file_items(self, window, sel_items):
         """Adds the 'Add To Audacious Playlist' menu item to the Nautilus right-click menu,
@@ -78,8 +78,8 @@ class AddToAudaciousPlaylist(GObject.GObject, Nautilus.MenuProvider):
                     source_path_list.append(source_path)
         if source_path_list:
             item = Nautilus.MenuItem(name='NautilusPython::audacious',
-                                     label=_('Add To Audacious2 Playlist'),
-                                     tip=_('Add the selected Audio file(s) to the Audacious2 Playlist'),
+                                     label=_('Add To Audacious Playlist'),
+                                     tip=_('Add the selected Audio file(s) to the Audacious Playlist'),
                                      icon='audacious')
             item.connect('activate', self.run, source_path_list)
             return item,
