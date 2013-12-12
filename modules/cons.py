@@ -35,7 +35,7 @@ PYEXTENSIONS_DIR = os.path.join(NAUTILUS_PYTHON_DIR, 'extensions')
 PYEXTENSIONS_NOT_ACTIVE_DIR = os.path.join(PYEXTENSIONS_DIR, 'not_active')
 BIN_PATH_1 = "/usr/bin/"
 BIN_PATH_2 = "/usr/local/bin/"
-INSTALL_STRING = "gnome-terminal -x gksu apt-get\ -y\ install\ %s"
+INSTALL_STRING = "x-terminal-emulator -e \"gksu apt-get\ -y\ install\ %s\""
 CONFIG_DIR = os.path.join(os.path.expanduser('~'), '.config/nautilus-pyextensions')
 
 AVAILABLE_LANGS = ['default', 'en', 'es', 'fr', 'it', 'ja']
