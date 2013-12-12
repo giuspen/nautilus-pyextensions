@@ -57,7 +57,7 @@ class OpenTerminalGeometry(GObject.GObject, Nautilus.MenuProvider):
         if len(uri_raw) < 7: return
         curr_dir = urllib.unquote(uri_raw[7:])
         if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
-        bash_string = "cd \"" + curr_dir + "\" && x-terminal-emulator -e \"/bin/sh\" &"
+        bash_string = "cd \"" + curr_dir + "\" && x-terminal-emulator &"
         subprocess.call(bash_string, shell=True)
 
     def get_file_items(self, window, sel_items):
