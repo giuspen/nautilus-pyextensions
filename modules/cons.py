@@ -30,7 +30,7 @@ if os.path.isfile('modules/core.py'):
 else:
     GLADE_PATH = '/usr/share/nautilus-pyextensions/glade/'
     LOCALE_PATH = '/usr/share/locale/'
-NAUTILUS_PYTHON_DIR = os.path.join(os.path.expanduser('~'), '.local/share/nautilus-python')
+NAUTILUS_PYTHON_DIR = os.path.join(os.path.expanduser('~'), '.local/share/caja-python')
 PYEXTENSIONS_DIR = os.path.join(NAUTILUS_PYTHON_DIR, 'extensions')
 PYEXTENSIONS_NOT_ACTIVE_DIR = os.path.join(PYEXTENSIONS_DIR, 'not_active')
 BIN_PATH_1 = "/usr/bin/"

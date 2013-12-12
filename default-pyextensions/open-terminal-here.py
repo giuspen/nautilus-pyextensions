@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds a menu item to the nautilus right-click menu which allows to Open the Terminal
+"""This module adds a menu item to the caja right-click menu which allows to Open the Terminal
    on the Selected Folder/Current Directory at predefined Geometry just through the right-clicking"""
 
-#   open-terminal-geometry.py version 3.1
+#   open-terminal-here.py version 3.2
 #
 #   Copyright 2009-2013 Giuseppe Penone <giuspen@gmail.com>
 #
@@ -23,7 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Nautilus, GObject, Gtk, GdkPixbuf
+from gi.repository import Caja, GObject, Gtk, GdkPixbuf
 import urllib, os, subprocess
 import locale, gettext
 
@@ -38,11 +38,11 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class OpenTerminalGeometry(GObject.GObject, Nautilus.MenuProvider):
-    """Implements the 'Open Terminal Geometry' extension to the nautilus right-click menu"""
+class OpenTerminalGeometry(GObject.GObject, Caja.MenuProvider):
+    """Implements the 'Open Terminal Geometry' extension to the caja right-click menu"""
 
     def __init__(self):
-        """Nautilus crashes if a plugin doesn't implement the __init__ method"""
+        """Caja crashes if a plugin doesn't implement the __init__ method"""
         try:
             factory = Gtk.IconFactory()
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(ICONPATH)
@@ -61,10 +61,10 @@ class OpenTerminalGeometry(GObject.GObject, Nautilus.MenuProvider):
         subprocess.call(bash_string, shell=True)
 
     def get_file_items(self, window, sel_items):
-        """Adds the 'Open Terminal Geometry' menu item to the Nautilus right-click menu,
+        """Adds the 'Open Terminal Geometry' menu item to the Caja right-click menu,
            connects its 'activate' signal to the 'run' method passing the selected Directory/File"""
         if len(sel_items) != 1 or sel_items[0].get_uri_scheme() != 'file': return
-        item = Nautilus.MenuItem(name='NautilusPython::terminal',
+        item = Caja.MenuItem(name='CajaPython::terminal',
                                  label=_('Open Terminal Here'),
                                  tip=_('Open the Terminal on the Current/Selected Directory'),
                                  icon='terminal')
@@ -72,9 +72,9 @@ class OpenTerminalGeometry(GObject.GObject, Nautilus.MenuProvider):
         return [item]
 
     def get_background_items(self, window, current_directory):
-        """Adds the 'Open Terminal Geometry' menu item to the Nautilus right-click menu,
+        """Adds the 'Open Terminal Geometry' menu item to the Caja right-click menu,
            connects its 'activate' signal to the 'run' method passing the current Directory"""
-        item = Nautilus.MenuItem(name='NautilusPython::terminal',
+        item = Caja.MenuItem(name='CajaPython::terminal',
                                  label=_('Open Terminal Here'),
                                  tip=_('Open the Terminal on the Current Directory'),
                                  icon='terminal')
