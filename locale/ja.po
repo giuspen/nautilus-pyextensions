@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-16 17:15+0200\n"
-"PO-Revision-Date: 2014-09-16 17:12+0100\n"
+"PO-Revision-Date: 2014-09-16 17:37+0100\n"
 "Last-Translator: Giuseppe Penone <giuspen@gmail.com>\n"
 "Language-Team: Japanese <LL@li.org>\n"
 "Language: ja\n"
@@ -210,12 +210,11 @@ msgid "About Caja PyExtensions"
 msgstr "Caja PyExtensions について"
 
 #: glade/caja-pyextensions.glade.h:2
-#, fuzzy
 msgid ""
 "Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 msgstr ""
-"Copyright © 2008-2011\n"
+"Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 
 #: glade/caja-pyextensions.glade.h:4
@@ -260,7 +259,6 @@ msgstr ""
 "59Temple Place, Suite 330, Boston, MA 02111-1307 USA)。"
 
 #: glade/caja-pyextensions.glade.h:21
-#, fuzzy
 msgid ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
@@ -379,18 +377,3 @@ msgstr "現在/選択されたディレクトリのファイル名で置換"
 #: default-pyextensions/replace-in-filenames.py:111
 msgid "Replace in Filenames of the Current Directory"
 msgstr "現在のディレクトリのファイル名で置換"
-
-#~ msgid "Nautilus PyExtensions"
-#~ msgstr "Nautilus PyExtensions"
-
-#~ msgid "Set As Desktop Background"
-#~ msgstr "デスクトップの背景として設定"
-
-#~ msgid "Set the selected Image file as Desktop Background"
-#~ msgstr "デスクトップの背景として選択された画像を設定"
-
-#~ msgid "Cancel"
-#~ msgstr "キャンセル"
-
-#~ msgid "OK"
-#~ msgstr "OK"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: caja-pyextensions 3.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-09-16 17:15+0200\n"
-"PO-Revision-Date: 2014-09-16 17:13+0100\n"
+"PO-Revision-Date: 2014-09-16 17:38+0100\n"
 "Last-Translator: Giuseppe Penone <giuspen@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -211,12 +211,11 @@ msgid "About Caja PyExtensions"
 msgstr "Informazioni su Caja PyExtensions"
 
 #: glade/caja-pyextensions.glade.h:2
-#, fuzzy
 msgid ""
 "Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 msgstr ""
-"Copyright © 2008-2011\n"
+"Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 
 #: glade/caja-pyextensions.glade.h:4
@@ -381,18 +380,3 @@ msgstr "Sostituisci nei Nomi di File della Cartella Corrente/Selezionata"
 #: default-pyextensions/replace-in-filenames.py:111
 msgid "Replace in Filenames of the Current Directory"
 msgstr "Sostituisci nei Nomi di File della Cartella Corrente"
-
-#~ msgid "Nautilus PyExtensions"
-#~ msgstr "Nautilus PyExtensions"
-
-#~ msgid "Set As Desktop Background"
-#~ msgstr "Imposta Come Sfondo Del Desktop"
-
-#~ msgid "Set the selected Image file as Desktop Background"
-#~ msgstr "Imposta l'Immagine Selezionata Come Sfondo Del Desktop"
-
-#~ msgid "Cancel"
-#~ msgstr "Annulla"
-
-#~ msgid "OK"
-#~ msgstr "OK"

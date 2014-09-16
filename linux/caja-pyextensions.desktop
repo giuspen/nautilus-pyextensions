@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Caja PyExtensions
+Comment=Caja Python Extensions Handler
+Comment[it]=Gestore Estensioni Python a Caja
+Comment[fr]=Gesteur des extensions PyExtension pour Caja
+Comment[ja]=Python で書かれた Caja 機能拡張のハンドラ
+Exec=caja-pyextensions
+Icon=/usr/share/icons/hicolor/scalable/apps/caja-pyextensions.svg
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;
