@@ -1,12 +1,12 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds a menu item to the caja right-click menu which allows to Open the Terminal
+"""This module adds a menu item to the Caja right-click menu which allows to Open the Terminal
    on the Selected Folder/Current Directory at predefined Geometry just through the right-clicking"""
 
-#   open-terminal-here.py version 3.2
+#   open-terminal-here.py version 3.3
 #
-#   Copyright 2009-2013 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2014 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by

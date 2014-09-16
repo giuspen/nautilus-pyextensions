@@ -1,12 +1,12 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds menu items to the nautilus right-click menu which allows to compare
+"""This module adds menu items to the Caja right-click menu which allows to compare
    the selected files/folder using Meld (Diff and merge tool) just through the right-clicking"""
 
-#   meld-compare.py version 3.1
+#   meld-compare.py version 3.3
 #
-#   Copyright 2009-2013 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2014 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Nautilus, GObject, Gtk, GdkPixbuf
+from gi.repository import Caja, GObject, Gtk, GdkPixbuf
 import urllib, os, subprocess, re
 import locale, gettext
 
@@ -39,11 +39,11 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class MeldActions(GObject.GObject, Nautilus.MenuProvider):
-    """Implements the 'Meld Compare' extension to the nautilus right-click menu"""
+class MeldActions(GObject.GObject, Caja.MenuProvider):
+    """Implements the 'Meld Compare' extension to the Caja right-click menu"""
 
     def __init__(self):
-        """Nautilus crashes if a plugin doesn't implement the __init__ method"""
+        """Caja crashes if a plugin doesn't implement the __init__ method"""
         try:
             factory = Gtk.IconFactory()
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(ICONPATH)
@@ -61,7 +61,7 @@ class MeldActions(GObject.GObject, Nautilus.MenuProvider):
         os.environ[NAUPYEXT_MELD] = element
 
     def get_file_items(self, window, sel_items):
-        """Adds the 'Add To Audacious Playlist' menu item to the Nautilus right-click menu,
+        """Adds the 'Add To Audacious Playlist' menu item to the Caja right-click menu,
            connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
         num_paths = len(sel_items)
         if num_paths == 0 or num_paths > 2: return
@@ -85,7 +85,7 @@ class MeldActions(GObject.GObject, Nautilus.MenuProvider):
                 element_1 = re.escape(element_1)
                 element_2 = re.escape(element_2)
             else: return
-            item = Nautilus.MenuItem(name='Meld::meld',
+            item = Caja.MenuItem(name='Meld::meld',
                                      label=_('Meld Compare'),
                                      tip=_('Compare the selected Files/Folders using Meld (Diff and merge tool)'),
                                      icon='meld')
@@ -96,15 +96,15 @@ class MeldActions(GObject.GObject, Nautilus.MenuProvider):
             filetype = subprocess.Popen("file -i %s" % re.escape(element_1), shell=True, stdout=subprocess.PIPE).communicate()[0]
             if "text" not in filetype and "xml" not in filetype: return
         # top menuitem
-        top_menuitem = Nautilus.MenuItem(name='Meld::actions',
+        top_menuitem = Caja.MenuItem(name='Meld::actions',
                                          label=_('Meld Actions'),
                                          tip=_('Meld (Diff and merge tool) Actions'),
                                          icon='meld')
         # creation of submenus
-        submenu = Nautilus.Menu()
+        submenu = Caja.Menu()
         top_menuitem.set_submenu(submenu)
         # submenu items save
-        sub_menuitem_save = Nautilus.MenuItem(name='Meld::save',
+        sub_menuitem_save = Caja.MenuItem(name='Meld::save',
                                               label=_('Save Path for Future Use'),
                                               tip=_('Save the Selected File/Dir Path for Future Use'),
                                               icon='gtk-save')
@@ -113,7 +113,7 @@ class MeldActions(GObject.GObject, Nautilus.MenuProvider):
         # submenu items compare with saved
         stored_path = os.environ[NAUPYEXT_MELD] if NAUPYEXT_MELD in os.environ else ""
         if stored_path and stored_path != element_1 and ( (os.path.isfile(stored_path) and os.path.isfile(element_1) ) or (os.path.isdir(stored_path) and os.path.isdir(element_1) ) ):
-            sub_menuitem_compare_saved = Nautilus.MenuItem(name='Meld::compare_saved',
+            sub_menuitem_compare_saved = Caja.MenuItem(name='Meld::compare_saved',
                                                            label=_('Compare with %s' % stored_path.replace("_", " ") ),
                                                            tip=_('Compare the Selected File/Dir with %s' % stored_path),
                                                            icon='gtk-execute')
