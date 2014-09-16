@@ -300,7 +300,7 @@ class CajaPyExtensions:
 
     def restart_caja(self, *args):
         """Restarts Caja"""
-        subprocess.call('killall caja ; sleep 1 ; caja &', shell=True)
+        subprocess.call('killall caja', shell=True)
         self.store.set_caja_restart_needed(False)
         self.glade.statusbar.push(self.statusbar_context_id, _('Caja Restarted'))
 

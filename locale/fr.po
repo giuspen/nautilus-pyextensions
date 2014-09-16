@@ -5,17 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: caja-pyextensions 3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 16:51+0200\n"
-"PO-Revision-Date: 2010-09-12 13:15+0200\n"
-"Last-Translator: Pierre Prinetti <d0npi3r0@gmail.com>\n"
+"POT-Creation-Date: 2014-09-16 17:15+0200\n"
+"PO-Revision-Date: 2014-09-16 17:13+0100\n"
+"Last-Translator: Giuseppe Penone <giuspen@gmail.com>\n"
 "Language-Team: French\n"
-"Language: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: modules/core.py:186
 msgid "Active"
@@ -54,19 +55,17 @@ msgid "%s Activated"
 msgstr "%s activé"
 
 #: modules/core.py:284
-#, fuzzy
 msgid ""
 "You should Restart Caja in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
 msgstr ""
-"Nautilus doit être redémarré pour voir les changements (Bouton \"Redémarrer "
-"Nautilus\").\n"
+"Caja doit être redémarré pour voir les changements (Bouton \"Redémarrer Caja"
+"\").\n"
 "Voulez-vous vraiment quitter?"
 
 #: modules/core.py:305
-#, fuzzy
 msgid "Caja Restarted"
-msgstr "Nautilus correctement redémarré"
+msgstr "Caja correctement redémarré"
 
 #: modules/core.py:310 modules/core.py:341
 msgid "Python Source Files"
@@ -137,9 +136,8 @@ msgid "_Kill"
 msgstr "Redémarrer"
 
 #: modules/cons.py:105
-#, fuzzy
 msgid "Restart Caja"
-msgstr "Redémarrer Nautilus"
+msgstr "Redémarrer Caja"
 
 #: modules/cons.py:106
 msgid "_Add"
@@ -170,9 +168,8 @@ msgid "_Quit"
 msgstr "Quitter"
 
 #: modules/cons.py:109
-#, fuzzy
 msgid "Quit Caja PyExtensions"
-msgstr "Quitter Nautilus PyExtensions"
+msgstr "Quitter Caja PyExtensions"
 
 #: modules/cons.py:110
 msgid "Select _All"
@@ -211,25 +208,23 @@ msgid "_About"
 msgstr "À propos de Nautilus PyExtensions"
 
 #: modules/cons.py:115 glade/caja-pyextensions.glade.h:1
-#, fuzzy
 msgid "About Caja PyExtensions"
-msgstr "À propos de Nautilus PyExtensions"
+msgstr "À propos de Caja PyExtensions"
 
 #: glade/caja-pyextensions.glade.h:2
+#, fuzzy
 msgid ""
-"Copyright © 2008-2011\n"
+"Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 msgstr ""
 "Copyright © 2008-2011\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 
 #: glade/caja-pyextensions.glade.h:4
-#, fuzzy
 msgid "A Handler for the Caja Extensions written in Python"
-msgstr "Un gesteur d'extensions Python pour Nautilus"
+msgstr "Un gesteur d'extensions Python pour Caja"
 
 #: glade/caja-pyextensions.glade.h:5
-#, fuzzy
 msgid "http://www.giuspen.com/nautilus-pyextensions/"
 msgstr "http://www.giuspen.com/nautilus-pyextensions/"
 
@@ -268,32 +263,26 @@ msgstr ""
 "MA 02111-1307, États-Unis."
 
 #: glade/caja-pyextensions.glade.h:21
-#, fuzzy
 msgid ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
-"Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
-"Spanish (es) Fernando Toledo <ftoledo@docksud.com.ar>"
+"Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>"
 msgstr ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
 "Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>"
 
-#: glade/caja-pyextensions.glade.h:25
-#, fuzzy
+#: glade/caja-pyextensions.glade.h:24
 msgid "Caja PyExtensions"
-msgstr "PyExtension"
+msgstr "Caja PyExtensions"
 
 #: default-pyextensions/add-to-audacious-playlist.py:81
-#, fuzzy
 msgid "Add To Audacious Playlist"
-msgstr "Ajouter à la liste d'exécution Audacious2"
+msgstr "Ajouter à la liste d'exécution Audacious"
 
 #: default-pyextensions/add-to-audacious-playlist.py:82
-#, fuzzy
 msgid "Add the selected Audio file(s) to the Audacious Playlist"
-msgstr ""
-"Ajouter les fichiers son sélectionnés à la liste d'exécution Audacious2"
+msgstr "Ajouter les fichiers son sélectionnés à la liste d'exécution Audacious"
 
 #: default-pyextensions/meld-compare.py:89
 msgid "Meld Compare"

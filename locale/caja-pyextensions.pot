@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 16:51+0200\n"
+"POT-Creation-Date: 2014-09-16 17:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -207,7 +207,7 @@ msgstr ""
 
 #: glade/caja-pyextensions.glade.h:2
 msgid ""
-"Copyright © 2008-2011\n"
+"Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 msgstr ""
 
@@ -242,11 +242,10 @@ msgstr ""
 msgid ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
-"Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
-"Spanish (es) Fernando Toledo <ftoledo@docksud.com.ar>"
+"Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>"
 msgstr ""
 
-#: glade/caja-pyextensions.glade.h:25
+#: glade/caja-pyextensions.glade.h:24
 msgid "Caja PyExtensions"
 msgstr ""
 

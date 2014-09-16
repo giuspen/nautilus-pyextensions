@@ -38,7 +38,7 @@ BIN_PATH_2 = "/usr/local/bin/"
 INSTALL_STRING = "x-terminal-emulator -e \"gksu apt-get\ -y\ install\ %s\""
 CONFIG_DIR = os.path.join(os.path.expanduser('~'), '.config/caja-pyextensions')
 
-AVAILABLE_LANGS = ['default', 'en', 'es', 'fr', 'it', 'ja']
+AVAILABLE_LANGS = ['default', 'en', 'fr', 'it', 'ja']
 
 ICONS_FILENAMES = [(GLADE_PATH + 'export.svg', 'Export'),
                    (GLADE_PATH + 'restart-caja.svg', 'Restart Caja'),
