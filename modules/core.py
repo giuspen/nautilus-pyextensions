@@ -2,7 +2,7 @@
 #
 #       core.py
 #
-#       Copyright 2008-2013 Giuseppe Penone <giuspen@gmail.com>
+#       Copyright 2008-2014 Giuseppe Penone <giuspen@gmail.com>
 #
 #       This program is free software; you can redistribute it and/or modify
 #       it under the terms of the GNU General Public License as published by
@@ -54,8 +54,8 @@ class InfoModel:
         """Sets up and populates the Gtk.ListStore"""
         self.liststore = Gtk.ListStore('gboolean', str, str)
         self.load_model()
-        # Information about the Consistence of the model with the instanced Nautilus
-        self.liststore.nautilus_restart_needed = False
+        # Information about the Consistence of the model with the instanced Caja
+        self.liststore.caja_restart_needed = False
 
     def load_model(self):
         """Load/Reload the model"""
@@ -106,7 +106,7 @@ class InfoModel:
         pyextension_file = open(pyextension_path, 'r')
         pyextension_file_string = pyextension_file.read()
         pyextension_file.close()
-        # regular expression: search for a string preceeded by "'NautilusPython::" and followed by "'"
+        # regular expression: search for a string preceeded by "'CajaPython::" and followed by "'"
         match = re.search("(?<=icon\=).*?(?=\))", pyextension_file_string)
         if match == None: return None
         else:
@@ -131,16 +131,16 @@ class InfoModel:
         """Returns the model"""
         return self.liststore
 
-    def get_nautilus_restart_needed(self):
-        """Returns True if there is Inconsistence between the model and the instanced Nautilus"""
-        return self.liststore.nautilus_restart_needed
+    def get_caja_restart_needed(self):
+        """Returns True if there is Inconsistence between the model and the instanced Caja"""
+        return self.liststore.caja_restart_needed
 
-    def set_nautilus_restart_needed(self, restart_needed):
-        """Sets the Consistence/Inconsistence between the model and the instanced Nautilus"""
-        self.liststore.nautilus_restart_needed = restart_needed
+    def set_caja_restart_needed(self, restart_needed):
+        """Sets the Consistence/Inconsistence between the model and the instanced Caja"""
+        self.liststore.caja_restart_needed = restart_needed
 
 
-class NautilusPyExtensions:
+class CajaPyExtensions:
     """The application's main window"""
 
     def __init__(self, store):
@@ -158,7 +158,7 @@ class NautilusPyExtensions:
         gtk_settings.set_property("gtk-menu-images", True)
         os.environ['UBUNTU_MENUPROXY'] = '0' # for custom stock icons not visible in appmenu
         # instantiate the Glade Widgets Wrapper
-        self.glade = GladeWidgetsWrapper(cons.GLADE_PATH + 'nautilus-pyextensions.glade', self)
+        self.glade = GladeWidgetsWrapper(cons.GLADE_PATH + 'caja-pyextensions.glade', self)
         # ui manager
         actions = Gtk.ActionGroup("Actions")
         actions.add_actions(cons.get_entries(self))
@@ -197,20 +197,20 @@ class NautilusPyExtensions:
         self.glade.aboutdialog.set_version(cons.VERSION)
         # retrieve the gconf settings, set them if this is the first run
         self.gconf_client = GConf.Client.get_default()
-        self.gconf_client.add_dir("/apps/nautilus-pyextensions", GConf.ClientPreloadType.PRELOAD_NONE)
-        if self.gconf_client.get_string("/apps/nautilus-pyextensions/picking_dir") == None:
-            self.gconf_client.set_string("/apps/nautilus-pyextensions/picking_dir", os.path.expanduser('~'))
+        self.gconf_client.add_dir("/apps/caja-pyextensions", GConf.ClientPreloadType.PRELOAD_NONE)
+        if self.gconf_client.get_string("/apps/caja-pyextensions/picking_dir") == None:
+            self.gconf_client.set_string("/apps/caja-pyextensions/picking_dir", os.path.expanduser('~'))
         self.win_size_n_pos = {}
         # window restore size
-        self.win_size_n_pos['win_size'] = [self.gconf_client.get_int("/apps/nautilus-pyextensions/win_size_w"),
-                                           self.gconf_client.get_int("/apps/nautilus-pyextensions/win_size_h")]
+        self.win_size_n_pos['win_size'] = [self.gconf_client.get_int("/apps/caja-pyextensions/win_size_w"),
+                                           self.gconf_client.get_int("/apps/caja-pyextensions/win_size_h")]
         if 0 not in self.win_size_n_pos['win_size']:
             self.glade.window.resize(self.win_size_n_pos['win_size'][0], self.win_size_n_pos['win_size'][1])
         # have the window and all child widgets visible
         self.glade.window.show_all()
         # window restore position
-        self.win_size_n_pos['win_position'] = [self.gconf_client.get_int("/apps/nautilus-pyextensions/win_position_x"),
-                                               self.gconf_client.get_int("/apps/nautilus-pyextensions/win_position_y")]
+        self.win_size_n_pos['win_position'] = [self.gconf_client.get_int("/apps/caja-pyextensions/win_position_x"),
+                                               self.gconf_client.get_int("/apps/caja-pyextensions/win_position_y")]
         self.glade.window.move(self.win_size_n_pos['win_position'][0], self.win_size_n_pos['win_position'][1])
 
     def check_dependency(self, dependency=None):
@@ -249,7 +249,7 @@ class NautilusPyExtensions:
             shutil.move(pyextension_not_active_path, pyextension_path) # move from not_active to active directory
             self.glade.statusbar.push(self.statusbar_context_id, _('%s Activated') % model[path][2])
         model[path][0] = not model[path][0]
-        self.store.set_nautilus_restart_needed(True)
+        self.store.set_caja_restart_needed(True)
 
     def make_pixbuf(self, treeviewcolumn, cell, model, tree_iter, data):
         """Function to associate the pixbuf to the cell renderer"""
@@ -263,7 +263,7 @@ class NautilusPyExtensions:
             if self.store.liststore[tree_iter][0] == False:
                 self.toggle_active(None, tree_iter, self.store.liststore)
             tree_iter = self.store.liststore.iter_next(tree_iter)
-        self.store.set_nautilus_restart_needed(True)
+        self.store.set_caja_restart_needed(True)
 
     def unflag_all_rows(self, *args):
         """Unflags All Rows"""
@@ -272,45 +272,45 @@ class NautilusPyExtensions:
             if self.store.liststore[tree_iter][0] == True:
                 self.toggle_active(None, tree_iter, self.store.liststore)
             tree_iter = self.store.liststore.iter_next(tree_iter)
-        self.store.set_nautilus_restart_needed(True)
+        self.store.set_caja_restart_needed(True)
 
     def on_window_delete_event(self, widget, event, data=None):
-        """Before close the application: check the Consistence of the model with the instanced Nautilus"""
+        """Before close the application: check the Consistence of the model with the instanced Caja"""
         return self.quit_application()
 
     def quit_application(self, *args):
         """Quit the gtk main loop"""
-        if self.store.get_nautilus_restart_needed() == True:
-            if not self.dialog_question(_('You should Restart Nautilus in order to see the changes (Button "Kill").\nDo you want to leave anyway?')):
+        if self.store.get_caja_restart_needed() == True:
+            if not self.dialog_question(_('You should Restart Caja in order to see the changes (Button "Kill").\nDo you want to leave anyway?')):
                 return True # stop the delete event
         # save window size and position in case they changed
         actual_win_size = list(self.glade.window.get_size())
         actual_win_pos = list(self.glade.window.get_position())
         if actual_win_size != self.win_size_n_pos['win_size']:
             self.win_size_n_pos['win_size'] = actual_win_size
-            self.gconf_client.set_int("/apps/nautilus-pyextensions/win_size_w", self.win_size_n_pos['win_size'][0])
-            self.gconf_client.set_int("/apps/nautilus-pyextensions/win_size_h", self.win_size_n_pos['win_size'][1])
+            self.gconf_client.set_int("/apps/caja-pyextensions/win_size_w", self.win_size_n_pos['win_size'][0])
+            self.gconf_client.set_int("/apps/caja-pyextensions/win_size_h", self.win_size_n_pos['win_size'][1])
         if actual_win_pos != self.win_size_n_pos['win_position']:
             self.win_size_n_pos['win_position'] = actual_win_pos
-            self.gconf_client.set_int("/apps/nautilus-pyextensions/win_position_x", self.win_size_n_pos['win_position'][0])
-            self.gconf_client.set_int("/apps/nautilus-pyextensions/win_position_y", self.win_size_n_pos['win_position'][1])
+            self.gconf_client.set_int("/apps/caja-pyextensions/win_position_x", self.win_size_n_pos['win_position'][0])
+            self.gconf_client.set_int("/apps/caja-pyextensions/win_position_y", self.win_size_n_pos['win_position'][1])
         self.glade.window.destroy()
         Gtk.main_quit()
         return False # propogate the delete event
 
-    def restart_nautilus(self, *args):
-        """Restarts Nautilus"""
-        subprocess.call('killall nautilus ; sleep 1 ; nautilus &', shell=True)
-        self.store.set_nautilus_restart_needed(False)
-        self.glade.statusbar.push(self.statusbar_context_id, _('Nautilus Restarted'))
+    def restart_caja(self, *args):
+        """Restarts Caja"""
+        subprocess.call('killall caja ; sleep 1 ; caja &', shell=True)
+        self.store.set_caja_restart_needed(False)
+        self.glade.statusbar.push(self.statusbar_context_id, _('Caja Restarted'))
 
     def add_pyextension(self, *args):
         """Opens the File Chooser Dialog, retrieves the filename, Adds the PyExtension as Not Active"""
         filepath = self.dialog_open_file(filter_pattern='*.py',
                                          filter_name=_('Python Source Files'),
-                                         set_dir=self.gconf_client.get_string("/apps/nautilus-pyextensions/picking_dir"))
+                                         set_dir=self.gconf_client.get_string("/apps/caja-pyextensions/picking_dir"))
         if filepath != None:
-            self.gconf_client.set_string("/apps/nautilus-pyextensions/picking_dir", os.path.dirname(filepath))
+            self.gconf_client.set_string("/apps/caja-pyextensions/picking_dir", os.path.dirname(filepath))
             filename = os.path.basename(filepath)
             if self.store.pyextension_already_exists(filename) == False:
                 self.store.add_pyextension(filepath)

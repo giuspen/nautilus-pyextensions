@@ -24,7 +24,7 @@ PO_DIR = 'locale'
 MO_DIR = os.path.join('build', 'mo')
 
 
-class NautilusPyExtensionsDist(Distribution):
+class CajaPyExtensionsDist(Distribution):
     global_options = Distribution.global_options + [
        ("without-gettext", None, "Don't build/install gettext .mo files")]
 
@@ -39,7 +39,7 @@ class BuildData(build):
         if self.distribution.without_gettext: return
         for po in glob.glob(os.path.join (PO_DIR, '*.po')):
             lang = os.path.basename(po[:-3])
-            mo = os.path.join(MO_DIR, lang, 'nautilus-pyextensions.mo')
+            mo = os.path.join(MO_DIR, lang, 'caja-pyextensions.mo')
             directory = os.path.dirname(mo)
             if not os.path.exists(directory):
                 info('creating %s' % directory)
@@ -108,7 +108,7 @@ class Uninstall(Command):
 
 class Install(install):
     def run(self):
-        self.distribution.scripts=['nautilus-pyextensions']
+        self.distribution.scripts=['caja-pyextensions']
         install.run(self)
 
 
@@ -119,12 +119,12 @@ class InstallData(install_data):
         install_data.run(self)
 
     def _find_desktop_file(self):
-        return [("share/applications", ["linux/nautilus-pyextensions.desktop"] )]
+        return [("share/applications", ["linux/caja-pyextensions.desktop"] )]
 
     def _find_mo_files (self):
         data_files = []
         if not self.distribution.without_gettext:
-            for mo in glob.glob(os.path.join(MO_DIR, '*', 'nautilus-pyextensions.mo')):
+            for mo in glob.glob(os.path.join(MO_DIR, '*', 'caja-pyextensions.mo')):
                 lang = os.path.basename(os.path.dirname(mo))
                 dest = os.path.join('share', 'locale', lang, 'LC_MESSAGES')
                 data_files.append((dest, [mo]))
@@ -132,24 +132,24 @@ class InstallData(install_data):
 
 
 setup(
-   name = "Nautilus PyExtensions",
-   description = "Nautilus Python Extensions Handler",
-   long_description = "A Graphical Handler of the Nautilus File Manager Python Extensions, Including some Useful PyExtensions",
+   name = "Caja PyExtensions",
+   description = "Caja Python Extensions Handler",
+   long_description = "A Graphical Handler of the Caja File Manager Python Extensions, Including some Useful PyExtensions",
    version = cons.VERSION,
    author = "Giuseppe Penone",
    author_email = "giuspen@gmail.com",
-   url = "http://www.giuspen.com/nautilus-pyextensions/",
+   url = "http://www.giuspen.com/caja-pyextensions/",
    license = "GPL",
    data_files = [
-                  ("share/icons/hicolor/scalable/apps", ["linux/nautilus-pyextensions.svg"] ),
-                  ("share/nautilus-pyextensions/glade", glob.glob("glade/*.*") ),
-                  ("share/nautilus-pyextensions/modules", glob.glob("modules/*.py") ),
-                  ("share/nautilus-pyextensions/default-pyextensions", glob.glob("default-pyextensions/*.py") ) ],
+                  ("share/icons/hicolor/scalable/apps", ["linux/caja-pyextensions.svg"] ),
+                  ("share/caja-pyextensions/glade", glob.glob("glade/*.*") ),
+                  ("share/caja-pyextensions/modules", glob.glob("modules/*.py") ),
+                  ("share/caja-pyextensions/default-pyextensions", glob.glob("default-pyextensions/*.py") ) ],
    cmdclass={
         'build': BuildData,
         'install_data': InstallData,
         'install': Install,
         'uninstall': Uninstall
       },
-   distclass=NautilusPyExtensionsDist
+   distclass=CajaPyExtensionsDist
 )

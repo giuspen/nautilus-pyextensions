@@ -1,4 +1,4 @@
-Source: nautilus-pyextensions
+Source: caja-pyextensions
 Section: utils
 Priority: optional
 Maintainer: Giuseppe Penone <giuspen@gmail.com>
@@ -6,10 +6,10 @@ Build-Depends: debhelper (>= 7), python-central (>=0.5.6), python (>=2.4), pytho
 Standards-Version: 3.8.1
 Homepage: http://www.giuspen.com/nautilus-pyextensions/
 
-Package: nautilus-pyextensions
+Package: caja-pyextensions
 Architecture: all
 XS-Python-Version: >=2.4
 XB-Python-Version: >=2.4
 Depends: python-caja, gir1.2-caja, gir1.2-gtk-3.0, gir1.2-gconf-2.0
-Description: Handler of the Nautilus Python Extensions
+Description: Handler of the Caja Python Extensions
  A Graphical Handler of the Caja File Manager Python Extensions, Including some Useful PyExtensions

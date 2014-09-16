@@ -27,7 +27,7 @@ from gi.repository import Caja, GObject, Gtk, GdkPixbuf
 import urllib, os, subprocess, re
 import locale, gettext
 
-APP_NAME = "nautilus-pyextensions"
+APP_NAME = "caja-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 NAUPYEXT_MELD = 'NAUPYEXT_MELD'
 ICONPATH = "/usr/share/icons/hicolor/scalable/apps/meld.svg"

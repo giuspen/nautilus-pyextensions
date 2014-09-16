@@ -27,7 +27,7 @@ from gi.repository import Caja, GObject, Gtk, GdkPixbuf
 import urllib, os, subprocess
 import locale, gettext
 
-APP_NAME = "nautilus-pyextensions"
+APP_NAME = "caja-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 ICONPATH = "/usr/share/icons/gnome/48x48/apps/terminal.png"
 # internationalization

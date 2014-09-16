@@ -27,7 +27,7 @@ from gi.repository import Caja, GObject, Gtk
 import urllib, os
 import locale, gettext
 
-APP_NAME = "nautilus-pyextensions"
+APP_NAME = "caja-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 # internationalization
 locale.setlocale(locale.LC_ALL, '')

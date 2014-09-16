@@ -27,7 +27,7 @@ from gi.repository import Caja, GObject, Gtk, GdkPixbuf
 import urllib, os, subprocess, re
 import locale, gettext
 
-APP_NAME = "nautilus-pyextensions"
+APP_NAME = "caja-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 NAUPYEXT_KDIFF3 = 'NAUPYEXT_KDIFF3'
 ICONPATH = "/usr/share/icons/hicolor/32x32/apps/kdiff3.png"

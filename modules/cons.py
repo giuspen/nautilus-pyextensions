@@ -2,7 +2,7 @@
 #
 #       cons.py
 #
-#       Copyright 2008-2013 Giuseppe Penone <giuspen@gmail.com>
+#       Copyright 2008-2014 Giuseppe Penone <giuspen@gmail.com>
 #
 #       This program is free software; you can redistribute it and/or modify
 #       it under the terms of the GNU General Public License as published by
@@ -22,26 +22,26 @@
 import os
 
 
-APP_NAME = "nautilus-pyextensions"
-VERSION = "3.2"
+APP_NAME = "caja-pyextensions"
+VERSION = "3.3"
 if os.path.isfile('modules/core.py'):
     GLADE_PATH = 'glade/'
     LOCALE_PATH = 'locale/'
 else:
-    GLADE_PATH = '/usr/share/nautilus-pyextensions/glade/'
+    GLADE_PATH = '/usr/share/caja-pyextensions/glade/'
     LOCALE_PATH = '/usr/share/locale/'
-NAUTILUS_PYTHON_DIR = os.path.join(os.path.expanduser('~'), '.local/share/caja-python')
-PYEXTENSIONS_DIR = os.path.join(NAUTILUS_PYTHON_DIR, 'extensions')
+CAJA_PYTHON_DIR = os.path.join(os.path.expanduser('~'), '.local/share/caja-python')
+PYEXTENSIONS_DIR = os.path.join(CAJA_PYTHON_DIR, 'extensions')
 PYEXTENSIONS_NOT_ACTIVE_DIR = os.path.join(PYEXTENSIONS_DIR, 'not_active')
 BIN_PATH_1 = "/usr/bin/"
 BIN_PATH_2 = "/usr/local/bin/"
 INSTALL_STRING = "x-terminal-emulator -e \"gksu apt-get\ -y\ install\ %s\""
-CONFIG_DIR = os.path.join(os.path.expanduser('~'), '.config/nautilus-pyextensions')
+CONFIG_DIR = os.path.join(os.path.expanduser('~'), '.config/caja-pyextensions')
 
 AVAILABLE_LANGS = ['default', 'en', 'es', 'fr', 'it', 'ja']
 
 ICONS_FILENAMES = [(GLADE_PATH + 'export.svg', 'Export'),
-                   (GLADE_PATH + 'restart-nautilus.svg', 'Restart Nautilus'),
+                   (GLADE_PATH + 'restart-caja.svg', 'Restart Caja'),
                    (GLADE_PATH + 'checkbox_checked.svg', 'Select All'),
                    (GLADE_PATH + 'checkbox_unchecked.svg', 'Deselect All'),
                    (GLADE_PATH + 'help-contents.svg', 'Help Contents'),
@@ -102,15 +102,15 @@ def get_entries(inst):
     ( "ViewMenu", None, _("_View") ),
     ( "HelpMenu", None, _("_Help") ),
     # name, stock id, label, accelerator, tooltip, callback
-    ( "Kill", "Restart Nautilus", _("_Kill"), "<control>K", _("Restart Nautilus"), inst.restart_nautilus),
+    ( "Kill", "Restart Caja", _("_Kill"), "<control>K", _("Restart Caja"), inst.restart_caja),
     ( "Add", "gtk-add", _("_Add"), "<control>N", _("Add A PyExtension"), inst.add_pyextension),
     ( "Delete", "gtk-clear", _("_Delete"), "Delete", _("Delete The Selected PyExtension"), inst.remove_pyextension),
     ( "Export", "Export", _("_Export"), "<control>X", _("Export The Selected PyExtension"), inst.export_pyextension),
-    ( "QuitApp", "gtk-quit", _("_Quit"), "<control>Q", _("Quit Nautilus PyExtensions"), inst.quit_application),
+    ( "QuitApp", "gtk-quit", _("_Quit"), "<control>Q", _("Quit Caja PyExtensions"), inst.quit_application),
     ( "SelectAll", "Select All", _("Select _All"), "<control>A", _("Activate All PyExtensions"), inst.flag_all_rows),
     ( "DeselectAll", "Deselect All", _("Deselect A_ll"), "<control><shift>A", _("Deactivate All PyExtensions"), inst.unflag_all_rows),
     ( "Edit", "gtk-edit", _("_Edit"), "<control>E", _("Edit The Selected PyExtension"), inst.edit_pyextension),
     ( "ShowHideToolbar", "Toolbar", _("Show/Hide _Toolbar"), None, _("Toggle Show/Hide Toolbar"), inst.show_hide_toolbar),
     ( "Help", "Help Contents", _("_Help"), None, _("Application's Home Page"), inst.on_help_menu_item_activated),
-    ( "About", "gtk-about", _("_About"), None, _("About Nautilus PyExtensions"), inst.dialog_about),
+    ( "About", "gtk-about", _("_About"), None, _("About Caja PyExtensions"), inst.dialog_about),
     ]

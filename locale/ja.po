@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-12 14:43+0300\n"
+"POT-Creation-Date: 2014-09-16 16:51+0200\n"
 "PO-Revision-Date: 2010-07-30 21:32+0900\n"
 "Last-Translator: Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
 "Language-Team: Japanese <LL@li.org>\n"
@@ -53,8 +53,9 @@ msgid "%s Activated"
 msgstr "%s は有効化されました"
 
 #: modules/core.py:284
+#, fuzzy
 msgid ""
-"You should Restart Nautilus in order to see the changes (Button \"Kill\").\n"
+"You should Restart Caja in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
 msgstr ""
 "変更を確認するには Nautilus を再起動する必要があります (\"再起動\" ボタ"
@@ -62,7 +63,8 @@ msgstr ""
 "とにかく終了しますか？"
 
 #: modules/core.py:305
-msgid "Nautilus Restarted"
+#, fuzzy
+msgid "Caja Restarted"
 msgstr "Nautilus は再起動しました"
 
 #: modules/core.py:310 modules/core.py:341
@@ -134,7 +136,8 @@ msgid "_Kill"
 msgstr "再起動(_K)"
 
 #: modules/cons.py:105
-msgid "Restart Nautilus"
+#, fuzzy
+msgid "Restart Caja"
 msgstr "Nautilus を再起動"
 
 #: modules/cons.py:106
@@ -166,7 +169,8 @@ msgid "_Quit"
 msgstr "終了(_Q)"
 
 #: modules/cons.py:109
-msgid "Quit Nautilus PyExtensions"
+#, fuzzy
+msgid "Quit Caja PyExtensions"
 msgstr "Nautilus PyExtensions を終了"
 
 #: modules/cons.py:110
@@ -205,11 +209,12 @@ msgstr "アプリケーションのホームページ"
 msgid "_About"
 msgstr "情報(_A)"
 
-#: modules/cons.py:115 glade/nautilus-pyextensions.glade.h:1
-msgid "About Nautilus PyExtensions"
+#: modules/cons.py:115 glade/caja-pyextensions.glade.h:1
+#, fuzzy
+msgid "About Caja PyExtensions"
 msgstr "Nautilus PyExtensions について"
 
-#: glade/nautilus-pyextensions.glade.h:2
+#: glade/caja-pyextensions.glade.h:2
 msgid ""
 "Copyright © 2008-2011\n"
 "Giuseppe Penone <giuspen@gmail.com>"
@@ -217,15 +222,17 @@ msgstr ""
 "Copyright © 2008-2011\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 
-#: glade/nautilus-pyextensions.glade.h:4
-msgid "A Handler for the Nautilus Extensions written in Python"
+#: glade/caja-pyextensions.glade.h:4
+#, fuzzy
+msgid "A Handler for the Caja Extensions written in Python"
 msgstr "Python で書かれた Nautilus 機能拡張のハンドラ"
 
-#: glade/nautilus-pyextensions.glade.h:5
+#: glade/caja-pyextensions.glade.h:5
+#, fuzzy
 msgid "http://www.giuspen.com/nautilus-pyextensions/"
 msgstr "http://www.giuspen.com/nautilus-pyextensions/"
 
-#: glade/nautilus-pyextensions.glade.h:6
+#: glade/caja-pyextensions.glade.h:6
 msgid ""
 "\n"
 "This program is free software; you can redistribute it and/or modify\n"
@@ -258,7 +265,7 @@ msgstr ""
 "請求してください(宛先は the Free Software Foundation, Inc.,\n"
 "59Temple Place, Suite 330, Boston, MA 02111-1307 USA)。"
 
-#: glade/nautilus-pyextensions.glade.h:21
+#: glade/caja-pyextensions.glade.h:21
 #, fuzzy
 msgid ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
@@ -270,16 +277,19 @@ msgstr ""
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
 "Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>"
 
-#: glade/nautilus-pyextensions.glade.h:25
-msgid "Nautilus PyExtensions"
-msgstr "Nautilus PyExtensions"
+#: glade/caja-pyextensions.glade.h:25
+#, fuzzy
+msgid "Caja PyExtensions"
+msgstr "PyExtension"
 
-#: default-pyextensions/add-to-audacious2-playlist.py:81
-msgid "Add To Audacious2 Playlist"
+#: default-pyextensions/add-to-audacious-playlist.py:81
+#, fuzzy
+msgid "Add To Audacious Playlist"
 msgstr "Audacious2 のプレイリストに追加"
 
-#: default-pyextensions/add-to-audacious2-playlist.py:82
-msgid "Add the selected Audio file(s) to the Audacious2 Playlist"
+#: default-pyextensions/add-to-audacious-playlist.py:82
+#, fuzzy
+msgid "Add the selected Audio file(s) to the Audacious Playlist"
 msgstr "Audacious2 のプレイリストに選択されたオーディオファイルを追加"
 
 #: default-pyextensions/meld-compare.py:89
@@ -345,16 +355,16 @@ msgstr "Root として開く"
 msgid "Open the selected File/Folder as Root User"
 msgstr "Root ユーザーとして選択されたファイル/フォルダを開く"
 
-#: default-pyextensions/open-terminal-geometry.py:69
-#: default-pyextensions/open-terminal-geometry.py:79
+#: default-pyextensions/open-terminal-here.py:68
+#: default-pyextensions/open-terminal-here.py:78
 msgid "Open Terminal Here"
 msgstr "ここで Terminal を開く"
 
-#: default-pyextensions/open-terminal-geometry.py:70
+#: default-pyextensions/open-terminal-here.py:69
 msgid "Open the Terminal on the Current/Selected Directory"
 msgstr "現在/選択されたディレクトリで Terminal を開く"
 
-#: default-pyextensions/open-terminal-geometry.py:80
+#: default-pyextensions/open-terminal-here.py:79
 msgid "Open the Terminal on the Current Directory"
 msgstr "現在のディレクトリで Terminal を開く"
 
@@ -380,13 +390,14 @@ msgstr "現在/選択されたディレクトリのファイル名で置換"
 msgid "Replace in Filenames of the Current Directory"
 msgstr "現在のディレクトリのファイル名で置換"
 
-#: default-pyextensions/set-as-desktop-background.py:70
-msgid "Set As Desktop Background"
-msgstr "デスクトップの背景として設定"
+#~ msgid "Nautilus PyExtensions"
+#~ msgstr "Nautilus PyExtensions"
 
-#: default-pyextensions/set-as-desktop-background.py:71
-msgid "Set the selected Image file as Desktop Background"
-msgstr "デスクトップの背景として選択された画像を設定"
+#~ msgid "Set As Desktop Background"
+#~ msgstr "デスクトップの背景として設定"
+
+#~ msgid "Set the selected Image file as Desktop Background"
+#~ msgstr "デスクトップの背景として選択された画像を設定"
 
 #~ msgid "Cancel"
 #~ msgstr "キャンセル"

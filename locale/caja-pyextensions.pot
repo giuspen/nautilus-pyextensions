@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-12 14:43+0300\n"
+"POT-Creation-Date: 2014-09-16 16:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,12 +53,12 @@ msgstr ""
 
 #: modules/core.py:284
 msgid ""
-"You should Restart Nautilus in order to see the changes (Button \"Kill\").\n"
+"You should Restart Caja in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
 msgstr ""
 
 #: modules/core.py:305
-msgid "Nautilus Restarted"
+msgid "Caja Restarted"
 msgstr ""
 
 #: modules/core.py:310 modules/core.py:341
@@ -130,7 +130,7 @@ msgid "_Kill"
 msgstr ""
 
 #: modules/cons.py:105
-msgid "Restart Nautilus"
+msgid "Restart Caja"
 msgstr ""
 
 #: modules/cons.py:106
@@ -162,7 +162,7 @@ msgid "_Quit"
 msgstr ""
 
 #: modules/cons.py:109
-msgid "Quit Nautilus PyExtensions"
+msgid "Quit Caja PyExtensions"
 msgstr ""
 
 #: modules/cons.py:110
@@ -201,25 +201,25 @@ msgstr ""
 msgid "_About"
 msgstr ""
 
-#: modules/cons.py:115 glade/nautilus-pyextensions.glade.h:1
-msgid "About Nautilus PyExtensions"
+#: modules/cons.py:115 glade/caja-pyextensions.glade.h:1
+msgid "About Caja PyExtensions"
 msgstr ""
 
-#: glade/nautilus-pyextensions.glade.h:2
+#: glade/caja-pyextensions.glade.h:2
 msgid ""
 "Copyright © 2008-2011\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 msgstr ""
 
-#: glade/nautilus-pyextensions.glade.h:4
-msgid "A Handler for the Nautilus Extensions written in Python"
+#: glade/caja-pyextensions.glade.h:4
+msgid "A Handler for the Caja Extensions written in Python"
 msgstr ""
 
-#: glade/nautilus-pyextensions.glade.h:5
+#: glade/caja-pyextensions.glade.h:5
 msgid "http://www.giuspen.com/nautilus-pyextensions/"
 msgstr ""
 
-#: glade/nautilus-pyextensions.glade.h:6
+#: glade/caja-pyextensions.glade.h:6
 msgid ""
 "\n"
 "This program is free software; you can redistribute it and/or modify\n"
@@ -238,7 +238,7 @@ msgid ""
 "MA 02110-1301, USA."
 msgstr ""
 
-#: glade/nautilus-pyextensions.glade.h:21
+#: glade/caja-pyextensions.glade.h:21
 msgid ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
@@ -246,16 +246,16 @@ msgid ""
 "Spanish (es) Fernando Toledo <ftoledo@docksud.com.ar>"
 msgstr ""
 
-#: glade/nautilus-pyextensions.glade.h:25
-msgid "Nautilus PyExtensions"
+#: glade/caja-pyextensions.glade.h:25
+msgid "Caja PyExtensions"
 msgstr ""
 
-#: default-pyextensions/add-to-audacious2-playlist.py:81
-msgid "Add To Audacious2 Playlist"
+#: default-pyextensions/add-to-audacious-playlist.py:81
+msgid "Add To Audacious Playlist"
 msgstr ""
 
-#: default-pyextensions/add-to-audacious2-playlist.py:82
-msgid "Add the selected Audio file(s) to the Audacious2 Playlist"
+#: default-pyextensions/add-to-audacious-playlist.py:82
+msgid "Add the selected Audio file(s) to the Audacious Playlist"
 msgstr ""
 
 #: default-pyextensions/meld-compare.py:89
@@ -320,16 +320,16 @@ msgstr ""
 msgid "Open the selected File/Folder as Root User"
 msgstr ""
 
-#: default-pyextensions/open-terminal-geometry.py:69
-#: default-pyextensions/open-terminal-geometry.py:79
+#: default-pyextensions/open-terminal-here.py:68
+#: default-pyextensions/open-terminal-here.py:78
 msgid "Open Terminal Here"
 msgstr ""
 
-#: default-pyextensions/open-terminal-geometry.py:70
+#: default-pyextensions/open-terminal-here.py:69
 msgid "Open the Terminal on the Current/Selected Directory"
 msgstr ""
 
-#: default-pyextensions/open-terminal-geometry.py:80
+#: default-pyextensions/open-terminal-here.py:79
 msgid "Open the Terminal on the Current Directory"
 msgstr ""
 
@@ -353,12 +353,4 @@ msgstr ""
 
 #: default-pyextensions/replace-in-filenames.py:111
 msgid "Replace in Filenames of the Current Directory"
-msgstr ""
-
-#: default-pyextensions/set-as-desktop-background.py:70
-msgid "Set As Desktop Background"
-msgstr ""
-
-#: default-pyextensions/set-as-desktop-background.py:71
-msgid "Set the selected Image file as Desktop Background"
 msgstr ""

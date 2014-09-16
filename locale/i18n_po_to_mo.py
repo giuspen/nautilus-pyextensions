@@ -2,7 +2,7 @@
 
 import os, subprocess
 
-APP_NAME = "nautilus-pyextensions"
+APP_NAME = "caja-pyextensions"
 LOCALE_DIR = os.getcwd()
 
 
