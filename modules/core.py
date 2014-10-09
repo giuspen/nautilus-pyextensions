@@ -219,6 +219,7 @@ class CajaPyExtensions:
             # {"exe_name":"package_name",...}
             pyextensions_list = self.store.get_pyextensions_list()
             check_list = {}
+            if "tortoisehg-here.py" in pyextensions_list: check_list["thg"] = "tortoisehg"
             if "meld-compare.py" in pyextensions_list: check_list["meld"] = "meld"
             if "kdiff3-compare.py" in pyextensions_list: check_list["kdiff3"] = "kdiff3-qt"
             if "add-to-audacious-playlist.py" in pyextensions_list: check_list["audacious"] = "audacious"
@@ -240,6 +241,8 @@ class CajaPyExtensions:
             if os.path.exists(pyextension_path + 'c'): os.remove(pyextension_path + 'c')
             self.glade.statusbar.push(self.statusbar_context_id, _('%s Deactivated') % model[path][2])
         else:
+            if "tortoisehg" in model[path][2]:
+                if not self.check_dependency({"thg":"tortoisehg"}): return
             if "meld" in model[path][2]:
                 if not self.check_dependency({"meld":"meld"}): return
             elif "audacious" in model[path][2]:
