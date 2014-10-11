@@ -12,7 +12,7 @@
     <property name="type_hint">dialog</property>
     <property name="transient_for">window</property>
     <property name="program_name">Nautilus PyExtensions</property>
-    <property name="copyright" translatable="yes">Copyright © 2008-2011
+    <property name="copyright" translatable="yes">Copyright © 2008-2014
 Giuseppe Penone &lt;giuspen@gmail.com&gt;</property>
     <property name="comments" translatable="yes">A Handler for the Nautilus Extensions written in Python</property>
     <property name="website">http://www.giuspen.com/nautilus-pyextensions/</property>
@@ -35,8 +35,7 @@ MA 02110-1301, USA.</property>
     <property name="authors">Giuseppe Penone &lt;giuspen@gmail.com&gt;</property>
     <property name="translator_credits" translatable="yes">French (fr) Pierre Prinetti &lt;d0npi3r0@gmail.com&gt;
 Italian (it) Giuseppe Penone &lt;giuspen@gmail.com&gt;
-Japanese (ja) Toshiharu Kudoh &lt;toshi.kd2@gmail.com&gt;
-Spanish (es) Fernando Toledo &lt;ftoledo@docksud.com.ar&gt;</property>
+Japanese (ja) Toshiharu Kudoh &lt;toshi.kd2@gmail.com&gt;</property>
     <property name="artists">Giuseppe Penone &lt;giuspen@gmail.com&gt;
 Angelo Penone &lt;angelo.penone@theparks.it&gt;</property>
     <property name="logo">nautilus-pyextensions.svg</property>

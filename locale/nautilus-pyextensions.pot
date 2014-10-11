@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-12 14:43+0300\n"
+"POT-Creation-Date: 2014-10-12 00:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,77 +34,77 @@ msgstr ""
 msgid "Version %s"
 msgstr ""
 
-#: modules/core.py:229
+#: modules/core.py:230
 #, python-format
 msgid ""
 "%s needs to be installed in order to activate the selected pyextension, "
 "shall I install it?"
 msgstr ""
 
-#: modules/core.py:241
+#: modules/core.py:242
 #, python-format
 msgid "%s Deactivated"
 msgstr ""
 
-#: modules/core.py:250
+#: modules/core.py:253
 #, python-format
 msgid "%s Activated"
 msgstr ""
 
-#: modules/core.py:284
+#: modules/core.py:287
 msgid ""
 "You should Restart Nautilus in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
 msgstr ""
 
-#: modules/core.py:305
+#: modules/core.py:308
 msgid "Nautilus Restarted"
 msgstr ""
 
-#: modules/core.py:310 modules/core.py:341
+#: modules/core.py:313 modules/core.py:344
 msgid "Python Source Files"
 msgstr ""
 
-#: modules/core.py:317
+#: modules/core.py:320
 #, python-format
 msgid "%s Added"
 msgstr ""
 
-#: modules/core.py:319
+#: modules/core.py:322
 #, python-format
 msgid "The PyExtension %s is Already into the List"
 msgstr ""
 
-#: modules/core.py:325 modules/core.py:339 modules/core.py:353
+#: modules/core.py:328 modules/core.py:342 modules/core.py:356
 msgid "No PyExtension is selected"
-msgstr ""
-
-#: modules/core.py:328
-#, python-format
-msgid "%s must be Deactivated in order to be Removed"
 msgstr ""
 
 #: modules/core.py:331
 #, python-format
+msgid "%s must be Deactivated in order to be Removed"
+msgstr ""
+
+#: modules/core.py:334
+#, python-format
 msgid "Do you really want to Delete %s ?"
 msgstr ""
 
-#: modules/core.py:333
+#: modules/core.py:336
 #, python-format
 msgid "%s Removed"
 msgstr ""
 
-#: modules/core.py:347
+#: modules/core.py:350
 #, python-format
 msgid "%s Exported"
 msgstr ""
 
-#: modules/core.py:356
+#: modules/core.py:359
 #, python-format
 msgid "%s must be Deactivated in order to be Edited"
 msgstr ""
 
-#: modules/core.py:360
+#: modules/core.py:363
 #, python-format
 msgid "%s Opened for Editing"
 msgstr ""
@@ -207,7 +207,7 @@ msgstr ""
 
 #: glade/nautilus-pyextensions.glade.h:2
 msgid ""
-"Copyright © 2008-2011\n"
+"Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 msgstr ""
 
@@ -242,20 +242,19 @@ msgstr ""
 msgid ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
-"Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>\n"
-"Spanish (es) Fernando Toledo <ftoledo@docksud.com.ar>"
+"Japanese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>"
 msgstr ""
 
-#: glade/nautilus-pyextensions.glade.h:25
+#: glade/nautilus-pyextensions.glade.h:24
 msgid "Nautilus PyExtensions"
 msgstr ""
 
-#: default-pyextensions/add-to-audacious2-playlist.py:81
-msgid "Add To Audacious2 Playlist"
+#: default-pyextensions/add-to-audacious-playlist.py:81
+msgid "Add To Audacious Playlist"
 msgstr ""
 
-#: default-pyextensions/add-to-audacious2-playlist.py:82
-msgid "Add the selected Audio file(s) to the Audacious2 Playlist"
+#: default-pyextensions/add-to-audacious-playlist.py:82
+msgid "Add the selected Audio file(s) to the Audacious Playlist"
 msgstr ""
 
 #: default-pyextensions/meld-compare.py:89
@@ -320,16 +319,16 @@ msgstr ""
 msgid "Open the selected File/Folder as Root User"
 msgstr ""
 
-#: default-pyextensions/open-terminal-geometry.py:69
-#: default-pyextensions/open-terminal-geometry.py:79
+#: default-pyextensions/open-terminal-here.py:68
+#: default-pyextensions/open-terminal-here.py:78
 msgid "Open Terminal Here"
 msgstr ""
 
-#: default-pyextensions/open-terminal-geometry.py:70
+#: default-pyextensions/open-terminal-here.py:69
 msgid "Open the Terminal on the Current/Selected Directory"
 msgstr ""
 
-#: default-pyextensions/open-terminal-geometry.py:80
+#: default-pyextensions/open-terminal-here.py:79
 msgid "Open the Terminal on the Current Directory"
 msgstr ""
 
@@ -355,10 +354,15 @@ msgstr ""
 msgid "Replace in Filenames of the Current Directory"
 msgstr ""
 
-#: default-pyextensions/set-as-desktop-background.py:70
-msgid "Set As Desktop Background"
+#: default-pyextensions/tortoisehg-here.py:68
+#: default-pyextensions/tortoisehg-here.py:78
+msgid "Open TortoiseHG Here"
 msgstr ""
 
-#: default-pyextensions/set-as-desktop-background.py:71
-msgid "Set the selected Image file as Desktop Background"
+#: default-pyextensions/tortoisehg-here.py:69
+msgid "Open the TortoiseHG Workbench on the Current/Selected Directory"
+msgstr ""
+
+#: default-pyextensions/tortoisehg-here.py:79
+msgid "Open the TortoiseHG Workbench on the Current Directory"
 msgstr ""

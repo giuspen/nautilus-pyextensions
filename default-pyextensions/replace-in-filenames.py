@@ -1,12 +1,12 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds a menu item to the nautilus right-click menu which allows to Replace a String
+"""This module adds a menu item to the Nautilus right-click menu which allows to Replace a String
    with another one in all Current/Selected Directory Filenames just through the right-clicking"""
 
-#   replace-in-filenames.py version 3.1
+#   replace-in-filenames.py version 3.4
 #
-#   Copyright 2011-2013 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2011-2014 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
