@@ -2,7 +2,7 @@
 #
 #       cons.py
 #
-#       Copyright 2008-2013 Giuseppe Penone <giuspen@gmail.com>
+#       Copyright 2008-2014 Giuseppe Penone <giuspen@gmail.com>
 #
 #       This program is free software; you can redistribute it and/or modify
 #       it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ import os
 
 
 APP_NAME = "nautilus-pyextensions"
-VERSION = "3.2"
+VERSION = "3.4"
 if os.path.isfile('modules/core.py'):
     GLADE_PATH = 'glade/'
     LOCALE_PATH = 'locale/'
