@@ -4,7 +4,7 @@
 """This module adds a menu item to the Caja right-click menu which allows to
    open the selected file/folder as root user, so having administrator rights"""
 
-#   open-as-root.py version 3.3
+#   open-as-root.py version 3.4
 #
 #   Copyright 2009-2014 Giuseppe Penone <giuspen@gmail.com>
 #

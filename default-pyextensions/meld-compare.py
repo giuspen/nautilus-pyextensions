@@ -4,7 +4,7 @@
 """This module adds menu items to the Caja right-click menu which allows to compare
    the selected files/folder using Meld (Diff and merge tool) just through the right-clicking"""
 
-#   meld-compare.py version 3.3
+#   meld-compare.py version 3.4
 #
 #   Copyright 2009-2014 Giuseppe Penone <giuspen@gmail.com>
 #

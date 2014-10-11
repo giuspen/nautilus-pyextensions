@@ -23,7 +23,7 @@ import os
 
 
 APP_NAME = "caja-pyextensions"
-VERSION = "3.3"
+VERSION = "3.4"
 if os.path.isfile('modules/core.py'):
     GLADE_PATH = 'glade/'
     LOCALE_PATH = 'locale/'

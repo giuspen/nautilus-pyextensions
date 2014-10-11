@@ -4,7 +4,7 @@
 """This module adds a menu item to the Caja right-click menu which allows to Replace a String
    with another one in all Current/Selected Directory Filenames just through the right-clicking"""
 
-#   replace-in-filenames.py version 3.3
+#   replace-in-filenames.py version 3.4
 #
 #   Copyright 2011-2014 Giuseppe Penone <giuspen@gmail.com>
 #

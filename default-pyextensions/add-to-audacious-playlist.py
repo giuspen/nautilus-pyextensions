@@ -4,7 +4,7 @@
 """This module adds a menu item to the Caja right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
-#   add-to-audacious-playlist.py version 3.3
+#   add-to-audacious-playlist.py version 3.4
 #
 #   Copyright 2008-2014 Giuseppe Penone <giuspen@gmail.com>
 #

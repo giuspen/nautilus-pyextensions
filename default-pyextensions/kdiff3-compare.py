@@ -4,7 +4,7 @@
 """This module adds menu items to the Caja right-click menu which allows to compare
    the selected files/folder using Kdiff3 (Diff and merge tool) just through the right-clicking"""
 
-#   kdiff3-compare.py version 3.3
+#   kdiff3-compare.py version 3.4
 #
 #   Copyright 2009-2014 Giuseppe Penone <giuspen@gmail.com>
 #

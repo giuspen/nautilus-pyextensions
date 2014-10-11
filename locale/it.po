@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: caja-pyextensions 3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-16 17:15+0200\n"
-"PO-Revision-Date: 2014-09-16 17:38+0100\n"
+"POT-Creation-Date: 2014-10-12 00:59+0200\n"
+"PO-Revision-Date: 2014-10-12 01:00+0100\n"
 "Last-Translator: Giuseppe Penone <giuspen@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -35,7 +35,7 @@ msgstr "PyExtension"
 msgid "Version %s"
 msgstr "Versione %s"
 
-#: modules/core.py:229
+#: modules/core.py:230
 #, python-format
 msgid ""
 "%s needs to be installed in order to activate the selected pyextension, "
@@ -44,17 +44,17 @@ msgstr ""
 "%s deve essere installato per attivare la pyextension selezionata, vuoi "
 "installarlo?"
 
-#: modules/core.py:241
+#: modules/core.py:242
 #, python-format
 msgid "%s Deactivated"
 msgstr "%s Disattivata"
 
-#: modules/core.py:250
+#: modules/core.py:253
 #, python-format
 msgid "%s Activated"
 msgstr "%s Attivata"
 
-#: modules/core.py:284
+#: modules/core.py:287
 msgid ""
 "You should Restart Caja in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
@@ -62,54 +62,54 @@ msgstr ""
 "Dovresti Riavviare Caja per vedere i cambiamenti (Bottone \"Riavvia\").\n"
 "Vuoi uscire comunque?"
 
-#: modules/core.py:305
+#: modules/core.py:308
 msgid "Caja Restarted"
 msgstr "Caja Riavviato"
 
-#: modules/core.py:310 modules/core.py:341
+#: modules/core.py:313 modules/core.py:344
 msgid "Python Source Files"
 msgstr "File Sorgenti Python"
 
-#: modules/core.py:317
+#: modules/core.py:320
 #, python-format
 msgid "%s Added"
 msgstr "%s Aggiunta"
 
-#: modules/core.py:319
+#: modules/core.py:322
 #, python-format
 msgid "The PyExtension %s is Already into the List"
 msgstr "La PyExtension %s e' gia' nella Lista"
 
-#: modules/core.py:325 modules/core.py:339 modules/core.py:353
+#: modules/core.py:328 modules/core.py:342 modules/core.py:356
 msgid "No PyExtension is selected"
 msgstr "Nessuna PyExtension e' selezionata"
 
-#: modules/core.py:328
+#: modules/core.py:331
 #, python-format
 msgid "%s must be Deactivated in order to be Removed"
 msgstr "%s deve essere Disattivata per essere Rimossa"
 
-#: modules/core.py:331
+#: modules/core.py:334
 #, python-format
 msgid "Do you really want to Delete %s ?"
 msgstr "Vuoi davvero Eliminare %s ?"
 
-#: modules/core.py:333
+#: modules/core.py:336
 #, python-format
 msgid "%s Removed"
 msgstr "%s Rimossa"
 
-#: modules/core.py:347
+#: modules/core.py:350
 #, python-format
 msgid "%s Exported"
 msgstr "%s Esportata"
 
-#: modules/core.py:356
+#: modules/core.py:359
 #, python-format
 msgid "%s must be Deactivated in order to be Edited"
 msgstr "%s deve essere Disattivata per essere Modificata"
 
-#: modules/core.py:360
+#: modules/core.py:363
 #, python-format
 msgid "%s Opened for Editing"
 msgstr "%s Aperta per la Modifica"
@@ -380,3 +380,16 @@ msgstr "Sostituisci nei Nomi di File della Cartella Corrente/Selezionata"
 #: default-pyextensions/replace-in-filenames.py:111
 msgid "Replace in Filenames of the Current Directory"
 msgstr "Sostituisci nei Nomi di File della Cartella Corrente"
+
+#: default-pyextensions/tortoisehg-here.py:68
+#: default-pyextensions/tortoisehg-here.py:78
+msgid "Open TortoiseHG Here"
+msgstr "Apri TortoiseHG Qui"
+
+#: default-pyextensions/tortoisehg-here.py:69
+msgid "Open the TortoiseHG Workbench on the Current/Selected Directory"
+msgstr "Apri TortoiseHG sulla Cartella Corrente/Selezionata"
+
+#: default-pyextensions/tortoisehg-here.py:79
+msgid "Open the TortoiseHG Workbench on the Current Directory"
+msgstr "Apri TortoiseHG sulla Cartella Corrente"
