@@ -303,7 +303,7 @@ class NautilusPyExtensions:
 
     def restart_nautilus(self, *args):
         """Restarts Nautilus"""
-        subprocess.call('killall nautilus ; sleep 1 ; nautilus &', shell=True)
+        subprocess.call('killall nautilus', shell=True)
         self.store.set_nautilus_restart_needed(False)
         self.glade.statusbar.push(self.statusbar_context_id, _('Nautilus Restarted'))
 
