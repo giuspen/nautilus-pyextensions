@@ -1,0 +1,1 @@
+A graphical handler of the nautilus file manager python extensions, including some default pyextensions
