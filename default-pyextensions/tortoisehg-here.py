@@ -6,7 +6,7 @@
 
 #   tortoisehg-here.py version 3.4
 #
-#   Copyright 2009-2014 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2015 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by

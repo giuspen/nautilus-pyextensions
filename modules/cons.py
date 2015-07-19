@@ -23,7 +23,7 @@ import os
 
 
 APP_NAME = "nemo-pyextensions"
-VERSION = "3.4.1"
+VERSION = "3.4.2"
 if os.path.isfile('modules/core.py'):
     GLADE_PATH = 'glade/'
     LOCALE_PATH = 'locale/'
