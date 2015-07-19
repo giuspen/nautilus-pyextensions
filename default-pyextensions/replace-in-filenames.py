@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds a menu item to the Caja right-click menu which allows to Replace a String
+"""This module adds a menu item to the Nemo right-click menu which allows to Replace a String
    with another one in all Current/Selected Directory Filenames just through the right-clicking"""
 
 #   replace-in-filenames.py version 3.4
@@ -23,11 +23,11 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Caja, GObject, Gtk
+from gi.repository import Nemo, GObject, Gtk
 import urllib, os
 import locale, gettext
 
-APP_NAME = "caja-pyextensions"
+APP_NAME = "nemo-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 # internationalization
 locale.setlocale(locale.LC_ALL, '')
@@ -37,11 +37,11 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class ReplaceInFilenames(GObject.GObject, Caja.MenuProvider):
-    """Implements the 'Replace in Filenames' extension to the Caja right-click menu"""
+class ReplaceInFilenames(GObject.GObject, Nemo.MenuProvider):
+    """Implements the 'Replace in Filenames' extension to the Nemo right-click menu"""
 
     def __init__(self):
-        """Caja crashes if a plugin doesn't implement the __init__ method"""
+        """Nemo crashes if a plugin doesn't implement the __init__ method"""
         pass
 
     def run(self, menu, selected):
@@ -93,10 +93,10 @@ class ReplaceInFilenames(GObject.GObject, Caja.MenuProvider):
                         os.rename(old_filename, os.path.join(curr_dir, new_name))
 
     def get_file_items(self, window, sel_items):
-        """Adds the 'Replace in Filenames' menu item to the Caja right-click menu,
+        """Adds the 'Replace in Filenames' menu item to the Nemo right-click menu,
            connects its 'activate' signal to the 'run' method passing the selected Directory/File"""
         if len(sel_items) != 1 or sel_items[0].get_uri_scheme() not in ['file', 'smb']: return
-        item = Caja.MenuItem(name='CajaPython::gtk-find-and-replace',
+        item = Nemo.MenuItem(name='NemoPython::gtk-find-and-replace',
                                  label=_('Replace in Filenames'),
                                  tip=_('Replace in Filenames of the Current/Selected Directory'),
                                  icon='gtk-find-and-replace')
@@ -104,9 +104,9 @@ class ReplaceInFilenames(GObject.GObject, Caja.MenuProvider):
         return item,
 
     def get_background_items(self, window, current_directory):
-        """Adds the 'Replace in Filenames' menu item to the Caja right-click menu,
+        """Adds the 'Replace in Filenames' menu item to the Nemo right-click menu,
            connects its 'activate' signal to the 'run' method passing the current Directory"""
-        item = Caja.MenuItem(name='CajaPython::gtk-find-and-replace',
+        item = Nemo.MenuItem(name='NemoPython::gtk-find-and-replace',
                                  label=_('Replace in Filenames'),
                                  tip=_('Replace in Filenames of the Current Directory'),
                                  icon='gtk-find-and-replace')

@@ -31,7 +31,7 @@ clean:
 	rm -f build-stamp configure-stamp
 
 	rm -rf build
-	rm -rf debian/caja-pyextensions
+	rm -rf debian/nemo-pyextensions
 
 	dh_clean
 

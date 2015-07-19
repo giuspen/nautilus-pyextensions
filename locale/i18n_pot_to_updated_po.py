@@ -2,7 +2,7 @@
 
 import os, subprocess
 
-APP_NAME = "caja-pyextensions"
+APP_NAME = "nemo-pyextensions"
 LOCALE_DIR = os.getcwd()
 
 

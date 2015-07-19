@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: caja-pyextensions 3.3\n"
+"Project-Id-Version: nemo-pyextensions 3.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-12 00:59+0200\n"
 "PO-Revision-Date: 2014-10-12 01:00+0100\n"
@@ -56,15 +56,15 @@ msgstr "%s Attivata"
 
 #: modules/core.py:287
 msgid ""
-"You should Restart Caja in order to see the changes (Button \"Kill\").\n"
+"You should Restart Nemo in order to see the changes (Button \"Kill\").\n"
 "Do you want to leave anyway?"
 msgstr ""
-"Dovresti Riavviare Caja per vedere i cambiamenti (Bottone \"Riavvia\").\n"
+"Dovresti Riavviare Nemo per vedere i cambiamenti (Bottone \"Riavvia\").\n"
 "Vuoi uscire comunque?"
 
 #: modules/core.py:308
-msgid "Caja Restarted"
-msgstr "Caja Riavviato"
+msgid "Nemo Restarted"
+msgstr "Nemo Riavviato"
 
 #: modules/core.py:313 modules/core.py:344
 msgid "Python Source Files"
@@ -135,8 +135,8 @@ msgid "_Kill"
 msgstr "_Riavvia"
 
 #: modules/cons.py:105
-msgid "Restart Caja"
-msgstr "Riavvia Caja"
+msgid "Restart Nemo"
+msgstr "Riavvia Nemo"
 
 #: modules/cons.py:106
 msgid "_Add"
@@ -167,8 +167,8 @@ msgid "_Quit"
 msgstr "Es_ci"
 
 #: modules/cons.py:109
-msgid "Quit Caja PyExtensions"
-msgstr "Esci da Caja PyExtensions"
+msgid "Quit Nemo PyExtensions"
+msgstr "Esci da Nemo PyExtensions"
 
 #: modules/cons.py:110
 msgid "Select _All"
@@ -206,11 +206,11 @@ msgstr "Home Page dell'Applicazione"
 msgid "_About"
 msgstr "_Informazioni"
 
-#: modules/cons.py:115 glade/caja-pyextensions.glade.h:1
-msgid "About Caja PyExtensions"
-msgstr "Informazioni su Caja PyExtensions"
+#: modules/cons.py:115 glade/nemo-pyextensions.glade.h:1
+msgid "About Nemo PyExtensions"
+msgstr "Informazioni su Nemo PyExtensions"
 
-#: glade/caja-pyextensions.glade.h:2
+#: glade/nemo-pyextensions.glade.h:2
 msgid ""
 "Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
@@ -218,15 +218,15 @@ msgstr ""
 "Copyright © 2008-2014\n"
 "Giuseppe Penone <giuspen@gmail.com>"
 
-#: glade/caja-pyextensions.glade.h:4
-msgid "A Handler for the Caja Extensions written in Python"
-msgstr "Un Gestore delle Estensioni Caja scritte in Python"
+#: glade/nemo-pyextensions.glade.h:4
+msgid "A Handler for the Nemo Extensions written in Python"
+msgstr "Un Gestore delle Estensioni Nemo scritte in Python"
 
-#: glade/caja-pyextensions.glade.h:5
+#: glade/nemo-pyextensions.glade.h:5
 msgid "http://www.giuspen.com/nautilus-pyextensions/"
 msgstr "http://www.giuspen.com/nautilus-pyextensions/"
 
-#: glade/caja-pyextensions.glade.h:6
+#: glade/nemo-pyextensions.glade.h:6
 msgid ""
 "\n"
 "This program is free software; you can redistribute it and/or modify\n"
@@ -260,7 +260,7 @@ msgstr ""
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,\n"
 "MA 02110-1301, USA."
 
-#: glade/caja-pyextensions.glade.h:21
+#: glade/nemo-pyextensions.glade.h:21
 msgid ""
 "French (fr) Pierre Prinetti <d0npi3r0@gmail.com>\n"
 "Italian (it) Giuseppe Penone <giuspen@gmail.com>\n"
@@ -270,9 +270,9 @@ msgstr ""
 "Italiano (it) Giuseppe Penone <giuspen@gmail.com>\n"
 "Giapponese (ja) Toshiharu Kudoh <toshi.kd2@gmail.com>"
 
-#: glade/caja-pyextensions.glade.h:24
-msgid "Caja PyExtensions"
-msgstr "Caja PyExtensions"
+#: glade/nemo-pyextensions.glade.h:24
+msgid "Nemo PyExtensions"
+msgstr "Nemo PyExtensions"
 
 #: default-pyextensions/add-to-audacious-playlist.py:81
 msgid "Add To Audacious Playlist"

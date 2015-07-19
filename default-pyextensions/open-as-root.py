@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds a menu item to the Caja right-click menu which allows to
+"""This module adds a menu item to the Nemo right-click menu which allows to
    open the selected file/folder as root user, so having administrator rights"""
 
 #   open-as-root.py version 3.4
@@ -23,11 +23,11 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Caja, GObject, Gtk, GdkPixbuf
+from gi.repository import Nemo, GObject, Gtk, GdkPixbuf
 import urllib, subprocess, re
 import locale, gettext
 
-APP_NAME = "caja-pyextensions"
+APP_NAME = "nemo-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 ICONPATH = "/usr/share/pixmaps/gksu.png"
 # internationalization
@@ -38,11 +38,11 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class OpenAsRoot(GObject.GObject, Caja.MenuProvider):
-    """Implements the 'Open as Root' extension to the Caja right-click menu"""
+class OpenAsRoot(GObject.GObject, Nemo.MenuProvider):
+    """Implements the 'Open as Root' extension to the Nemo right-click menu"""
 
     def __init__(self):
-        """Caja crashes if a plugin doesn't implement the __init__ method"""
+        """Nemo crashes if a plugin doesn't implement the __init__ method"""
         try:
             factory = Gtk.IconFactory()
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(ICONPATH)
@@ -56,13 +56,13 @@ class OpenAsRoot(GObject.GObject, Caja.MenuProvider):
         subprocess.call("gksu gnome-open %s &" % source_path, shell=True)
 
     def get_file_items(self, window, sel_items):
-        """Adds the 'Open as Root' menu item to the Caja right-click menu,
+        """Adds the 'Open as Root' menu item to the Nemo right-click menu,
            connects its 'activate' signal to the 'run' method passing the selected File/Folder"""
         if len(sel_items) != 1 or sel_items[0].get_uri_scheme() != 'file': return
         uri_raw = sel_items[0].get_uri()
         if len(uri_raw) < 7: return
         source_path = urllib.unquote(uri_raw[7:])
-        item = Caja.MenuItem(name='CajaPython::gksu',
+        item = Nemo.MenuItem(name='NemoPython::gksu',
                                  label=_('Open as Root'),
                                  tip=_('Open the selected File/Folder as Root User'),
                                  icon='gksu')

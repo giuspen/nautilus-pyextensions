@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds a menu item to the Caja right-click menu which allows to Open Tortoise HG
+"""This module adds a menu item to the Nemo right-click menu which allows to Open Tortoise HG
    on the Selected Folder/Current Directory just through the right-clicking"""
 
 #   tortoisehg-here.py version 3.4
@@ -23,11 +23,11 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Caja, GObject, Gtk, GdkPixbuf
+from gi.repository import Nemo, GObject, Gtk, GdkPixbuf
 import urllib, os, subprocess
 import locale, gettext
 
-APP_NAME = "caja-pyextensions"
+APP_NAME = "nemo-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 ICONPATH = "/usr/share/icons/hicolor/48x48/apps/thg_logo.png"
 # internationalization
@@ -38,11 +38,11 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class OpenTortoiseHGHere(GObject.GObject, Caja.MenuProvider):
-    """Implements the 'Open TortoiseHG Here' extension to the caja right-click menu"""
+class OpenTortoiseHGHere(GObject.GObject, Nemo.MenuProvider):
+    """Implements the 'Open TortoiseHG Here' extension to the Nemo right-click menu"""
 
     def __init__(self):
-        """Caja crashes if a plugin doesn't implement the __init__ method"""
+        """Nemo crashes if a plugin doesn't implement the __init__ method"""
         try:
             factory = Gtk.IconFactory()
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(ICONPATH)
@@ -61,10 +61,10 @@ class OpenTortoiseHGHere(GObject.GObject, Caja.MenuProvider):
         subprocess.call(bash_string, shell=True)
 
     def get_file_items(self, window, sel_items):
-        """Adds the 'Open TortoiseHG Here' menu item to the Caja right-click menu,
+        """Adds the 'Open TortoiseHG Here' menu item to the Nemo right-click menu,
            connects its 'activate' signal to the 'run' method passing the selected Directory/File"""
         if len(sel_items) != 1 or sel_items[0].get_uri_scheme() != 'file': return
-        item = Caja.MenuItem(name='CajaPython::thg',
+        item = Nemo.MenuItem(name='NemoPython::thg',
                                  label=_('Open TortoiseHG Here'),
                                  tip=_('Open the TortoiseHG Workbench on the Current/Selected Directory'),
                                  icon='thg_logo')
@@ -72,9 +72,9 @@ class OpenTortoiseHGHere(GObject.GObject, Caja.MenuProvider):
         return [item]
 
     def get_background_items(self, window, current_directory):
-        """Adds the 'Open TortoiseHG Here' menu item to the Caja right-click menu,
+        """Adds the 'Open TortoiseHG Here' menu item to the Nemo right-click menu,
            connects its 'activate' signal to the 'run' method passing the current Directory"""
-        item = Caja.MenuItem(name='CajaPython::thg',
+        item = Nemo.MenuItem(name='NemoPython::thg',
                                  label=_('Open TortoiseHG Here'),
                                  tip=_('Open the TortoiseHG Workbench on the Current Directory'),
                                  icon='thg_logo')

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Nemo PyExtensions
+Comment=Nemo Python Extensions Handler
+Comment[it]=Gestore Estensioni Python a Nemo
+Comment[fr]=Gesteur des extensions PyExtension pour Nemo
+Comment[ja]=Python で書かれた Nemo 機能拡張のハンドラ
+Exec=nemo-pyextensions
+Icon=/usr/share/icons/hicolor/scalable/apps/nemo-pyextensions.svg
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;

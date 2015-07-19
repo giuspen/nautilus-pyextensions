@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds a menu item to the Caja right-click menu which allows to add
+"""This module adds a menu item to the Nemo right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
 #   add-to-audacious-playlist.py version 3.4
@@ -23,11 +23,11 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Caja, GObject, Gtk, GdkPixbuf
+from gi.repository import Nemo, GObject, Gtk, GdkPixbuf
 import urllib, subprocess, re
 import locale, gettext
 
-APP_NAME = "caja-pyextensions"
+APP_NAME = "nemo-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 ICONPATH = "/usr/share/icons/hicolor/scalable/apps/audacious.svg"
 EXTENSIONS_WHITELIST = [".mp3"]
@@ -39,11 +39,11 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class AddToAudaciousPlaylist(GObject.GObject, Caja.MenuProvider):
-    """Implements the 'Add To Audacious Playlist' extension to the Caja right-click menu"""
+class AddToAudaciousPlaylist(GObject.GObject, Nemo.MenuProvider):
+    """Implements the 'Add To Audacious Playlist' extension to the Nemo right-click menu"""
 
     def __init__(self):
-        """Caja crashes if a plugin doesn't implement the __init__ method"""
+        """Nemo crashes if a plugin doesn't implement the __init__ method"""
         try:
             factory = Gtk.IconFactory()
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(ICONPATH)
@@ -57,7 +57,7 @@ class AddToAudaciousPlaylist(GObject.GObject, Caja.MenuProvider):
         subprocess.call("audacious -e " + " ".join(source_path_list) + " &", shell=True)
 
     def get_file_items(self, window, sel_items):
-        """Adds the 'Add To Audacious Playlist' menu item to the Caja right-click menu,
+        """Adds the 'Add To Audacious Playlist' menu item to the Nemo right-click menu,
            connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
         if len(sel_items) == 0: return
         if sel_items[0].is_directory() or sel_items[0].get_uri_scheme() != 'file':
@@ -77,7 +77,7 @@ class AddToAudaciousPlaylist(GObject.GObject, Caja.MenuProvider):
                 or "application/ogg" in filetype:
                     source_path_list.append(source_path)
         if source_path_list:
-            item = Caja.MenuItem(name='CajaPython::audacious',
+            item = Nemo.MenuItem(name='NemoPython::audacious',
                                      label=_('Add To Audacious Playlist'),
                                      tip=_('Add the selected Audio file(s) to the Audacious Playlist'),
                                      icon='audacious')

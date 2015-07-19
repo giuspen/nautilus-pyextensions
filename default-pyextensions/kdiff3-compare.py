@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-"""This module adds menu items to the Caja right-click menu which allows to compare
+"""This module adds menu items to the Nemo right-click menu which allows to compare
    the selected files/folder using Kdiff3 (Diff and merge tool) just through the right-clicking"""
 
 #   kdiff3-compare.py version 3.4
@@ -23,11 +23,11 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
-from gi.repository import Caja, GObject, Gtk, GdkPixbuf
+from gi.repository import Nemo, GObject, Gtk, GdkPixbuf
 import urllib, os, subprocess, re
 import locale, gettext
 
-APP_NAME = "caja-pyextensions"
+APP_NAME = "nemo-pyextensions"
 LOCALE_PATH = "/usr/share/locale/"
 NAUPYEXT_KDIFF3 = 'NAUPYEXT_KDIFF3'
 ICONPATH = "/usr/share/icons/hicolor/32x32/apps/kdiff3.png"
@@ -39,11 +39,11 @@ _ = gettext.gettext
 # post internationalization code starts here
 
 
-class Kdiff3Actions(GObject.GObject, Caja.MenuProvider):
-    """Implements the 'Kdiff3 Compare' extension to the Caja right-click menu"""
+class Kdiff3Actions(GObject.GObject, Nemo.MenuProvider):
+    """Implements the 'Kdiff3 Compare' extension to the Nemo right-click menu"""
 
     def __init__(self):
-        """Caja crashes if a plugin doesn't implement the __init__ method"""
+        """Nemo crashes if a plugin doesn't implement the __init__ method"""
         try:
             factory = Gtk.IconFactory()
             pixbuf = GdkPixbuf.Pixbuf.new_from_file(ICONPATH)
@@ -61,7 +61,7 @@ class Kdiff3Actions(GObject.GObject, Caja.MenuProvider):
         os.environ[NAUPYEXT_KDIFF3] = element
 
     def get_file_items(self, window, sel_items):
-        """Adds the 'Add To Audacious Playlist' menu item to the Caja right-click menu,
+        """Adds the 'Add To Audacious Playlist' menu item to the Nemo right-click menu,
            connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
         num_paths = len(sel_items)
         if num_paths == 0 or num_paths > 2: return
@@ -85,7 +85,7 @@ class Kdiff3Actions(GObject.GObject, Caja.MenuProvider):
                 element_1 = re.escape(element_1)
                 element_2 = re.escape(element_2)
             else: return
-            item = Caja.MenuItem(name='Kdiff3::kdiff3',
+            item = Nemo.MenuItem(name='Kdiff3::kdiff3',
                                      label=_('Kdiff3 Compare'),
                                      tip=_('Compare the selected Files/Folders using Kdiff3 (Diff and merge tool)'),
                                      icon='kdiff3')
@@ -96,15 +96,15 @@ class Kdiff3Actions(GObject.GObject, Caja.MenuProvider):
             filetype = subprocess.Popen("file -i %s" % re.escape(element_1), shell=True, stdout=subprocess.PIPE).communicate()[0]
             if "text" not in filetype and "xml" not in filetype: return
         # top menuitem
-        top_menuitem = Caja.MenuItem(name='Kdiff3::actions',
+        top_menuitem = Nemo.MenuItem(name='Kdiff3::actions',
                                          label=_('Kdiff3 Actions'),
                                          tip=_('Kdiff3 (Diff and merge tool) Actions'),
                                          icon='kdiff3')
         # creation of submenus
-        submenu = Caja.Menu()
+        submenu = Nemo.Menu()
         top_menuitem.set_submenu(submenu)
         # submenu items save
-        sub_menuitem_save = Caja.MenuItem(name='Kdiff3::save',
+        sub_menuitem_save = Nemo.MenuItem(name='Kdiff3::save',
                                               label=_('Save Path for Future Use'),
                                               tip=_('Save the Selected File/Dir Path for Future Use'),
                                               icon='gtk-save')
@@ -113,7 +113,7 @@ class Kdiff3Actions(GObject.GObject, Caja.MenuProvider):
         # submenu items compare with saved
         stored_path = os.environ[NAUPYEXT_KDIFF3] if NAUPYEXT_KDIFF3 in os.environ else ""
         if stored_path and stored_path != element_1 and ( (os.path.isfile(stored_path) and os.path.isfile(element_1) ) or (os.path.isdir(stored_path) and os.path.isdir(element_1) ) ):
-            sub_menuitem_compare_saved = Caja.MenuItem(name='Kdiff3::compare_saved',
+            sub_menuitem_compare_saved = Nemo.MenuItem(name='Kdiff3::compare_saved',
                                                            label=_('Compare with %s' % stored_path.replace("_", " ") ),
                                                            tip=_('Compare the Selected File/Dir with %s' % stored_path),
                                                            icon='gtk-execute')
