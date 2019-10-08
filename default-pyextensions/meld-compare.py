@@ -1,12 +1,12 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """This module adds menu items to the Nemo right-click menu which allows to compare
    the selected files/folder using Meld (Diff and merge tool) just through the right-clicking"""
 
-#   meld-compare.py version 3.4
+#   meld-compare.py version 3.5
 #
-#   Copyright 2009-2015 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2019 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,10 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
+import gi
+gi.require_version('Nemo', '3.0')
 from gi.repository import Nemo, GObject, Gtk, GdkPixbuf
-import urllib, os, subprocess, re
+import urllib.parse, os, subprocess, re
 import locale, gettext
 
 APP_NAME = "nemo-pyextensions"
@@ -52,49 +54,47 @@ class MeldActions(GObject.GObject, Nemo.MenuProvider):
             factory.add_default()
         except: pass
 
-    def run(self, menu, element_1, element_2):
+    def _run(self, menu, element_1, element_2):
         """Runs the Meld Comparison of selected files/folders"""
-        subprocess.call("meld %s %s &" % (element_1, element_2), shell=True)
+        subprocess.call("meld %s %s &" % (re.escape(element_1), re.escape(element_2)), shell=True)
 
-    def meld_save(self, menu, element):
+    def _meld_save(self, menu, element):
         """Save the File/Folder Path for Future Use"""
         os.environ[NAUPYEXT_MELD] = element
 
+    def _is_text_document(self, filepath):
+        """The given filepath is a text document"""
+        filetype = subprocess.Popen("file -i %s" % re.escape(filepath), shell=True, stdout=subprocess.PIPE).communicate()[0]
+        return (b"text" in filetype or b"xml" in filetype)
+
     def get_file_items(self, window, sel_items):
         """Adds the 'Add To Audacious Playlist' menu item to the Nemo right-click menu,
-           connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
+           connects its 'activate' signal to the '_run' method passing the list of selected Audio items"""
         num_paths = len(sel_items)
         if num_paths == 0 or num_paths > 2: return
         uri_raw = sel_items[0].get_uri()
         if len(uri_raw) < 7: return
-        element_1 = urllib.unquote(uri_raw[7:])
+        element_1 = urllib.parse.unquote(uri_raw[7:])
         if num_paths == 2:
             uri_raw = sel_items[1].get_uri()
             if len(uri_raw) < 7: return
-            element_2 = urllib.unquote(uri_raw[7:])
+            element_2 = urllib.parse.unquote(uri_raw[7:])
             if os.path.isfile(element_1):
                 if not os.path.isfile(element_2): return
-                element_1 = re.escape(element_1)
-                filetype = subprocess.Popen("file -i %s" % element_1, shell=True, stdout=subprocess.PIPE).communicate()[0]
-                if "text" not in filetype and "xml" not in filetype: return
-                element_2 = re.escape(element_2)
-                filetype = subprocess.Popen("file -i %s" % element_2, shell=True, stdout=subprocess.PIPE).communicate()[0]
-                if "text" not in filetype and "xml" not in filetype: return
+                if not self._is_text_document(element_1): return
+                if not self._is_text_document(element_2): return
             elif os.path.isdir(element_1):
                 if not os.path.isdir(element_2): return
-                element_1 = re.escape(element_1)
-                element_2 = re.escape(element_2)
             else: return
             item = Nemo.MenuItem(name='Meld::meld',
                                      label=_('Meld Compare'),
                                      tip=_('Compare the selected Files/Folders using Meld (Diff and merge tool)'),
                                      icon='meld')
-            item.connect('activate', self.run, element_1, element_2)
+            item.connect('activate', self._run, element_1, element_2)
             return item,
         # only one item selected
-        if os.path.isfile(element_1):
-            filetype = subprocess.Popen("file -i %s" % re.escape(element_1), shell=True, stdout=subprocess.PIPE).communicate()[0]
-            if "text" not in filetype and "xml" not in filetype: return
+        if os.path.isfile(element_1) and not self._is_text_document(element_1):
+            return
         # top menuitem
         top_menuitem = Nemo.MenuItem(name='Meld::actions',
                                          label=_('Meld Actions'),
@@ -108,7 +108,7 @@ class MeldActions(GObject.GObject, Nemo.MenuProvider):
                                               label=_('Save Path for Future Use'),
                                               tip=_('Save the Selected File/Dir Path for Future Use'),
                                               icon='gtk-save')
-        sub_menuitem_save.connect('activate', self.meld_save, element_1)
+        sub_menuitem_save.connect('activate', self._meld_save, element_1)
         submenu.append_item(sub_menuitem_save)
         # submenu items compare with saved
         stored_path = os.environ[NAUPYEXT_MELD] if NAUPYEXT_MELD in os.environ else ""
@@ -117,6 +117,6 @@ class MeldActions(GObject.GObject, Nemo.MenuProvider):
                                                            label=_('Compare with %s' % stored_path.replace("_", " ") ),
                                                            tip=_('Compare the Selected File/Dir with %s' % stored_path),
                                                            icon='gtk-execute')
-            sub_menuitem_compare_saved.connect('activate', self.run, re.escape(element_1), re.escape(stored_path))
+            sub_menuitem_compare_saved.connect('activate', self._run, element_1, stored_path)
             submenu.append_item(sub_menuitem_compare_saved)
         return top_menuitem,
