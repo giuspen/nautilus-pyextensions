@@ -1,12 +1,12 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """This module adds a menu item to the Nemo right-click menu which allows to add
    all the selected files to the Audacious Playlist just through the right-clicking"""
 
-#   add-to-audacious-playlist.py version 3.4
+#   add-to-audacious-playlist.py version 4.2
 #
-#   Copyright 2008-2015 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2008-2019 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,10 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
+import gi
+gi.require_version('Nemo', '3.0')
 from gi.repository import Nemo, GObject, Gtk, GdkPixbuf
-import urllib, subprocess, re
+import urllib.parse, subprocess, re
 import locale, gettext
 
 APP_NAME = "nemo-pyextensions"
@@ -52,13 +54,13 @@ class AddToAudaciousPlaylist(GObject.GObject, Nemo.MenuProvider):
             factory.add_default()
         except: pass
 
-    def run(self, menu, source_path_list):
+    def _run(self, menu, source_path_list):
         """Runs the Adding of selected Audio file(s) to the Audacious Playlist"""
         subprocess.call("audacious -e " + " ".join(source_path_list) + " &", shell=True)
 
     def get_file_items(self, window, sel_items):
         """Adds the 'Add To Audacious Playlist' menu item to the Nemo right-click menu,
-           connects its 'activate' signal to the 'run' method passing the list of selected Audio items"""
+           connects its 'activate' signal to the '_run' method passing the list of selected Audio items"""
         if len(sel_items) == 0: return
         if sel_items[0].is_directory() or sel_items[0].get_uri_scheme() != 'file':
             return
@@ -66,20 +68,20 @@ class AddToAudaciousPlaylist(GObject.GObject, Nemo.MenuProvider):
         for sel_item in sel_items:
             uri_raw = sel_item.get_uri()
             if len(uri_raw) < 7: continue
-            source_path = re.escape(urllib.unquote(uri_raw[7:]))
+            source_path = re.escape(urllib.parse.unquote(uri_raw[7:]))
             for extension in EXTENSIONS_WHITELIST:
                 if source_path.endswith(extension):
                     source_path_list.append(source_path)
                     break
             else:
                 filetype = subprocess.Popen("file -i %s" % source_path, shell=True, stdout=subprocess.PIPE).communicate()[0]
-                if "audio" in filetype\
-                or "application/ogg" in filetype:
+                if b"audio" in filetype\
+                or b"application/ogg" in filetype:
                     source_path_list.append(source_path)
         if source_path_list:
             item = Nemo.MenuItem(name='NemoPython::audacious',
                                      label=_('Add To Audacious Playlist'),
                                      tip=_('Add the selected Audio file(s) to the Audacious Playlist'),
                                      icon='audacious')
-            item.connect('activate', self.run, source_path_list)
+            item.connect('activate', self._run, source_path_list)
             return item,

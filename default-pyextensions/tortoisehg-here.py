@@ -1,12 +1,12 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """This module adds a menu item to the Nemo right-click menu which allows to Open Tortoise HG
    on the Selected Folder/Current Directory just through the right-clicking"""
 
-#   tortoisehg-here.py version 3.4
+#   tortoisehg-here.py version 4.2
 #
-#   Copyright 2009-2015 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2019 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,10 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
+import gi
+gi.require_version('Nemo', '3.0')
 from gi.repository import Nemo, GObject, Gtk, GdkPixbuf
-import urllib, os, subprocess
+import urllib.parse, os, subprocess
 import locale, gettext
 
 APP_NAME = "nemo-pyextensions"
@@ -51,11 +53,11 @@ class OpenTortoiseHGHere(GObject.GObject, Nemo.MenuProvider):
             factory.add_default()
         except: pass
 
-    def run(self, menu, selected):
+    def _run(self, menu, selected):
         """Runs the Open TortoiseHG Here on the given Directory"""
         uri_raw = selected.get_uri()
         if len(uri_raw) < 7: return
-        curr_dir = urllib.unquote(uri_raw[7:])
+        curr_dir = urllib.parse.unquote(uri_raw[7:])
         if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
         bash_string = "cd \"" + curr_dir + "\" && thg &"
         subprocess.call(bash_string, shell=True)
@@ -68,7 +70,7 @@ class OpenTortoiseHGHere(GObject.GObject, Nemo.MenuProvider):
                                  label=_('Open TortoiseHG Here'),
                                  tip=_('Open the TortoiseHG Workbench on the Current/Selected Directory'),
                                  icon='thg_logo')
-        item.connect('activate', self.run, sel_items[0])
+        item.connect('activate', self._run, sel_items[0])
         return [item]
 
     def get_background_items(self, window, current_directory):
@@ -78,5 +80,5 @@ class OpenTortoiseHGHere(GObject.GObject, Nemo.MenuProvider):
                                  label=_('Open TortoiseHG Here'),
                                  tip=_('Open the TortoiseHG Workbench on the Current Directory'),
                                  icon='thg_logo')
-        item.connect('activate', self.run, current_directory)
+        item.connect('activate', self._run, current_directory)
         return [item]

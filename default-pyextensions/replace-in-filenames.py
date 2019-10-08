@@ -1,12 +1,12 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """This module adds a menu item to the Nemo right-click menu which allows to Replace a String
    with another one in all Current/Selected Directory Filenames just through the right-clicking"""
 
-#   replace-in-filenames.py version 3.4
+#   replace-in-filenames.py version 4.2
 #
-#   Copyright 2011-2015 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2011-2019 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,10 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
+import gi
+gi.require_version('Nemo', '3.0')
 from gi.repository import Nemo, GObject, Gtk
-import urllib, os
+import urllib.parse, os
 import locale, gettext
 
 APP_NAME = "nemo-pyextensions"
@@ -44,7 +46,7 @@ class ReplaceInFilenames(GObject.GObject, Nemo.MenuProvider):
         """Nemo crashes if a plugin doesn't implement the __init__ method"""
         pass
 
-    def run(self, menu, selected):
+    def _run(self, menu, selected):
         """Runs the Replace in Filenames on the given Directory"""
         uri_raw = selected.get_uri()
         if len(uri_raw) < 7: return
@@ -71,7 +73,7 @@ class ReplaceInFilenames(GObject.GObject, Nemo.MenuProvider):
         replace_to = entry_replace.get_text()
         if uri_raw.startswith("smb"):
             import smbc
-            curr_dir = urllib.unquote(uri_raw)
+            curr_dir = urllib.parse.unquote(uri_raw)
             context = smbc.Context()
             dir_obj = context.opendir(curr_dir)
             dirent_objs = dir_obj.getdents()
@@ -83,7 +85,7 @@ class ReplaceInFilenames(GObject.GObject, Nemo.MenuProvider):
                     if new_uri != old_uri:
                         context.rename(old_uri, new_uri)
         else:
-            curr_dir = urllib.unquote(uri_raw[7:])
+            curr_dir = urllib.parse.unquote(uri_raw[7:])
             if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
             for old_name in os.listdir(curr_dir):
                 old_filename = os.path.join(curr_dir, old_name)
@@ -100,7 +102,7 @@ class ReplaceInFilenames(GObject.GObject, Nemo.MenuProvider):
                                  label=_('Replace in Filenames'),
                                  tip=_('Replace in Filenames of the Current/Selected Directory'),
                                  icon='gtk-find-and-replace')
-        item.connect('activate', self.run, sel_items[0])
+        item.connect('activate', self._run, sel_items[0])
         return item,
 
     def get_background_items(self, window, current_directory):
@@ -110,5 +112,5 @@ class ReplaceInFilenames(GObject.GObject, Nemo.MenuProvider):
                                  label=_('Replace in Filenames'),
                                  tip=_('Replace in Filenames of the Current Directory'),
                                  icon='gtk-find-and-replace')
-        item.connect('activate', self.run, current_directory)
+        item.connect('activate', self._run, current_directory)
         return item,

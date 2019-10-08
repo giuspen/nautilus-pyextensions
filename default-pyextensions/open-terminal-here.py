@@ -1,12 +1,12 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """This module adds a menu item to the Nemo right-click menu which allows to Open the Terminal
    on the Selected Folder/Current Directory at predefined Geometry just through the right-clicking"""
 
-#   open-terminal-here.py version 3.4
+#   open-terminal-here.py version 4.2
 #
-#   Copyright 2009-2015 Giuseppe Penone <giuspen@gmail.com>
+#   Copyright 2009-2019 Giuseppe Penone <giuspen@gmail.com>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,10 @@
 #   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #   MA 02110-1301, USA.
 
+import gi
+gi.require_version('Nemo', '3.0')
 from gi.repository import Nemo, GObject, Gtk, GdkPixbuf
-import urllib, os, subprocess
+import urllib.parse, os, subprocess
 import locale, gettext
 
 APP_NAME = "nemo-pyextensions"
@@ -51,24 +53,24 @@ class OpenTerminalHere(GObject.GObject, Nemo.MenuProvider):
             factory.add_default()
         except: pass
 
-    def run(self, menu, selected):
+    def _run(self, menu, selected):
         """Runs the Open Terminal Here on the given Directory"""
         uri_raw = selected.get_uri()
         if len(uri_raw) < 7: return
-        curr_dir = urllib.unquote(uri_raw[7:])
+        curr_dir = urllib.parse.unquote(uri_raw[7:])
         if os.path.isfile(curr_dir): curr_dir = os.path.dirname(curr_dir)
         bash_string = "cd \"" + curr_dir + "\" && x-terminal-emulator &"
         subprocess.call(bash_string, shell=True)
 
     def get_file_items(self, window, sel_items):
         """Adds the 'Open Terminal Here' menu item to the Nemo right-click menu,
-           connects its 'activate' signal to the 'run' method passing the selected Directory/File"""
+           connects its 'activate' signal to the '_run' method passing the selected Directory/File"""
         if len(sel_items) != 1 or sel_items[0].get_uri_scheme() != 'file': return
         item = Nemo.MenuItem(name='NemoPython::terminal',
                                  label=_('Open Terminal Here'),
                                  tip=_('Open the Terminal on the Current/Selected Directory'),
                                  icon='terminal')
-        item.connect('activate', self.run, sel_items[0])
+        item.connect('activate', self._run, sel_items[0])
         return [item]
 
     def get_background_items(self, window, current_directory):
@@ -78,5 +80,5 @@ class OpenTerminalHere(GObject.GObject, Nemo.MenuProvider):
                                  label=_('Open Terminal Here'),
                                  tip=_('Open the Terminal on the Current Directory'),
                                  icon='terminal')
-        item.connect('activate', self.run, current_directory)
+        item.connect('activate', self._run, current_directory)
         return [item]

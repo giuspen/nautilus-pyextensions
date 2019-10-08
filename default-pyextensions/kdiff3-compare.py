@@ -4,7 +4,7 @@
 """This module adds menu items to the Nemo right-click menu which allows to compare
    the selected files/folder using Kdiff3 (Diff and merge tool) just through the right-clicking"""
 
-#   kdiff3-compare.py version 3.5
+#   kdiff3-compare.py version 4.2
 #
 #   Copyright 2009-2019 Giuseppe Penone <giuspen@gmail.com>
 #
