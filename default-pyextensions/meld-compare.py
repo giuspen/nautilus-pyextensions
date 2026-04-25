@@ -61,8 +61,8 @@ class MeldActions(GObject.GObject, Caja.MenuProvider):
 
     def _is_text_document(self, filepath):
         """The given filepath is a text document"""
-        filetype = subprocess.Popen("file -i %s" % re.escape(filepath), shell=True, stdout=subprocess.PIPE).communicate()[0]
-        return (b"text" in filetype or b"xml" in filetype or b"csv" in filetype or b"json" in filetype)
+        filetype = subprocess.Popen("file -b --mime-encoding %s" % re.escape(filepath), shell=True, stdout=subprocess.PIPE).communicate()[0]
+        return (b"binary" not in filetype)
 
     def get_file_items(self, window, sel_items):
         """Adds the 'Meld Compare' menu item to the Caja right-click menu,
